@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import ActionButton from '../action-button/action-button';
 import Link from 'next/link';
+import FlatButton from '../action-button/flat-button';
 
 const Header = () => {
 	return (
@@ -14,7 +15,7 @@ const Header = () => {
 				</Link>
 
 				<div className="flex items-center space-x-6">
-					<button class="text-md rounded-xl px-4 py-2 font-semibold text-gray-900 hover:bg-gray-100">Log in</button>
+					<FlatButton text="Log in" textColor="text-gray-800" textSize="text-base" />
 					<ActionButton text="Add Listing" param="add-listing" size="small" textSize="text-sm" />
 				</div>
 			</div>
