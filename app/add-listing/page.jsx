@@ -30,7 +30,7 @@ export default function AddListing() {
 							like yours.
 						</p>
 
-						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-1 h-5 w-5" />} />
+						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
 					</div>
 				</div>
 
@@ -47,7 +47,7 @@ export default function AddListing() {
 						<p className="mb-2 mt-3 text-xl text-gray-400">
 							We promote new products that users will love. We prefer young startups over established brands.
 						</p>
-						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-1 h-5 w-5" />} />
+						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
 					</div>
 				</div>
 
@@ -59,7 +59,7 @@ export default function AddListing() {
 							Effortlessly gather valuable feedback from your users. Gain insights, identify areas for improvement, and connect with your
 							audience.
 						</p>
-						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-1 h-5 w-5" />} />
+						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
 					</div>
 				</div>
 			</div>
