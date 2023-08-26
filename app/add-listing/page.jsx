@@ -26,8 +26,8 @@ export default function AddListing() {
 					<div>
 						<h3 className="text-3xl font-semibold">Get Discovered</h3>
 						<p className="mb-2 mt-3 text-xl text-gray-400">
-							You&apos;ve built a great product but people need to know about it. We will help you get discovered by people looking for products
-							like yours.
+							You&apos;ve built a great product but people need to know about it. Get discovered by people looking for great new products like
+							yours.
 						</p>
 
 						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
@@ -35,6 +35,13 @@ export default function AddListing() {
 				</div>
 
 				<div className="mt-20 flex w-full items-center gap-20">
+					<div>
+						<h3 className="text-3xl font-semibold">Dedicated To New Startups</h3>
+						<p className="mb-2 mt-3 text-xl text-gray-400">
+							Users love finding new products that save the day. Go up against established brands with our help.
+						</p>
+						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+					</div>
 					<Image
 						src="/add-listing/diamond.png"
 						width={400}
@@ -42,13 +49,6 @@ export default function AddListing() {
 						className="h-60 w-60 shrink-0 rounded-3xl shadow-lg"
 						alt="Magnifying glass"
 					/>
-					<div>
-						<h3 className="text-3xl font-semibold">Dedicated To New Startups</h3>
-						<p className="mb-2 mt-3 text-xl text-gray-400">
-							We promote new products that users will love. We prefer young startups over established brands.
-						</p>
-						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
-					</div>
 				</div>
 
 				<div className="mt-20 flex w-full items-center gap-20">
