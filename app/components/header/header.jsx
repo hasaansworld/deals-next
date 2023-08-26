@@ -21,8 +21,8 @@ const Header = () => {
 				</div>
 
 				<div className="flex items-center space-x-6">
-					<button class="text-md rounded-xl px-4 py-2 font-semibold text-gray-900 hover:bg-gray-100">Blog</button>
-					<button class="text-md mr-3 rounded-xl px-4 py-2 font-semibold text-gray-900 hover:bg-gray-100">Log in</button>
+					<FlatButton text="Blog" textColor="test-gray-800" param="blog" textSize="text-base" size="medium" />
+					<FlatButton text="Log in" textColor="test-gray-800" param="login" textSize="text-base" size="medium" />
 					<ActionButton text="Add Listing" param="add-listing" size="small" textSize="text-sm" />
 				</div>
 			</div>
