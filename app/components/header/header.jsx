@@ -10,9 +10,9 @@ const Header = () => {
 					<h1 className="text-xl font-semibold text-gray-800 hover:text-gray-900">SAAS App store</h1>
 				</div>
 
-				<div className="flex space-x-6">
+				<div className="flex items-center space-x-6">
 					<button class="text-md rounded-xl px-6 py-2 font-semibold text-gray-900 hover:bg-gray-100">Log in</button>
-					<ActionButton text="Add Listing" param="add-listing" />
+					<ActionButton text="Add Listing" param="add-listing" size="small" textSize="text-sm" />
 				</div>
 			</div>
 		</header>
