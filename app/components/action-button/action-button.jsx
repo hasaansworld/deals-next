@@ -1,12 +1,13 @@
 import React from "react";
 
-export default function ActionButton({ text, onClick = null }) {
+export default function ActionButton({ text, endIcon = null, onClick = null }) {
     return (
         <button
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-xl font-medium shadow-lg shadow-indigo-500/30 text-lg"
+            className="flex items-center gap-2 hover:gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-xl font-medium shadow-lg shadow-indigo-500/30 text-lg"
             onClick={onClick}
         >
             {text}
+            {endIcon}
         </button>
     );
 }
