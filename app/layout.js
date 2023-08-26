@@ -13,10 +13,10 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={inter.className}>
 			<body>
-				<>
+				<div className="relative h-screen overflow-hidden">
 					<Header />
-					{children}
-				</>
+					<div className="absolute top-16 h-[calc(100vh-4rem)] w-full overflow-y-auto">{children}</div>
+				</div>
 			</body>
 		</html>
 	);
