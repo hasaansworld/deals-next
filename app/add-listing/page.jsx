@@ -15,12 +15,12 @@ export default function AddListing() {
 					<ActionButton text="Create Listing" endIcon={<ArrowRightIcon className="h-5 w-5" />} />
 				</div>
 
-				<div className="mt-28 flex w-full items-center gap-20">
+				<div className="mt-20 flex w-full items-center gap-20">
 					<Image
 						src="/add-listing/magnifying_glass.png"
 						width={400}
 						height={400}
-						className="h-60 w-60 shrink-0 rounded-3xl shadow-lg"
+						className="h-72 w-72 shrink-0 rounded-3xl shadow-lg"
 						alt="Magnifying glass"
 					/>
 					<div>
@@ -29,38 +29,50 @@ export default function AddListing() {
 							You&apos;ve built a great product but people need to know about it. Get discovered by people looking for great new products like
 							yours.
 						</p>
-
-						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+						<div className="-ml-2">
+							<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+						</div>
 					</div>
 				</div>
 
-				<div className="mt-20 flex w-full items-center gap-20">
+				<div className="mt-10 flex w-full items-center gap-20">
 					<div>
-						<h3 className="text-3xl font-semibold">Dedicated To New Startups</h3>
+						<h3 className="text-3xl font-semibold">Be In The Spotlight</h3>
 						<p className="mb-2 mt-3 text-xl text-gray-400">
-							Users love finding new products that save the day. Go up against established brands with our help.
+							We have dedicated spaces that feature up and coming products so you have a chance to compete with the established brands.
 						</p>
-						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+						<div className="-ml-2">
+							<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+						</div>
 					</div>
-					<Image
-						src="/add-listing/diamond.png"
-						width={400}
-						height={400}
-						className="h-60 w-60 shrink-0 rounded-3xl shadow-lg"
-						alt="Magnifying glass"
-					/>
+					<Image src="/add-listing/diamond.png" width={400} height={400} className="h-72 w-72 shrink-0 rounded-3xl shadow-lg" alt="Diamond" />
 				</div>
 
-				<div className="mt-20 flex w-full items-center gap-20">
-					<Image src="/add-listing/star.png" width={400} height={400} className="h-60 w-60 shrink-0 rounded-3xl shadow-lg" alt="Magnifying glass" />
+				<div className="mt-10 flex w-full items-center gap-20">
+					<Image src="/add-listing/star.png" width={400} height={400} className="h-72 w-72 shrink-0 rounded-3xl shadow-lg" alt="Golden star" />
 					<div>
 						<h3 className="text-3xl font-semibold">Collect Feedback</h3>
 						<p className="mb-2 mt-3 text-xl text-gray-400">
 							Effortlessly gather valuable feedback from your users. Gain insights, identify areas for improvement, and connect with your
 							audience.
 						</p>
-						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+						<div className="-ml-2">
+							<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+						</div>
 					</div>
+				</div>
+
+				<div className="mt-10 flex w-full items-center gap-20">
+					<div>
+						<h3 className="text-3xl font-semibold">Accelerate Growth</h3>
+						<p className="mb-2 mt-3 text-xl text-gray-400">
+							Seamlessly configure analytics, design compelling offers, and strategically implement discounts—all in one platform.
+						</p>
+						<div className="-ml-2">
+							<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+						</div>
+					</div>
+					<Image src="/add-listing/tags.png" width={400} height={400} className="h-72 w-72 shrink-0 rounded-3xl shadow-lg" alt="Discount tags" />
 				</div>
 			</div>
 		</div>
