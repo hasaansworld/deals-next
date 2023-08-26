@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
 			<body>
 				<div className="relative h-screen overflow-hidden">
 					<Header />
-					<div className="absolute h-[calc(100vh-4rem)] w-full overflow-y-auto">{children}</div>
+					<div className="absolute h-screen w-full overflow-y-auto">{children}</div>
 				</div>
 			</body>
 		</html>
