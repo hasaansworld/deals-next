@@ -64,15 +64,15 @@ export default function AddListing() {
 
 				<div className="mt-10 flex w-full items-center gap-20">
 					<div>
-						<h3 className="text-3xl font-semibold">Accelerate Growth</h3>
+						<h3 className="text-3xl font-semibold">Grow Together</h3>
 						<p className="mb-2 mt-3 text-xl text-gray-400">
-							Seamlessly configure analytics, design compelling offers, and strategically implement discounts—all in one platform.
+							Growing a start-up alone can be hard but we&apos;re here for you. Get the AppStore community to spread the word and grow faster.
 						</p>
 						<div className="-ml-2">
 							<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
 						</div>
 					</div>
-					<Image src="/add-listing/tags.png" width={400} height={400} className="h-72 w-72 shrink-0 rounded-3xl shadow-lg" alt="Discount tags" />
+					<Image src="/add-listing/bus.png" width={400} height={400} className="h-72 w-72 shrink-0 rounded-3xl shadow-lg" alt="Discount tags" />
 				</div>
 			</div>
 		</div>
