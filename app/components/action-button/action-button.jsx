@@ -14,6 +14,7 @@ export default function ActionButton({
 	size = null,
 	textSize = null,
 	fontSize = null,
+	endIcon = null,
 }) {
 	const router = useRouter();
 
@@ -27,7 +28,7 @@ export default function ActionButton({
 
 	// Apply conditional styles based on prop values
 	const buttonStyles = `
-      rounded-xl
+      rounded-xl gap-2 hover:gap-3
       ${backgroundColor ? `bg-${backgroundColor}` : 'bg-indigo-600'}
       ${size === 'small' ? 'px-4 py-2' : 'px-6 py-2'}
       ${textColor ? `text-${textColor}` : 'text-white'}
@@ -40,6 +41,7 @@ export default function ActionButton({
 	return (
 		<button className={buttonStyles} onClick={handleClick}>
 			{text}
+			{endIcon}
 		</button>
 	);
 }
