@@ -1,3 +1,5 @@
+import ActionButton from "../action-button/action-button";
+
 const Header = () => {
     return (
         <header className="bg-white border-b border-gray-200 py-4">
@@ -14,12 +16,10 @@ const Header = () => {
                 </div>
 
                 <div className="flex space-x-6">
-                    <button className="text-gray-800 px-4 py-2 hover:bg-gray-200 rounded-md hover:border-gray-400 border border-transparent flex items-center">
+                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-900 px-6 py-2 rounded-xl font-medium shadow-md shadow-gray-500/30 text-lg">
                         Log in
                     </button>
-                    <button className="bg-indigo-600 text-white font-semibold rounded-md px-4 py-2 hover:bg-indigo-700 flex items-center">
-                        Add Listings
-                    </button>
+                    <ActionButton text="Add Listing" />
                 </div>
             </div>
         </header>
