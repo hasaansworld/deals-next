@@ -15,7 +15,7 @@ const Header = () => {
 					</div>
 				</Link>
 
-				<div className="mx-32 flex w-96 items-center space-x-2 rounded-xl border border-gray-300 bg-transparent px-4 py-1.5 transition-colors duration-300 focus-within:bg-white/10">
+				<div className="mx-32 flex w-96 items-center space-x-2 rounded-xl border border-gray-300 bg-transparent px-4 py-1.5 transition-colors duration-300 focus-within:bg-white/20">
 					<MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
 					<input className="h-full w-full bg-transparent focus:outline-none" placeholder="Search apps" />
 				</div>
