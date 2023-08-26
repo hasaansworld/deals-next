@@ -1,6 +1,7 @@
 import ActionButton from '../components/action-button/action-button';
 import { ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import FlatButton from '../components/action-button/flat-button';
+import Image from 'next/image';
 
 export default function AddListing() {
 	return (
@@ -13,8 +14,15 @@ export default function AddListing() {
 				<div className="mt-8">
 					<ActionButton text="Create Listing" endIcon={<ArrowRightIcon className="h-5 w-5" />} />
 				</div>
+
 				<div className="mt-28 flex w-full items-center gap-20">
-					<div className="h-72 w-72 shrink-0 rounded-3xl border border-gray-100 shadow"></div>
+					<Image
+						src="/add-listing/magnifying_glass.png"
+						width={400}
+						height={400}
+						className="h-60 w-60 shrink-0 rounded-3xl shadow-lg"
+						alt="Magnifying glass"
+					/>
 					<div>
 						<h3 className="text-3xl font-semibold">Get Discovered</h3>
 						<p className="mb-2 mt-3 text-xl text-gray-400">
@@ -22,19 +30,37 @@ export default function AddListing() {
 							like yours.
 						</p>
 
-						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="h-5 w-5" />} />
+						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-1 h-5 w-5" />} />
 					</div>
 				</div>
 
 				<div className="mt-20 flex w-full items-center gap-20">
+					<Image
+						src="/add-listing/diamond.png"
+						width={400}
+						height={400}
+						className="h-60 w-60 shrink-0 rounded-3xl shadow-lg"
+						alt="Magnifying glass"
+					/>
 					<div>
 						<h3 className="text-3xl font-semibold">Dedicated To New Startups</h3>
 						<p className="mb-2 mt-3 text-xl text-gray-400">
-							We want to promote new products that users will love. We prefer young startups over established brands.
+							We promote new products that users will love. We prefer young startups over established brands.
 						</p>
-						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="h-5 w-5" />} />
+						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-1 h-5 w-5" />} />
 					</div>
-					<div className="h-72 w-72 shrink-0 rounded-3xl border border-gray-100 shadow"></div>
+				</div>
+
+				<div className="mt-20 flex w-full items-center gap-20">
+					<Image src="/add-listing/star.png" width={400} height={400} className="h-60 w-60 shrink-0 rounded-3xl shadow-lg" alt="Magnifying glass" />
+					<div>
+						<h3 className="text-3xl font-semibold">Collect Feedback</h3>
+						<p className="mb-2 mt-3 text-xl text-gray-400">
+							Effortlessly gather valuable feedback from your users. Gain insights, identify areas for improvement, and connect with your
+							audience.
+						</p>
+						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-1 h-5 w-5" />} />
+					</div>
 				</div>
 			</div>
 		</div>
