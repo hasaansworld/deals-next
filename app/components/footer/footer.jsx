@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
 	return (
@@ -9,13 +10,23 @@ const Footer = () => {
 					<h3 className="text-xl font-medium">AppStore</h3>
 				</div>
 				<div>
-					<h5 className="cursor-pointer text-lg font-medium text-gray-900 hover:underline">Pricing</h5>
-					<h5 className="mt-4 cursor-pointer text-lg font-medium text-gray-900 hover:underline">Blog</h5>
-					<h5 className="mt-4 cursor-pointer text-lg font-medium text-gray-900 hover:underline">FAQs</h5>
+					<Link href="/pricing">
+						<h5 className="cursor-pointer text-lg font-medium text-gray-900 hover:underline">Pricing</h5>
+					</Link>
+					<Link href="/blog">
+						<h5 className="mt-4 cursor-pointer text-lg font-medium text-gray-900 hover:underline">Blog</h5>
+					</Link>
+					<Link href="/faqs">
+						<h5 className="mt-4 cursor-pointer text-lg font-medium text-gray-900 hover:underline">FAQs</h5>
+					</Link>
 				</div>
 				<div>
-					<h5 className="cursor-pointer text-lg font-medium text-gray-900 hover:underline">Terms & Conditions</h5>
-					<h5 className="mt-4 cursor-pointer text-lg font-medium text-gray-900 hover:underline">Who Are We?</h5>
+					<Link href="/terms">
+						<h5 className="cursor-pointer text-lg font-medium text-gray-900 hover:underline">Terms & Conditions</h5>
+					</Link>
+					<Link href="/about-us">
+						<h5 className="mt-4 cursor-pointer text-lg font-medium text-gray-900 hover:underline">Who Are We?</h5>
+					</Link>
 				</div>
 			</div>
 		</footer>
