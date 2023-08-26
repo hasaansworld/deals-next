@@ -26,11 +26,11 @@ export default function AddListing() {
 					</div>
 				</div>
 
-				<div className="mt-28 flex w-full items-center gap-20">
+				<div className="mt-20 flex w-full items-center gap-20">
 					<div>
-						<h3 className="text-3xl font-semibold">Stay In The Spotlight</h3>
+						<h3 className="text-3xl font-semibold">Dedicated To New Startups</h3>
 						<p className="mb-2 mt-3 text-xl text-gray-400">
-							We have dedicated spaces where we feature up and coming products that users will love. Stay in the spotlight long after the launch.
+							We want to promote new products that users will love. We prefer young startups over established brands.
 						</p>
 						<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="h-5 w-5" />} />
 					</div>
