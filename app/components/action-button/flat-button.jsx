@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 export default function FlatButton({
 	text,
 	onClick = null,
-	param = null,
+	url = null,
 	textColor = null,
 	hover = null,
 	size = null,
@@ -17,8 +17,8 @@ export default function FlatButton({
 	const router = useRouter();
 
 	const handleClick = () => {
-		if (param) {
-			router.push(param);
+		if (url) {
+			router.push(url);
 		} else if (onClick) {
 			onClick();
 		}

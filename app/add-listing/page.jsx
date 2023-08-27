@@ -12,7 +12,7 @@ export default function AddListing() {
 				</h1>
 				<p className="text-center text-xl font-medium text-gray-400">List your startup on the App Store to reach customers faster 🚀</p>
 				<div className="mt-8">
-					<ActionButton text="Create Listing" endIcon={<ArrowRightIcon className="h-5 w-5" />} />
+					<ActionButton text="Create Listing" url="create-listing" endIcon={<ArrowRightIcon className="h-5 w-5" />} />
 				</div>
 
 				<div className="mt-20 flex w-full items-center gap-20">
@@ -30,7 +30,7 @@ export default function AddListing() {
 							yours.
 						</p>
 						<div className="-ml-2">
-							<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+							<FlatButton text="Create Listing" url="create-listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
 						</div>
 					</div>
 				</div>
@@ -42,7 +42,7 @@ export default function AddListing() {
 							We have dedicated spaces that feature up and coming products so you have a chance to compete with the established brands.
 						</p>
 						<div className="-ml-2">
-							<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+							<FlatButton text="Create Listing" url="create-listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
 						</div>
 					</div>
 					<Image src="/add-listing/diamond.png" width={400} height={400} className="h-72 w-72 shrink-0 rounded-3xl shadow-lg" alt="Diamond" />
@@ -57,7 +57,7 @@ export default function AddListing() {
 							audience.
 						</p>
 						<div className="-ml-2">
-							<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+							<FlatButton text="Create Listing" url="create-listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
 						</div>
 					</div>
 				</div>
@@ -69,7 +69,7 @@ export default function AddListing() {
 							Growing a start-up alone can be hard but we&apos;re here for you. Get the AppStore community to spread the word and grow faster.
 						</p>
 						<div className="-ml-2">
-							<FlatButton text="Create Listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
+							<FlatButton text="Create Listing" url="create-listing" endIcon={<ChevronRightIcon className="mt-0.5 h-5 w-5" />} />
 						</div>
 					</div>
 					<Image src="/add-listing/bus.png" width={400} height={400} className="h-72 w-72 shrink-0 rounded-3xl shadow-lg" alt="Discount tags" />

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 export default function ActionButton({
 	text,
 	onClick = null,
-	param = null,
+	url = null,
 	backgroundColor = null,
 	textColor = null,
 	hover = null,
@@ -19,8 +19,8 @@ export default function ActionButton({
 	const router = useRouter();
 
 	const handleClick = () => {
-		if (param) {
-			router.push(param);
+		if (url) {
+			router.push(url);
 		} else if (onClick) {
 			onClick();
 		}

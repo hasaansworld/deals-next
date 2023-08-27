@@ -1,10 +1,17 @@
+'use client';
+
 import Image from 'next/image';
 import ActionButton from '../action-button/action-button';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import FlatButton from '../action-button/flat-button';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
+	const pathName = usePathname();
+
+	console.log(pathName);
+
 	return (
 		<header className="fixed left-0 top-0 z-10 w-full bg-gray-300/10 py-2 backdrop-blur-2xl backdrop-filter">
 			<div className="container mx-auto flex items-center justify-between px-40">
@@ -21,9 +28,14 @@ const Header = () => {
 				</div>
 
 				<div className="flex items-center space-x-6">
-					<FlatButton text="Blog" textColor="test-gray-800" param="blog" textSize="text-base" size="medium" />
-					<FlatButton text="Log in" textColor="test-gray-800" param="login" textSize="text-base" size="medium" />
-					<ActionButton text="Add Listing" param="add-listing" size="small" textSize="text-sm" />
+					<FlatButton text="Blog" textColor="test-gray-800" url="blog" textSize="text-base" size="medium" />
+					<FlatButton text="Log in" textColor="test-gray-800" url="login" textSize="text-base" size="medium" />
+					<ActionButton
+						text={pathName === '/add-listing' ? 'Create Listing' : 'Add Listing'}
+						url={pathName === '/add-listing' ? 'create-listing' : 'add-listing'}
+						size="small"
+						textSize="text-sm"
+					/>
 				</div>
 			</div>
 		</header>
