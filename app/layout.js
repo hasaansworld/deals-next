@@ -6,14 +6,14 @@ import Footer from './components/footer/footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-	title: 'App Store',
+	title: 'arsaa',
 	description: 'Coming Soon',
 };
 
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={inter.className}>
-			<body>
+			<body className="bg-black">
 				<div className="relative h-screen overflow-hidden">
 					<Header />
 					<div className="absolute h-screen w-full overflow-y-auto">

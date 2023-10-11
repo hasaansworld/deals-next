@@ -30,7 +30,7 @@ export default function FlatButton({
 	  ${size === 'medium' ? 'px-4 py-2' : 'px-2 py-1'}
       ${textSize ? textSize : 'text-lg'} 
       ${fontSize ? fontSize : 'font-medium'}
-      ${hover ? `hover:bg-${hover}` : 'hover:bg-gray-100'}
+      ${hover ? `hover:bg-${hover}` : 'hover:bg-neutral-900'}
 	`;
 
 	return (
