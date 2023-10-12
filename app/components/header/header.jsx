@@ -13,7 +13,7 @@ const Header = () => {
 	console.log(pathName);
 
 	return (
-		<header className="fixed left-0 top-0 z-10 w-full bg-black/10 py-2 backdrop-blur-2xl backdrop-filter">
+		<header className="fixed left-0 right-0 top-0 z-10 border-b border-[#111] bg-[#555]/10 py-2 backdrop-blur-2xl backdrop-filter">
 			<div className="container mx-auto flex items-center px-40">
 				<Link href="/" className="flex-1">
 					<div className="flex items-center gap-2">

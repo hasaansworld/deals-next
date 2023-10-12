@@ -14,9 +14,9 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={inter.className}>
 			<body className="bg-black">
-				<div className="relative h-screen overflow-hidden">
+				<div className="h-screen overflow-y-auto">
 					<Header />
-					<div className="absolute h-screen w-full overflow-y-auto">
+					<div className="absolute h-screen w-full">
 						{children}
 						<Footer />
 					</div>
