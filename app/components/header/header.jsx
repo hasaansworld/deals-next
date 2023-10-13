@@ -22,14 +22,14 @@ const Header = () => {
 					</div>
 				</Link>
 
-				<div className="flex w-96 flex-1 items-center space-x-2 rounded-xl border border-neutral-800 bg-transparent px-4 py-1.5 transition-colors duration-300 focus-within:bg-neutral-900">
+				<div className="flex w-[450px] items-center space-x-2 rounded-xl border border-white/10 bg-transparent px-4 py-1.5 transition-colors duration-300 focus-within:bg-neutral-900">
 					<MagnifyingGlassIcon className="h-5 w-5 text-neutral-600" />
 					<input className="h-full w-full bg-transparent text-white placeholder-white/30 focus:outline-none" placeholder="Search software" />
 				</div>
 
-				<div className="flex flex-1 items-center justify-end gap-6">
+				<div className="flex flex-1 items-center justify-end gap-8">
 					<BellIcon className="h-6 w-6 text-neutral-300" />
-					<Image src="/profile.jpg" alt="profile pic" width={400} height={400} className="h-9 w-9 rounded-full border-2 border-[#444]" />
+					<Image src="/profile.jpg" alt="profile pic" width={400} height={400} className="h-8 w-8 rounded-full border-2 border-[#444]" />
 				</div>
 			</div>
 		</header>
