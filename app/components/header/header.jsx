@@ -13,7 +13,7 @@ const Header = () => {
 	console.log(pathName);
 
 	return (
-		<header class="fixed left-0 right-0 top-0 z-10 border-b border-[#777]/10 bg-white/10 py-2 backdrop-blur-2xl backdrop-filter">
+		<header className="fixed left-0 right-0 top-0 z-10 border-b border-[#777]/10 bg-white/10 py-2 backdrop-blur-2xl backdrop-filter">
 			<nav>
 				<div className="container mx-auto flex items-center justify-center">
 					<Link href="/">
@@ -23,12 +23,12 @@ const Header = () => {
 						</div>
 					</Link>
 
-					<p class="mx-9 w-[400px] rounded-lg border border-[#666]/10 bg-[#f6f6f6]/10 px-3 py-1 font-medium text-[#888]">Search apps</p>
-					<div class="mr-10">
+					<p className="mx-9 w-[400px] rounded-lg border border-[#666]/10 bg-[#f6f6f6]/10 px-3 py-1 font-medium text-[#888]">Search apps</p>
+					<div className="mr-10">
 						<BellIcon className="h-6 w-6 text-black" />
 					</div>
 
-					<img src="profile3.jpg" class="h-8 w-8 rounded-full border border-[#eee]" />
+					<img src="profile3.jpg" className="h-8 w-8 rounded-full border border-[#eee]" />
 				</div>
 			</nav>
 		</header>
