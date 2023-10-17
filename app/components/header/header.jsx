@@ -13,25 +13,24 @@ const Header = () => {
 	console.log(pathName);
 
 	return (
-		<header className="fixed left-0 right-0 top-0 z-10 border-b border-[#161616] bg-[#555]/10 py-2 backdrop-blur-2xl backdrop-filter">
-			<div className="container mx-auto flex items-center px-60">
-				<Link href="/" className="flex-1">
-					<div className="flex items-center gap-2">
-						<Image src="/icon_white.svg" alt="Logo" width={350} height={280} className="h-4 w-5" />
-						<h1 className="text-xl font-semibold text-white">arsaa</h1>
+		<header class="fixed left-0 right-0 top-0 z-10 border-b border-[#aaa]/10 bg-white/10 py-2 backdrop-blur-2xl backdrop-filter">
+			<nav>
+				<div className="container mx-auto flex items-center justify-center">
+					<Link href="/">
+						<div className="flex items-center gap-2">
+							<img src="/icon_black.svg" alt="Logo" className="h-5 w-5" />
+							<h1 className="text-lg font-bold text-black">Arsaa</h1>
+						</div>
+					</Link>
+
+					<p class="mx-9 w-[400px] rounded-lg border border-[#666]/10 bg-[#f6f6f6]/10 px-3 py-1 font-medium text-[#888]">Search apps</p>
+					<div class="mr-10">
+						<BellIcon className="h-6 w-6 text-black" />
 					</div>
-				</Link>
 
-				<div className="flex w-[450px] items-center space-x-2 rounded-xl border border-white/10 bg-transparent px-4 py-1.5 transition-colors duration-300 focus-within:bg-neutral-900">
-					<MagnifyingGlassIcon className="h-5 w-5 text-neutral-600" />
-					<input className="h-full w-full bg-transparent text-white placeholder-white/30 focus:outline-none" placeholder="Search software" />
+					<img src="profile3.jpg" class="h-8 w-8 rounded-full border border-[#eee]" />
 				</div>
-
-				<div className="flex flex-1 items-center justify-end gap-8">
-					<BellIcon className="h-6 w-6 text-neutral-300" />
-					<Image src="/profile.jpg" alt="profile pic" width={400} height={400} className="h-8 w-8 rounded-full border-2 border-[#444]" />
-				</div>
-			</div>
+			</nav>
 		</header>
 	);
 };

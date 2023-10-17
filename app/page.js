@@ -1,43 +1,57 @@
 import '../styles/globals.css';
-import { EllipsisHorizontalIcon, HeartIcon, ChatBubbleOvalLeftIcon, BookmarkIcon } from '@heroicons/react/24/outline';
+import { EllipsisHorizontalIcon, HeartIcon, ChatBubbleOvalLeftIcon, BookmarkIcon, FaceSmileIcon } from '@heroicons/react/24/outline';
+import { brics, inter } from './fonts';
 
 export default function Page() {
 	const repeatedContent = Array(10).fill(null);
 
 	return (
 		<>
-			<div className="mt-6 flex flex-col items-center py-10">
+			<div className="mt-6 flex flex-col items-center bg-[#f7f7f7] py-10">
 				<div className="flex-1 overflow-y-auto">
-					{repeatedContent.map((item, index) => (
-						<div key={index} className="mt-3 min-h-[400px] w-[600px] rounded-lg border border-[#1a1a1a] bg-[#070707] p-4">
-							<div className="flex gap-3">
-								<img src="/loom.png" className="h-10 w-10 rounded-md border border-[#1a1a1a]" />
-								<div className="grow">
-									<div className="flex items-center gap-2">
-										<p className="m-0 cursor-pointer font-semibold text-white hover:underline">Loom</p>
+					<h2 className={`${brics.className} my-7 flex justify-center text-2xl font-bold text-black`}>
+						Share your startup story
+						<img className="ml-1 h-6 w-6 text-[#5100ff]" src="/star.svg" />
+					</h2>
+					<div className="mx-auto w-[450px]">
+						{repeatedContent.map((item, index) => (
+							<div class="mt-3 w-full cursor-pointer rounded-lg border border-[#efefef] bg-white p-3">
+								<div class="flex items-center gap-3">
+									<img src="/loom.png" alt="Loom logo" class="h-9 w-9 rounded-md shadow-md" />
+									<div class="grow">
+										<h4 class="font-bold text-black">Loom</h4>
+										<p class="text-xs text-black/50">Productivity &bull; Communication</p>
 									</div>
-									<div className="mt-2 flex items-center gap-2">
-										<img src="/profile3.jpg" className="h-8 w-8 rounded-full border border-[#1a1a1a]" />
-										<p className="m-0 cursor-pointer text-sm font-medium text-white/80 hover:underline">@calebporzio</p>
-										<p className="m-0 text-sm text-white/50">12h</p>
-									</div>
-								</div>
 
-								<EllipsisHorizontalIcon className="h-8 w-8 p-1.5 text-white/80" />
-							</div>
-							<div className="ml-14 mt-2">
-								<p className="text-white">
-									Today we're announcing that Loom got acquired by Atlassian for $975 million 🥳 Congratulations to the founders!
+									<button
+										class={`${inter.className} rounded-lg bg-[#5100ff]/5 px-3 py-0.5 text-sm font-medium text-[#5100ff] hover:bg-[#5100ff] hover:text-white`}
+									>
+										Follow
+									</button>
+									<EllipsisHorizontalIcon className="h-6 w-6 text-black" />
+								</div>
+								<p class={`${inter.className} mt-4 text-sm font-medium leading-tight text-black`}>
+									Easily record and share AI-powered video messages
 								</p>
-								<img src="/feature.jpeg" className="mt-3 w-full rounded-lg" />
-								<div className="mt-3 flex items-center justify-between">
-									<HeartIcon className="h-8 w-8 p-1.5 text-white/80" />
-									<ChatBubbleOvalLeftIcon className="h-8 w-8 scale-x-[-1] p-1.5 text-white/80" />
-									<BookmarkIcon className="h-8 w-8 p-1.5 text-white/80" />
+								<img src={index % 2 == 0 ? '/loom-banner.png' : '/zapier-banner.png'} alt="Loom banner" class="mt-4 rounded-lg" />
+								<div class="mt-4 flex items-center gap-1">
+									<FaceSmileIcon className="h-5 w-5 text-black" />
+									<div class="ml-3 flex items-center gap-0.5 rounded-full border border-[#eee] px-1.5 py-1">
+										<img src="/heart.png" class="h-4 w-4" />
+										<img src="/thumbs_up.png" class="h-4 w-4" />
+										<img src="/clap.png" class="h-4 w-4" />
+									</div>
+									<p class="text-xs">15</p>
+									<div class="grow"></div>
+									<div class="mr-10 flex items-center gap-1">
+										<ChatBubbleOvalLeftIcon className="h-5 w-5 text-black" />
+										<p class="text-xs">15</p>
+									</div>
+									<BookmarkIcon className="h-5 w-5 text-black" />
 								</div>
 							</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 			</div>
 		</>
