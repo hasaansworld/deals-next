@@ -1,5 +1,16 @@
 import '../styles/globals.css';
-import { EllipsisHorizontalIcon, HeartIcon, ChatBubbleOvalLeftIcon, BookmarkIcon, FaceSmileIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
+import {
+	EllipsisHorizontalIcon,
+	HeartIcon,
+	ChatBubbleOvalLeftIcon,
+	BookmarkIcon,
+	FaceSmileIcon,
+	ArrowPathIcon,
+	ChatBubbleLeftIcon,
+	PlusIcon,
+	PlusSmallIcon,
+	ChevronUpIcon,
+} from '@heroicons/react/24/outline';
 import { brics, inter } from './fonts';
 
 export default function Page() {
@@ -7,7 +18,7 @@ export default function Page() {
 
 	return (
 		<>
-			<div className="mt-6 flex flex-col items-center bg-[#f7f7f7] py-10">
+			<div className="mt-6 flex flex-col items-center py-10">
 				<div className="flex-1 overflow-y-auto">
 					<h2 className={`${brics.className} my-7 flex justify-center text-2xl font-bold text-black`}>
 						Share your startup story
@@ -15,7 +26,7 @@ export default function Page() {
 					</h2>
 					<div className="mx-auto w-[450px]">
 						{repeatedContent.map((item, index) => (
-							<div class="mt-3 w-full cursor-pointer rounded-lg border border-[#efefef] bg-white p-3">
+							<div class="mt-3 w-full cursor-pointer rounded-lg border border-[#efefef] bg-white p-3 shadow-sm">
 								<div class="flex items-center gap-3">
 									<img src={index % 2 == 0 ? '/loom.png' : 'zapier-logomark.svg'} alt="Loom logo" class="h-9 w-9 rounded-md shadow-md" />
 									<div class="grow">
@@ -34,30 +45,35 @@ export default function Page() {
 									Easily record and share AI-powered video messages
 								</p>
 								<img src={index % 2 == 0 ? '/loom-banner.png' : '/zapier-banner.png'} alt="Loom banner" class="mt-4 rounded-lg" />
-								<div class="mt-4 flex items-center justify-between gap-1">
+								<div class="mt-4 flex items-center justify-between gap-1 text-[#555]">
 									{/* <div class="flex items-center gap-1">
-										<HeartIcon className="h-5 w-5 text-black" />
+										<HeartIcon className="h-5 w-5" />
 										<p class="text-xs">15</p>
 									</div> */}
 									<div className="flex items-center">
-										<FaceSmileIcon className="h-5 w-5 text-black" />
-										<div class="ml-3 flex items-center gap-0.5 rounded-full border border-[#eee] px-1.5 py-1">
-											<img src="/heart.png" class="h-4 w-4" />
-											<img src="/thumbs_up.png" class="h-4 w-4" />
-											<img src="/clap.png" class="h-4 w-4" />
+										<div class="flex items-center gap-0.5 rounded-full border border-[#eee] px-1.5 py-1">
+											<img src="/heart.png" class="h-5 w-5" />
+											<img src="/thumbs_up.png" class="h-5 w-5" />
+											<img src="/clap.png" class="h-5 w-5" />
 										</div>
 										<p class="ml-1 text-xs">15</p>
+										<div class="ml-5 flex items-center gap-1 rounded-full border border-[#eee]">
+											<HeartIcon className="h-7 w-9 cursor-pointer rounded-full px-2 py-1 text-black hover:bg-[#eee]" />
+											<PlusSmallIcon className="h-7 w-9 cursor-pointer rounded-full px-2 py-1 text-black hover:bg-[#eee]" />
+										</div>
 									</div>
 
 									{/* <div class="grow"></div> */}
-									<div class="flex items-center gap-1">
-										<ChatBubbleOvalLeftIcon className="h-5 w-5 scale-x-[-1] text-black" />
+									<div class="ml-6 flex items-center gap-1">
+										<ChatBubbleOvalLeftIcon className="h-5 w-5 text-black" />
 										<p class="text-xs">15</p>
 									</div>
-									<div class="flex items-center gap-6">
-										<ArrowPathIcon className="h-5 w-5 text-black" />
-										<BookmarkIcon className="h-5 w-5 text-black" />
-									</div>
+									{/* <div class="flex items-center gap-1">
+										<ArrowPathIcon className="h-5 w-5" />
+										<p class="text-xs">15</p>
+									</div> */}
+									<ArrowPathIcon className="h-5 w-5 text-black" />
+									<BookmarkIcon className="h-5 w-5 text-black" />
 								</div>
 							</div>
 						))}
