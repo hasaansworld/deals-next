@@ -51,29 +51,36 @@ export default function Page() {
 										<p class="text-xs">15</p>
 									</div> */}
 									<div className="flex items-center">
-										<div class="flex items-center gap-0.5 rounded-full border border-[#eee] px-1.5 py-1">
+										<div class="flex items-center gap-1 rounded-full border border-[#eee]">
+											<HeartIcon className="h-7 w-9 cursor-pointer rounded-full px-2 py-1 text-black hover:bg-[#eee]" />
+											<PlusSmallIcon className="h-7 w-9 cursor-pointer rounded-full px-2 py-1 text-black hover:bg-[#eee]" />
+										</div>
+										<div class="ml-5 flex items-center gap-0.5 rounded-full border border-[#eee] px-1.5 py-1">
 											<img src="/heart.png" class="h-5 w-5" />
 											<img src="/thumbs_up.png" class="h-5 w-5" />
 											<img src="/clap.png" class="h-5 w-5" />
 										</div>
 										<p class="ml-1 text-xs">15</p>
-										<div class="ml-5 flex items-center gap-1 rounded-full border border-[#eee]">
-											<HeartIcon className="h-7 w-9 cursor-pointer rounded-full px-2 py-1 text-black hover:bg-[#eee]" />
-											<PlusSmallIcon className="h-7 w-9 cursor-pointer rounded-full px-2 py-1 text-black hover:bg-[#eee]" />
-										</div>
 									</div>
 
 									{/* <div class="grow"></div> */}
-									<div class="ml-6 flex items-center gap-1">
-										<ChatBubbleOvalLeftIcon className="h-5 w-5 text-black" />
-										<p class="text-xs">15</p>
-									</div>
-									{/* <div class="flex items-center gap-1">
+									<div className="flex items-center gap-8">
+										{/* <div class="ml-6 flex items-center gap-1"> */}
+										{/* <ChatBubbleOvalLeftIcon className="h-5 w-5 text-black" /> */}
+										{/* <p class="text-xs">15</p>
+									</div> */}
+										{/* <div class="flex items-center gap-1">
 										<ArrowPathIcon className="h-5 w-5" />
 										<p class="text-xs">15</p>
 									</div> */}
-									<ArrowPathIcon className="h-5 w-5 text-black" />
-									<BookmarkIcon className="h-5 w-5 text-black" />
+										<ArrowPathIcon className="h-5 w-5 text-black" />
+										<BookmarkIcon className="h-5 w-5 text-black" />
+									</div>
+								</div>
+								<div className="mt-4 flex items-center gap-6">
+									<p className={`${inter.className} text-xs text-[#777]`}>15 Comments</p>
+									{/* <p className="font-medium text-[#777]">&bull;</p> */}
+									<p className={`${inter.className}font-inter text-xs text-[#777]`}>6 Shares</p>
 								</div>
 							</div>
 						))}
