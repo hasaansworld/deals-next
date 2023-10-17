@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
 	return (
-		<footer className="min-h-60 w-full bg-[#666]/5 p-16">
+		<footer className="min-h-60 w-full bg-white p-16">
 			<div className="w-6/7 3xl:w-1/2 mx-auto flex items-start justify-between lg:w-5/6 2xl:w-3/5">
 				<div className="flex flex-col items-center">
 					<img src="/icon_black.svg" className="w-12" />

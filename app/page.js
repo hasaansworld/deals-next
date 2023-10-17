@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import { EllipsisHorizontalIcon, HeartIcon, ChatBubbleOvalLeftIcon, BookmarkIcon, FaceSmileIcon } from '@heroicons/react/24/outline';
+import { EllipsisHorizontalIcon, HeartIcon, ChatBubbleOvalLeftIcon, BookmarkIcon, FaceSmileIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 import { brics, inter } from './fonts';
 
 export default function Page() {
@@ -17,9 +17,9 @@ export default function Page() {
 						{repeatedContent.map((item, index) => (
 							<div class="mt-3 w-full cursor-pointer rounded-lg border border-[#efefef] bg-white p-3">
 								<div class="flex items-center gap-3">
-									<img src="/loom.png" alt="Loom logo" class="h-9 w-9 rounded-md shadow-md" />
+									<img src={index % 2 == 0 ? '/loom.png' : 'zapier-logomark.svg'} alt="Loom logo" class="h-9 w-9 rounded-md shadow-md" />
 									<div class="grow">
-										<h4 class="font-bold text-black">Loom</h4>
+										<h4 class="font-bold text-black">{index % 2 == 0 ? 'Loom' : 'Zapier'}</h4>
 										<p class="text-xs text-black/50">Productivity &bull; Communication</p>
 									</div>
 
@@ -34,20 +34,30 @@ export default function Page() {
 									Easily record and share AI-powered video messages
 								</p>
 								<img src={index % 2 == 0 ? '/loom-banner.png' : '/zapier-banner.png'} alt="Loom banner" class="mt-4 rounded-lg" />
-								<div class="mt-4 flex items-center gap-1">
-									<FaceSmileIcon className="h-5 w-5 text-black" />
-									<div class="ml-3 flex items-center gap-0.5 rounded-full border border-[#eee] px-1.5 py-1">
-										<img src="/heart.png" class="h-4 w-4" />
-										<img src="/thumbs_up.png" class="h-4 w-4" />
-										<img src="/clap.png" class="h-4 w-4" />
+								<div class="mt-4 flex items-center justify-between gap-1">
+									{/* <div class="flex items-center gap-1">
+										<HeartIcon className="h-5 w-5 text-black" />
+										<p class="text-xs">15</p>
+									</div> */}
+									<div className="flex items-center">
+										<FaceSmileIcon className="h-5 w-5 text-black" />
+										<div class="ml-3 flex items-center gap-0.5 rounded-full border border-[#eee] px-1.5 py-1">
+											<img src="/heart.png" class="h-4 w-4" />
+											<img src="/thumbs_up.png" class="h-4 w-4" />
+											<img src="/clap.png" class="h-4 w-4" />
+										</div>
+										<p class="ml-1 text-xs">15</p>
 									</div>
-									<p class="text-xs">15</p>
-									<div class="grow"></div>
-									<div class="mr-10 flex items-center gap-1">
-										<ChatBubbleOvalLeftIcon className="h-5 w-5 text-black" />
+
+									{/* <div class="grow"></div> */}
+									<div class="flex items-center gap-1">
+										<ChatBubbleOvalLeftIcon className="h-5 w-5 scale-x-[-1] text-black" />
 										<p class="text-xs">15</p>
 									</div>
-									<BookmarkIcon className="h-5 w-5 text-black" />
+									<div class="flex items-center gap-6">
+										<ArrowPathIcon className="h-5 w-5 text-black" />
+										<BookmarkIcon className="h-5 w-5 text-black" />
+									</div>
 								</div>
 							</div>
 						))}
