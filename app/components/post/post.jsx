@@ -42,12 +42,16 @@ export default function Post({ index }) {
 				</div>
 				<p class={`${inter.className} mt-4 leading-tight text-black`}>{postText}</p>
 				<img src={postImage} alt="Loom banner" className="mt-3 rounded-lg" />
-				<div className="mt-3 flex items-center justify-between gap-1 px-3">
+				<div className="mt-3 flex items-center justify-between gap-1 px-1">
 					<div className="flex items-center gap-8">
 						<HeartIcon className="h-5 w-5" />
 						<ChatBubbleOvalLeftIcon className="h-5 w-5" />
 						<ArrowPathIcon className="h-5 w-5" />
+						<p className="text-sm font-medium text-[#777]">15 likes</p>
+						<p className="text-sm font-medium text-[#777]">6 replies</p>
 					</div>
+
+					{/* <div className="flex items-center gap-6 px-3 text-[#777]"></div> */}
 					{/* <div className="flex items-center gap-2">
 						<HeartIcon className="h-5 w-5" />
 						<p className="text-xs">15</p>
@@ -61,10 +65,6 @@ export default function Post({ index }) {
 						<p className="text-xs">15</p>
 					</div> */}
 					<BookmarkIcon className="h-5 w-5" />
-				</div>
-				<div className="mt-3 flex items-center gap-6 px-3 text-[#777]">
-					<p className="text-sm font-medium">15 likes</p>
-					<p className="text-sm font-medium">6 replies</p>
 				</div>
 			</div>
 			{false && (
