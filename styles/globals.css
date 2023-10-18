@@ -36,14 +36,3 @@ ul {
 	padding: 0;
 	list-style: none;
 }
-
-button {
-	padding: 0.5rem 1rem;
-	font-weight: bold;
-}
-
-@media (min-width: 1600px) {
-	html {
-		font-size: 16px;
-	}
-}
