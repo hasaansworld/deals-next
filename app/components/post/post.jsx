@@ -77,7 +77,7 @@ export default function Post({ index }) {
 						</div>
 						<EllipsisHorizontalIcon className="h-6 w-6 text-black" />
 					</div>
-					<p class={`${inter.className} ml-11 mt-1 leading-tight text-black`}>{commentText}</p>
+					<p class={`${inter.className} ml-11 leading-tight text-black`}>{commentText}</p>
 
 					<div className="ml-11 mt-3 flex items-center gap-8">
 						<HeartIcon className="h-5 w-5 shrink-0" />
