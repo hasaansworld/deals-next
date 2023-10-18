@@ -19,7 +19,7 @@ export default function Post({ index }) {
 		index % 2 == 0
 			? "Don't miss out on top seasonal talent to help you reach your year-end goals this holiday season because you were late to the game."
 			: 'Build automated workflows customized for your role and business.';
-	const postImage = index % 2 == 0 ? '/loom-banner.png' : '/post-2.jpeg';
+	const postImage = index % 2 == 0 ? '/post-1.jpeg' : '/post-2.jpeg';
 	const commentText =
 		'Ever wondered how to turn your lettering into a working font? Join us as we host Francis Chouquet @Fran6 in this free online talk to chat about his work and how he creates his amazing fonts!';
 
@@ -67,7 +67,7 @@ export default function Post({ index }) {
 					<p className="text-sm font-medium">6 replies</p>
 				</div>
 			</div>
-			{index % 2 == 0 && (
+			{false && (
 				<div className="border-t border-[#eee] p-3">
 					<div className="flex items-center gap-3">
 						<img src="profile3.jpg" className="h-8 w-8 rounded-full" />
