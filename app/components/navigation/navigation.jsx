@@ -2,6 +2,7 @@
 
 import DiscoverCircleIcon from '../icons/discover_circle';
 import Home03IconSolid from '../icons/home';
+import QuillWrite02Icon from '../icons/quill_write';
 
 const Navigation = () => {
 	return (
@@ -13,6 +14,10 @@ const Navigation = () => {
 			<div className="mt-2 flex w-full items-center gap-3 rounded-lg p-3">
 				<DiscoverCircleIcon className="h-5 w-5 text-neutral-600" />
 				<p className="text-neutral-600">Discover</p>
+			</div>
+			<div className="mt-2 flex w-full items-center gap-3 rounded-lg p-3">
+				<QuillWrite02Icon className="h-5 w-5 text-neutral-600" />
+				<p className="text-neutral-600">Write</p>
 			</div>
 		</div>
 	);

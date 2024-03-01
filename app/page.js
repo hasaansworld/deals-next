@@ -13,7 +13,7 @@ export default function Page() {
 						Stories from exciting new apps
 						<img className="ml-1 h-6 w-6 text-[#5100ff]" src="/star.svg" />
 					</h2>
-					<div className="w-full">
+					<div className="mt-12 w-full">
 						{repeatedContent.map((item, index) => (
 							<Post index={index} key={index} />
 						))}
