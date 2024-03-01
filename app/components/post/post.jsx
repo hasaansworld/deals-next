@@ -6,6 +6,7 @@ import BubbleChatIcon from '../icons/bubble_chat';
 export default function Post({ index }) {
 	const appIcon = index % 2 == 0 ? '/loom.png' : '/zapier-logomark.svg';
 	const appName = index % 2 == 0 ? 'Loom' : 'Zapier';
+	const appTagline = index % 2 == 0 ? 'Async video collaboration' : 'Automation magic';
 	const personName = index % 2 == 0 ? 'Hasaan Ahmed' : 'Orman Clark';
 	const postText =
 		index % 2 == 0
@@ -18,35 +19,12 @@ export default function Post({ index }) {
 	return (
 		<div className="flex w-full cursor-pointer items-start gap-3 bg-white py-4">
 			<img src={appIcon} alt="Loom logo" className="h-9 w-9 rounded-md" />
-			{/* <img src="/profile3.jpg" alt="Profile Pic" className="h-8 w-8 rounded-full" /> */}
 			<div>
-				{/* <div className="flex items-center gap-3">
-					<div className="grow"> */}
 				<h4 className="text-sm font-bold text-gray-600">
-					{appName} <span className="ml-3 text-xs font-normal text-neutral-400">Async video collaboration tool . 33m</span>
+					{appName} <span className="ml-2 text-xs font-normal text-neutral-400">{appTagline} . 33m</span>
 				</h4>
-				{/* <p className={`${inter.className} text-xs text-neutral-400`}>Async video collaboration tool</p> */}
-				{/* </div> */}
-				{/* <h4 className="grow font-bold text-black">{personName}</h4>
-					<MoreHorizontalIcon className="h-6 w-6 text-black" /> */}
-				{/* </div> */}
 				<p className={`mt-1 line-clamp-3 font-semibold leading-tight text-black`}>{postText}</p>
 				<div className="mt-2 w-full cursor-pointer">
-					{/* <div className="flex items-center gap-3">
-						<img src={appIcon} alt="Loom logo" className="h-9 w-9 rounded-md" />
-						<div className="grow">
-							<h4 className="font-bold text-black">{appName}</h4>
-							<p className={`${inter.className} text-xs text-neutral-400`}>Async video collaboration tool</p>
-						</div>
-
-						{/* <button
-							className={`${inter.className} rounded-lg bg-[#5100ff]/5 px-3 py-0.5 text-sm font-medium text-[#5100ff] hover:bg-[#5100ff] hover:text-white`}
-						>
-							Follow
-						</button> */}
-					{/* <MoreHorizontalIcon className="h-6 w-6 text-black" />
-					</div>  */}
-					{/* <p className={`${inter.className} mt-3 leading-tight text-black`}>{postText}</p> */}
 					<img src={postImage} alt="Loom banner" className="mt-3 rounded-lg" />
 					<div className="mt-3 flex items-center justify-between gap-1 px-1">
 						<div className="min-w-20 flex items-center gap-2">
