@@ -8,7 +8,9 @@
 	},
 	"dependencies": {
 		"@heroicons/react": "^2.0.18",
-		"next": "latest",
+		"@hugeicons/hugeicons-pro": "^0.0.6",
+		"@hugeicons/react-pro": "^0.1.2",
+		"next": "^14.1.1",
 		"prettier-plugin-tailwindcss": "^0.5.3",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"

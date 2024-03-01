@@ -1,11 +1,8 @@
 'use client';
 
-import Image from 'next/image';
-import ActionButton from '../action-button/action-button';
-import { MagnifyingGlassIcon, BellIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import FlatButton from '../action-button/flat-button';
 import { usePathname } from 'next/navigation';
+import Notification03Icon from '../icons/notification';
 
 const Header = () => {
 	const pathName = usePathname();
@@ -24,8 +21,9 @@ const Header = () => {
 					</Link>
 
 					<p className="mx-9 w-[400px] rounded-lg border border-[#666]/10 bg-[#f6f6f6]/10 px-3 py-1 font-medium text-[#888]">Search apps</p>
+
 					<div className="mr-10">
-						<BellIcon className="h-6 w-6 text-black" />
+						<Notification03Icon className="h-5 w-5 text-black" />
 					</div>
 
 					<img src="profile3.jpg" className="h-8 w-8 rounded-full border border-[#eee]" />

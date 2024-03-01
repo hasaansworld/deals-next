@@ -7,15 +7,15 @@ export default function Page() {
 
 	return (
 		<>
-			<div className="mt-6 flex flex-col items-center py-10">
+			<div className="mx-auto mt-6 flex w-[450px] flex-col items-center py-10">
 				<div className="flex-1 overflow-y-auto">
 					<h2 className={`${brics.className} my-7 flex justify-center text-2xl font-bold text-black`}>
-						Share your startup story
+						Stories from exciting new apps
 						<img className="ml-1 h-6 w-6 text-[#5100ff]" src="/star.svg" />
 					</h2>
-					<div className="mx-auto w-[450px]">
+					<div className="w-full">
 						{repeatedContent.map((item, index) => (
-							<Post index={index} />
+							<Post index={index} key={index} />
 						))}
 					</div>
 				</div>
