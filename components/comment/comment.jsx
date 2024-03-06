@@ -5,7 +5,7 @@ import FavouriteIcon from '../icons/favorite';
 export default function Comment() {
 	return (
 		<div className="flex w-full items-start gap-4">
-			<img src="/profile3.jpg" alt="Profile Picture" className="h-9 w-9 rounded-full border border-[#eee]" />
+			<img src="/profile3.jpg" alt="Profile Picture" className="h-10 w-10 rounded-full border border-[#eee]" />
 			<div>
 				<p className="font-semibold">Hasaan Ahmed</p>
 				<p className="text-neutral-800">

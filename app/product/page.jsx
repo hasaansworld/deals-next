@@ -1,10 +1,42 @@
-import { Flag03Icon } from '@hugeicons/react-pro';
+'use client';
+import { useRef, useState } from 'react';
 import Comment from '../../components/comment/comment';
+import Flag03Icon from '../../components/icons/flag';
 import LinkSquare02Icon from '../../components/icons/link_square';
 
+const scrollToElement = (id, ref) => {
+	const element = document.getElementById(id);
+	console.log('scroll');
+	ref.current.scrollTo({
+		top: element.offsetTop - 90,
+		behavior: 'smooth',
+	});
+};
+
 export default function ProductListing() {
+	const scrollRef = useRef(null);
+	const introRef = useRef(null);
+	const commentsRef = useRef(null);
+	const [section, setSection] = useState('product');
+
+	const handleScroll = (event) => {
+		const { scrollTop, clientHeight, scrollHeight } = event.target;
+		const currentOffset = event.target.scrollTop;
+		const introOffset = introRef.current.offsetTop;
+		const commentsOffset = commentsRef.current.offsetTop;
+		const paddingTop = 90;
+
+		if (currentOffset < introOffset - paddingTop && section !== 'product') {
+			setSection('product');
+		} else if (currentOffset >= introOffset - paddingTop && currentOffset < commentsOffset - paddingTop && section !== 'intro') {
+			setSection('intro');
+		} else if ((currentOffset >= commentsOffset - paddingTop && section !== 'comments') || scrollTop + clientHeight === scrollHeight) {
+			setSection('comments');
+		}
+	};
+
 	return (
-		<div className="h-screen w-full overflow-y-auto px-6 pb-60 pt-24">
+		<div className="h-screen w-full overflow-y-auto px-6 pb-60 pt-24" ref={scrollRef} onScroll={handleScroll}>
 			<div className="flex items-start gap-16">
 				<div className="w-1/4"></div>
 				<div className="max-w-[600px] flex-1">
@@ -36,7 +68,7 @@ export default function ProductListing() {
 						</div>
 					</div>
 					<img src="/post-1.jpeg" alt="Product Image" className="mt-10 w-full rounded-xl border border-gray-200" />
-					<h4 className="mt-10 text-2xl font-bold text-black" id="intro">
+					<h4 className="mt-10 text-2xl font-bold text-black" id="intro" ref={introRef}>
 						Introduction
 					</h4>
 					<p className="mt-2 text-neutral-800">
@@ -80,27 +112,50 @@ export default function ProductListing() {
 						<br />
 						Thanks for checking us out, and happy to answer any questions you have! 💙
 					</p>
-					<h4 className="mt-10 text-2xl font-bold text-black" id="comments">
+					<h4 className="mt-10 text-2xl font-bold text-black" id="comments" ref={commentsRef}>
 						Comments
 					</h4>
 					<div className="mt-2 rounded-xl border border-neutral-200 p-4">
 						<textarea name="comment" className="h-auto w-full bg-transparent" placeholder="Add a comment"></textarea>
 					</div>
-					<div className="mt-6">
+					<div className="-ml-14 mt-6">
 						<Comment />
 					</div>
 				</div>
 				<div className="w-1/4">
-					<div className="fixed flex flex-col gap-2 border-l border-[#eee] p-4">
-						<a href="#product" className="font-semibold text-black">
+					<div className="fixed flex flex-col gap-2 border-l border-fuchsia-100 py-4">
+						<button
+							onClick={() => {
+								scrollToElement('product', scrollRef);
+								// setSection('product');
+							}}
+							className={`${
+								section === 'product' ? 'border-fuchsia-500 font-semibold text-black' : 'border-transparent font-medium text-neutral-400'
+							} border-l px-4 text-start`}
+						>
 							Product
-						</a>
-						<a href="#intro" className="font-medium text-neutral-400">
+						</button>
+						<button
+							onClick={() => {
+								scrollToElement('intro', scrollRef);
+								// setSection('intro');
+							}}
+							className={`${
+								section === 'intro' ? 'border-fuchsia-500 font-semibold text-black' : 'border-transparent font-medium text-neutral-400'
+							} border-l px-4 text-start`}
+						>
 							Introduction
-						</a>
-						<a href="#comments" className="font-medium text-neutral-400">
-							Comments
-						</a>
+						</button>
+						<button
+							onClick={() => {
+								scrollToElement('comments', scrollRef);
+							}}
+							className={`${
+								section === 'comments' ? 'border-fuchsia-500 font-semibold text-black' : 'border-transparent font-medium text-neutral-400'
+							} border-l px-4 text-start`}
+						>
+							Comments <span className="ml-3 text-sm">1</span>
+						</button>
 					</div>
 				</div>
 			</div>
