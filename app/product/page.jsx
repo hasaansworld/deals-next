@@ -1,10 +1,12 @@
+import Comment from '../../components/comment/comment';
+
 export default function ProductListing() {
 	return (
-		<div className="h-screen w-full overflow-y-auto px-6 py-24">
+		<div className="h-screen w-full overflow-y-auto px-6 pb-60 pt-24">
 			<div className="flex items-start gap-16">
 				<div className="w-1/4"></div>
 				<div className="max-w-[600px] flex-1">
-					<div className="flex items-start gap-4">
+					<div className="flex items-start gap-4" id="product">
 						<img src="/loom.png" alt="Loom logo" className="-ml-16 h-12 w-12 rounded-md" />
 						<div className="flex-1">
 							<h4 className="text text-2xl font-bold text-black">Loom</h4>
@@ -19,7 +21,9 @@ export default function ProductListing() {
 						</div>
 					</div>
 					<img src="/post-1.jpeg" alt="Product Image" className="mt-10 w-full rounded-xl border border-gray-200" />
-					<h4 className="mt-10 text-xl font-bold text-black">Introduction</h4>
+					<h4 className="mt-10 text-2xl font-bold text-black" id="intro">
+						Introduction
+					</h4>
 					<p className="mt-2 text-neutral-800">
 						Hey everyone!
 						<br />
@@ -61,22 +65,28 @@ export default function ProductListing() {
 						<br />
 						Thanks for checking us out, and happy to answer any questions you have! 💙
 					</p>
+					<h4 className="mt-10 text-2xl font-bold text-black" id="comments">
+						Comments
+					</h4>
+					<div className="mt-2 rounded-xl border border-neutral-200 p-4">
+						<textarea name="comment" className="h-auto w-full bg-transparent" placeholder="Add a comment"></textarea>
+					</div>
+					<div className="mt-6">
+						<Comment />
+					</div>
 				</div>
 				<div className="w-1/4">
-					{/* <div className="fixed flex flex-col gap-2 border-l border-[#eee] p-4">
+					<div className="fixed flex flex-col gap-2 border-l border-[#eee] p-4">
 						<a href="#product" className="font-semibold text-black">
 							Product
 						</a>
-						<a href="#product" className="font-semibold text-neutral-400">
+						<a href="#intro" className="font-semibold text-neutral-400">
 							Introduction
 						</a>
-						<a href="#product" className="font-semibold text-neutral-400">
+						<a href="#comments" className="font-semibold text-neutral-400">
 							Comments
 						</a>
-						<a href="#product" className="font-semibold text-neutral-400">
-							Questions
-						</a>
-					</div> */}
+					</div>
 				</div>
 			</div>
 		</div>
