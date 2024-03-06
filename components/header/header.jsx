@@ -29,7 +29,7 @@ const Header = () => {
 							Submit
 						</button>
 						<div>
-							<Notification03Icon className="h-5 w-5 text-black" />
+							<Notification03Icon className="h-5 w-5 text-black" stroke="2" />
 						</div>
 
 						<img src="profile3.jpg" className="h-8 w-8 rounded-full border border-[#eee]" />

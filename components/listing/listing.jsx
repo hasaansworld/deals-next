@@ -38,7 +38,7 @@ export default function Listing({ index }) {
 				<p className="text-xs text-neutral-400">6 comments</p>
 			</div> */}
 
-				<div className="px-3 pb-3">
+				<div className="relative px-3 pb-3">
 					<button className="flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 py-2 font-medium text-black hover:border-black hover:bg-black hover:text-white">
 						<span className="text-neutral-400 line-through">$128</span> {index % 3 == 2 ? '$12/month' : '$59 Lifetime'}{' '}
 						<span className="text-xs text-green-500">10% off</span>

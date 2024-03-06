@@ -1,4 +1,6 @@
+import { Flag03Icon } from '@hugeicons/react-pro';
 import Comment from '../../components/comment/comment';
+import LinkSquare02Icon from '../../components/icons/link_square';
 
 export default function ProductListing() {
 	return (
@@ -9,15 +11,28 @@ export default function ProductListing() {
 					<div className="flex items-start gap-4" id="product">
 						<img src="/loom.png" alt="Loom logo" className="-ml-16 h-12 w-12 rounded-md" />
 						<div className="flex-1">
-							<h4 className="text text-2xl font-bold text-black">Loom</h4>
+							<div className="flex items-center gap-3">
+								<h4 className="text text-2xl font-bold text-black">Loom</h4>
+								<LinkSquare02Icon className="h-4 w-4 text-neutral-400" stroke="2.5" />
+							</div>
+
 							<p className="mt-1 leading-tight text-neutral-800">
 								Automation magic that will help you be more productive and get more work done through computers
 							</p>
 
-							<button className="mt-4 flex items-center justify-center gap-3 rounded-full border border-neutral-200 px-16 py-2 font-medium text-black shadow hover:border-black hover:bg-black hover:text-white">
-								<span className="text-neutral-400 line-through">$128</span> $59 Lifetime
-								<span className="text-xs text-green-500">10% off</span>
-							</button>
+							<div className="flex items-start justify-between">
+								<div className="flex w-1/2 flex-col items-center">
+									<button className="mt-4 flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 px-16 py-2 font-medium text-black shadow hover:border-black hover:bg-black hover:text-white">
+										<span className="text-neutral-400 line-through">$128</span> $59 Lifetime
+										<span className="text-xs text-green-500">10% off</span>
+									</button>
+									<p className="mt-2 text-xs font-medium text-amber-500">Ends in 30 days</p>
+								</div>
+
+								<button className="mt-3 flex items-center gap-2 bg-transparent p-2 text-sm text-rose-500">
+									<Flag03Icon className="h-4 w-4" /> Report
+								</button>
+							</div>
 						</div>
 					</div>
 					<img src="/post-1.jpeg" alt="Product Image" className="mt-10 w-full rounded-xl border border-gray-200" />
@@ -80,10 +95,10 @@ export default function ProductListing() {
 						<a href="#product" className="font-semibold text-black">
 							Product
 						</a>
-						<a href="#intro" className="font-semibold text-neutral-400">
+						<a href="#intro" className="font-medium text-neutral-400">
 							Introduction
 						</a>
-						<a href="#comments" className="font-semibold text-neutral-400">
+						<a href="#comments" className="font-medium text-neutral-400">
 							Comments
 						</a>
 					</div>

@@ -13,14 +13,14 @@ export default function Comment() {
 				</p>
 				<div className="mt-3 flex items-center gap-12">
 					<div className="min-w-20 flex items-center gap-2">
-						<FavouriteIcon className="h-4 w-4 text-neutral-500" />
-						<p className="text-sm text-neutral-500">15 Likes</p>
+						<FavouriteIcon className="h-4 w-4 text-neutral-400" />
+						<p className="text-sm text-neutral-400">15 Likes</p>
 					</div>
 					<div className="min-w-20 flex items-center gap-2">
-						<BubbleChatIcon className="h-4 w-4 -scale-x-100 text-neutral-500" />
-						<p className="text-sm text-neutral-500">6 Replies</p>
+						<BubbleChatIcon className="h-4 w-4 -scale-x-100 text-neutral-400" />
+						<p className="text-sm text-neutral-400">6 Replies</p>
 					</div>
-					<p className="cursor-pointer text-sm text-neutral-500 hover:text-fuchsia-500">Reply</p>
+					<p className="cursor-pointer text-sm text-neutral-400 hover:text-fuchsia-400">Reply</p>
 				</div>
 			</div>
 		</div>
