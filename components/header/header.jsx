@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useAuth } from '../../hooks/auth';
-import AddSquareIcon from '../icons/add_square';
-import Notification03Icon from '../icons/notification';
-import UserCircle02Icon from '../icons/user_circle';
+import { useAuth } from '@/hooks/auth';
+import AddSquareIcon from '@/components/icons/add_square';
+import Notification03Icon from '@/components/icons/notification';
+import UserCircle02Icon from '@/components/icons/user_circle';
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
-import Login03Icon from '../icons/login';
-import UserAdd01Icon from '../icons/user_add';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
+import Login03Icon from '@/components/icons/login';
+import UserAdd01Icon from '@/components/icons/user_add';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 const Header = () => {
 	const { user } = useAuth({ middleware: 'guest' });
@@ -20,8 +20,8 @@ const Header = () => {
 				<div className="flex items-center justify-between px-6">
 					<Link href="/">
 						<div className="flex items-center gap-2">
-							<img src="/icon_black.svg" alt="Logo" className="h-5 w-5" />
-							<h1 className="text-lg font-bold text-black">Arsaa</h1>
+							<img src="/logo.svg" alt="Logo" className="h-6 w-6" />
+							<h1 className="text-lg font-bold text-black">Appdeals</h1>
 						</div>
 					</Link>
 

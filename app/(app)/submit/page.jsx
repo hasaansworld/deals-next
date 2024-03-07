@@ -1,14 +1,14 @@
-import ArrowRight02Icon from '../../components/icons/arrow_right';
-import UserCircle02SolidIcon from '../../components/icons/user_circle_solid';
-import UserGroupIcon from '../../components/icons/user_group';
+import ArrowRight02Icon from '@/components/icons/arrow_right';
+import UserCircle02SolidIcon from '@/components/icons/user_circle_solid';
+import UserGroupIcon from '@/components/icons/user_group';
 
 export default function Submit() {
 	return (
 		<div className="flex flex-col items-center p-20">
-			<h1 className="mt-12 text-2xl font-bold text-black">Got Any Deals? Let's Add Them To Arsaa</h1>
-			<p className="text-center text-lg text-neutral-400">Share your offerings with the Arsaa community to drive sales and accelerate growth.</p>
+			<h1 className="mt-12 text-2xl font-bold text-black">Got Any Deals? Let's Add Them To Appdeals</h1>
+			<p className="text-center text-lg text-neutral-400">Share your offerings with the Appdeals community to drive sales and accelerate growth.</p>
 			<button className="mt-8 flex items-center gap-1 rounded-full bg-fuchsia-500 px-8 py-2 font-medium text-white hover:gap-2">
-				Add Free Listing <ArrowRight02Icon className="h-5 w-5" stroke="2" />
+				Submit For Free <ArrowRight02Icon className="h-5 w-5" stroke="2" />
 			</button>
 			<p className="mt-2 text-xs font-medium text-neutral-400">98 free spots left</p>
 			<div className="mt-12 grid w-3/5 grid-cols-3 gap-6">

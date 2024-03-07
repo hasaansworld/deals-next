@@ -1,7 +1,6 @@
-import '../styles/globals.css';
-import { brics, inter } from './fonts';
-import Post from '../components/post/post';
-import Listing from '../components/listing/listing';
+import { brics, inter } from '@/app/fonts';
+import Post from '@/components/post/post';
+import Listing from '@/components/listing/listing';
 
 export default function Page() {
 	const repeatedContent = Array(10).fill(null);

@@ -1,13 +1,13 @@
-import { onest } from './fonts';
+import { onest } from '@/app/fonts';
 import localFont from 'next/font/local';
-import '../styles/globals.css';
-import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
-import Navigation from '../components/navigation/navigation';
+import '@/styles/globals.css';
+import Header from '@/components/header/header';
+import Footer from '@/components/footer/footer';
+import Navigation from '@/components/navigation/navigation';
 
 export const metadata = {
-	title: 'Arsaa',
-	description: 'Coming Soon',
+	title: 'Appdeals',
+	description: 'Best software deals and discounts. Get high quality software for lower prices.',
 };
 
 export default function RootLayout({ children }) {

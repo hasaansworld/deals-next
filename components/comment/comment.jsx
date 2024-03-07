@@ -1,6 +1,6 @@
 import { Bookmark02Icon } from '@hugeicons/react-pro';
-import BubbleChatIcon from '../icons/bubble_chat';
-import FavouriteIcon from '../icons/favorite';
+import BubbleChatIcon from '@/components/icons/bubble_chat';
+import FavouriteIcon from '@/components/icons/favorite';
 
 export default function Comment() {
 	return (
