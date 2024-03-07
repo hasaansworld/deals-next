@@ -13,17 +13,17 @@ export default function Submit() {
 			<p className="mt-2 text-xs font-medium text-neutral-400">98 free spots left</p>
 			<div className="mt-12 grid w-3/5 grid-cols-3 gap-6">
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
-					<img src="/graphics/reach_more_people.svg" alt="Reach More People" className="w-full rounded-lg border border-neutral-200" />
+					<img src="/graphics/reach_more_people.svg" alt="Reach More People" className="w-full rounded-lg border border-[#eee]" />
 					<h3 className="mt-4 font-bold text-black">Reach More People</h3>
 					<p className="text-neural-600 mt-2 px-2 text-center text-sm">Let more people know about your deals to increase sales</p>
 				</div>
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
-					<img src="/graphics/zero_commission.svg" alt="Zero Commission" className="w-full rounded-lg border border-neutral-200" />
+					<img src="/graphics/zero_commission.svg" alt="Zero Commission" className="w-full rounded-lg border border-[#eee]" />
 					<h3 className="mt-4 font-bold text-black">Zero Commission</h3>
 					<p className="text-neural-600 mt-2 px-2 text-center text-sm">All payments happen on your own website so we get nothing</p>
 				</div>
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
-					<img src="/graphics/scale_your_business.svg" alt="Scale Your Business" className="w-full rounded-lg border border-neutral-200" />
+					<img src="/graphics/scale_your_business.svg" alt="Scale Your Business" className="w-full rounded-lg border border-[#eee]" />
 					<h3 className="mt-4 font-bold text-black">Scale Your Business</h3>
 					<p className="text-neural-600 mt-2 px-2 text-center text-sm">Get the capital and feedback you need to reach the next level</p>
 				</div>

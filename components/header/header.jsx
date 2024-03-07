@@ -28,10 +28,13 @@ const Header = () => {
 					<p className="mx-9 w-[400px] rounded-lg border border-[#666]/10 bg-[#f6f6f6]/10 px-3 py-1 font-medium text-[#888]">Search apps</p>
 
 					<div className="mr-14 flex items-center gap-8">
-						<button className="flex items-center gap-2 rounded-full bg-fuchsia-100 px-4 py-1 font-medium text-fuchsia-500 hover:bg-fuchsia-500 hover:text-white">
+						<Link
+							href="/submit"
+							className="flex items-center gap-2 rounded-full bg-fuchsia-100 px-4 py-1 font-medium text-fuchsia-500 hover:bg-fuchsia-500 hover:text-white"
+						>
 							<AddSquareIcon className="h-4 w-4" stroke="2.5" />
 							Submit
-						</button>
+						</Link>
 						{user ? (
 							<>
 								<Notification03Icon className="h-5 w-5 text-black" stroke="2" />
