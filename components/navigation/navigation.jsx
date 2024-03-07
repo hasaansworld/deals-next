@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Add01Icon from '../icons/add';
 import AddSquareIcon from '../icons/add_square';
+import AddSquareSolidIcon from '../icons/add_square_solid';
 import DashboardCircleIcon from '../icons/dashboard_circle';
 import DiscoverCircleIcon from '../icons/discover_circle';
 import Home03Icon from '../icons/home';
@@ -27,7 +28,11 @@ const Navigation = () => {
 						pathname === '/submit' ? 'bg-fuchsia-100' : ''
 					} hover:bg-fuchsia-100`}
 				>
-					<AddSquareIcon className="h-5 w-5 text-fuchsia-500" stroke="1.5" />
+					{pathname === '/submit' ? (
+						<AddSquareSolidIcon className="h-5 w-5 text-fuchsia-500" />
+					) : (
+						<AddSquareIcon className="h-5 w-5 text-fuchsia-500" stroke="1.5" />
+					)}
 					<p className="text-fuchsia-500">Submit</p>
 				</div>
 			</Link>

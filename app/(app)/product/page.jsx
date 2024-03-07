@@ -1,8 +1,8 @@
 'use client';
 import { useRef, useState } from 'react';
-import Comment from '../../components/comment/comment';
-import Flag03Icon from '../../components/icons/flag';
-import LinkSquare02Icon from '../../components/icons/link_square';
+import Comment from '@/components/comment/comment';
+import Flag03Icon from '@/components/icons/flag';
+import LinkSquare02Icon from '@/components/icons/link_square';
 
 const scrollToElement = (id, ref) => {
 	const element = document.getElementById(id);
