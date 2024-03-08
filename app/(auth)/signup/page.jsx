@@ -90,6 +90,7 @@ export default function Signup() {
 					value={formik.values.email}
 				/>
 				{formik.submitCount > 0 && formik.errors.email && <p className="text-sm font-medium text-rose-500">{formik.errors.email}</p>}
+				{errors.email && <p className="text-sm font-medium text-rose-500">{errors.email}</p>}
 				<Label htmlFor="password" className="mt-5 text-base font-semibold">
 					Password *
 				</Label>
@@ -102,7 +103,7 @@ export default function Signup() {
 					value={formik.values.password}
 				/>
 				{formik.touched.password && formik.errors.password && <p className="text-sm font-medium text-rose-500">{formik.errors.password}</p>}
-
+				{errors.password && <p className="text-sm font-medium text-rose-500">{errors.password}</p>}
 				{/* <p className="mt-1 text-xs font-medium text-neutral-400">Must be at least 8 characters</p> */}
 				<div className="mt-8 flex w-[400px] items-center space-x-2">
 					<Checkbox

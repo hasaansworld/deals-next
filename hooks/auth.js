@@ -31,7 +31,10 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
 		axios
 			.post('/register', props)
-			.then(() => mutate())
+			.then(() => {
+				resendEmailVerification();
+				mutate();
+			})
 			.catch((error) => {
 				if (error.response.status !== 422) throw error;
 
@@ -87,8 +90,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 			});
 	};
 
-	const resendEmailVerification = ({ setStatus }) => {
-		axios.post('/email/verification-notification').then((response) => setStatus(response.data.status));
+	const resendEmailVerification = () => {
+		axios.post('/email/verification-notification');
 	};
 
 	const logout = async () => {
@@ -96,7 +99,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 			await axios.post('/logout').then(() => mutate());
 		}
 
-		window.location.pathname = '/login';
+		window.location.reload();
 	};
 
 	useEffect(() => {

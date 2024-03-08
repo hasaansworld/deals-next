@@ -6,11 +6,12 @@ import { useAuth } from '@/hooks/auth';
 import AddSquareIcon from '@/components/icons/add_square';
 import Notification03Icon from '@/components/icons/notification';
 import UserCircle02Icon from '@/components/icons/user_circle';
-import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Login03Icon from '@/components/icons/login';
 import UserAdd01Icon from '@/components/icons/user_add';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import Logout03Icon from '@/components/icons/logout';
+import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
 
 const Header = () => {
 	const { user, logout } = useAuth({ middleware: 'guest' });
@@ -41,9 +42,18 @@ const Header = () => {
 								<Notification03Icon className="h-5 w-5 text-black" stroke="2" />
 								<DropdownMenu>
 									<DropdownMenuTrigger asChild>
-										<img src="profile3.jpg" className="h-8 w-8 cursor-pointer rounded-full border border-[#eee]" />
+										<Avatar className="h-8 w-8 cursor-pointer">
+											<AvatarImage src={user.profile_picture} alt="Profile Picture" />
+											<AvatarFallback>{user.name.substring(0, 1).toUpperCase()}</AvatarFallback>
+										</Avatar>
+										{/* <img src="profile3.jpg" className="h-8 w-8 cursor-pointer rounded-full border border-[#eee]" /> */}
 									</DropdownMenuTrigger>
-									<DropdownMenuContent className="w-40 p-1">
+									<DropdownMenuContent className="w-60 p-1">
+										<div className="px-4 py-2">
+											<DropdownMenuLabel className="font-medium">{user.name}</DropdownMenuLabel>
+											<DropdownMenuLabel className="text-sm text-neutral-400">{user.email}</DropdownMenuLabel>
+										</div>
+										<DropdownMenuSeparator />
 										<DropdownMenuItem asChild>
 											<button
 												className="flex w-full items-center gap-3 px-4 py-2 text-rose-500 hover:bg-neutral-100 focus:text-rose-600"
