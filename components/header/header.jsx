@@ -10,9 +10,10 @@ import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover
 import Login03Icon from '@/components/icons/login';
 import UserAdd01Icon from '@/components/icons/user_add';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import Logout03Icon from '@/components/icons/logout';
 
 const Header = () => {
-	const { user } = useAuth({ middleware: 'guest' });
+	const { user, logout } = useAuth({ middleware: 'guest' });
 
 	return (
 		<header className="fixed left-0 right-0 top-0 z-10 border-b border-[#777]/10 bg-white/10 py-2 backdrop-blur-2xl backdrop-filter">
@@ -38,7 +39,22 @@ const Header = () => {
 						{user ? (
 							<>
 								<Notification03Icon className="h-5 w-5 text-black" stroke="2" />
-								<img src="profile3.jpg" className="h-8 w-8 rounded-full border border-[#eee]" />
+								<DropdownMenu>
+									<DropdownMenuTrigger asChild>
+										<img src="profile3.jpg" className="h-8 w-8 cursor-pointer rounded-full border border-[#eee]" />
+									</DropdownMenuTrigger>
+									<DropdownMenuContent className="w-40 p-1">
+										<DropdownMenuItem asChild>
+											<button
+												className="flex w-full items-center gap-3 px-4 py-2 text-rose-500 hover:bg-neutral-100 focus:text-rose-600"
+												onClick={() => logout()}
+											>
+												<Logout03Icon className="h-4 w-4" stroke="2" />
+												<p className="text-sm font-medium">Logout</p>
+											</button>
+										</DropdownMenuItem>
+									</DropdownMenuContent>
+								</DropdownMenu>
 							</>
 						) : (
 							<DropdownMenu>
