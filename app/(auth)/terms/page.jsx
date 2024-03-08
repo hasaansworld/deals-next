@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Pricing() {
+export default function TermsAndConditions() {
 	return (
 		<div className="w-full overflow-auto py-32">
 			<div className="w-6/7 3xl:w-1/2 mx-auto flex flex-col items-center lg:w-5/6 xl:w-3/5">

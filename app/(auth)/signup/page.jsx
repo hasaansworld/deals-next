@@ -126,7 +126,7 @@ export default function Signup() {
 					/>
 					<Label htmlFor="terms" className="cursor-pointer text-sm text-neutral-600">
 						Accept{' '}
-						<Link href="/terms-and-conditions" className="text-black underline hover:text-fuchsia-500">
+						<Link href="/terms" target="_blank" className="text-black underline hover:text-fuchsia-500">
 							terms and conditions
 						</Link>
 					</Label>
@@ -137,7 +137,7 @@ export default function Signup() {
 				<button
 					type="submit"
 					disabled={isSubmitting}
-					className={`bg-primary mt-5 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium text-white ${
+					className={`mt-5 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 font-medium text-white ${
 						isSubmitting ? '' : 'hover:gap-3'
 					} disabled:opacity-70`}
 				>
