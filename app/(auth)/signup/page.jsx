@@ -9,10 +9,30 @@ import { useFormik } from 'formik';
 import { useAuth } from '@/hooks/auth';
 import { useState } from 'react';
 import { SpinnerCircularFixed } from 'spinners-react';
+import * as Yup from 'yup';
+import { useEffect } from 'react';
 
 export default function Signup() {
 	const [errors, setErrors] = useState([]);
 	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	const { register } = useAuth({
+		middleware: 'guest',
+		redirectIfAuthenticated: '/',
+	});
+
+	const SignupSchema = Yup.object().shape({
+		name: Yup.string().min(2, 'Too Short!').max(100, 'Too Long!').required('Name is required'),
+		email: Yup.string().email('Invalid email address').required('Email is required'),
+		password: Yup.string()
+			.min(8, 'Minimum 8 characters are required')
+			.matches(/[A-Z]/, 'Use at least one uppercase letter')
+			.matches(/[a-z]/, 'Use at least one lowercase letter')
+			.matches(/\d/, 'Use at least one number')
+			.required('Password is required'),
+		terms: Yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
+	});
+
 	const formik = useFormik({
 		initialValues: {
 			name: '',
@@ -21,16 +41,23 @@ export default function Signup() {
 			newsletter: false,
 			terms: false,
 		},
+		validationSchema: SignupSchema,
 		onSubmit: (values) => {
 			setIsSubmitting(true);
-			// alert(JSON.stringify(values, null, 2));
+			register({
+				...values,
+				password_confirmation: values.password,
+				setErrors,
+			});
 		},
 	});
 
-	const { register } = useAuth({
-		middleware: 'guest',
-		redirectIfAuthenticated: '/dashboard',
-	});
+	useEffect(() => {
+		if (errors) {
+			console.log(errors);
+			setIsSubmitting(false);
+		}
+	}, [errors]);
 
 	return (
 		<div className="mx-auto flex h-full w-full max-w-max flex-col items-center justify-center p-10">
@@ -45,11 +72,12 @@ export default function Signup() {
 					type="text"
 					name="name"
 					placeholder="Enter your name"
-					className="mt-1 text-base"
+					className={`mt-1 text-base ${formik.submitCount > 0 && formik.errors.name ? 'border-rose-500' : ''}`}
 					onChange={formik.handleChange}
 					value={formik.values.name}
 					autoFocus
 				/>
+				{formik.submitCount > 0 && formik.errors.name && <p className="m-0 text-sm font-medium text-rose-500">{formik.errors.name}</p>}
 				<Label htmlFor="email" className="mt-5 text-base font-semibold">
 					Email *
 				</Label>
@@ -57,10 +85,11 @@ export default function Signup() {
 					type="email"
 					name="email"
 					placeholder="Enter your email"
-					className="mt-1 text-base"
+					className={`mt-1 text-base ${formik.submitCount > 0 && formik.errors.email ? 'border-rose-500' : ''}`}
 					onChange={formik.handleChange}
 					value={formik.values.email}
 				/>
+				{formik.submitCount > 0 && formik.errors.email && <p className="text-sm font-medium text-rose-500">{formik.errors.email}</p>}
 				<Label htmlFor="password" className="mt-5 text-base font-semibold">
 					Password *
 				</Label>
@@ -68,10 +97,12 @@ export default function Signup() {
 					type="password"
 					name="password"
 					placeholder="Min 8 characters"
-					className="mt-1 text-base"
+					className={`mt-1 text-base ${formik.touched.password && formik.errors.password ? 'border-rose-500' : ''}`}
 					onChange={formik.handleChange}
 					value={formik.values.password}
 				/>
+				{formik.touched.password && formik.errors.password && <p className="text-sm font-medium text-rose-500">{formik.errors.password}</p>}
+
 				{/* <p className="mt-1 text-xs font-medium text-neutral-400">Must be at least 8 characters</p> */}
 				<div className="mt-8 flex w-[400px] items-center space-x-2">
 					<Checkbox
@@ -100,6 +131,11 @@ export default function Signup() {
 						</Link>
 					</Label>
 				</div>
+
+				{formik.submitCount > 0 && formik.errors.terms && <p className="mt-4 text-sm font-medium text-rose-500">{formik.errors.terms}</p>}
+
+				{formik.submitCount > 0 && formik.errors.terms && <p className="mt-4 text-sm font-medium text-rose-500">{formik.errors.terms}</p>}
+
 				<button
 					type="submit"
 					disabled={isSubmitting}
