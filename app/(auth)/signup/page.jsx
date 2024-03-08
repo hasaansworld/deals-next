@@ -134,8 +134,6 @@ export default function Signup() {
 
 				{formik.submitCount > 0 && formik.errors.terms && <p className="mt-4 text-sm font-medium text-rose-500">{formik.errors.terms}</p>}
 
-				{formik.submitCount > 0 && formik.errors.terms && <p className="mt-4 text-sm font-medium text-rose-500">{formik.errors.terms}</p>}
-
 				<button
 					type="submit"
 					disabled={isSubmitting}
