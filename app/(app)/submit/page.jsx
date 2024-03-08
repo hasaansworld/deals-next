@@ -24,7 +24,7 @@ export default function Submit() {
 				</div>
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
 					<img src="/graphics/scale_your_business.svg" alt="Scale Your Business" className="w-full rounded-lg border border-[#eee]" />
-					<h3 className="mt-4 font-bold text-black">Scale Your Business</h3>
+					<h3 className="mt-4 font-bold text-black">Drive Business Growth</h3>
 					<p className="text-neural-600 mt-2 px-2 text-center text-sm">Get the capital and feedback you need to reach the next level</p>
 				</div>
 			</div>

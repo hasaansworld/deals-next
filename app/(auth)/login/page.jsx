@@ -15,7 +15,7 @@ export default function Login() {
 				<Label htmlFor="email" className="mt-5 text-base font-semibold">
 					Email *
 				</Label>
-				<Input type="email" name="email" placeholder="Enter your email" className="mt-1 text-base" />
+				<Input type="email" name="email" placeholder="Enter your email" className="mt-1 text-base" autoFocus />
 				<Label htmlFor="password" className="mt-5 text-base font-semibold">
 					Password *
 				</Label>
@@ -26,11 +26,11 @@ export default function Login() {
 					</Link>
 				</div>
 				<button className="bg-primary mt-6 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium text-white hover:gap-3">
-					Log In
+					Login
 					<ArrowRight02Icon className="h-5 w-5" stroke="2" />
 				</button>
 				<button className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white px-4 py-2 font-medium text-black shadow-sm hover:bg-neutral-100">
-					<img src="/google_logo.svg" alt="Google Logo" className="h-4 w-4" /> Log In With Google
+					<img src="/google_logo.svg" alt="Google Logo" className="h-4 w-4" /> Login With Google
 				</button>
 			</form>
 			<p className="my-12 font-medium text-neutral-600">

@@ -6,8 +6,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
 import { useFormik } from 'formik';
+import { useAuth } from '@/hooks/auth';
+import { useState } from 'react';
+import { SpinnerCircularFixed } from 'spinners-react';
 
 export default function Signup() {
+	const [errors, setErrors] = useState([]);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const formik = useFormik({
 		initialValues: {
 			name: '',
@@ -17,12 +22,19 @@ export default function Signup() {
 			terms: false,
 		},
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+			setIsSubmitting(true);
+			// alert(JSON.stringify(values, null, 2));
 		},
 	});
+
+	const { register } = useAuth({
+		middleware: 'guest',
+		redirectIfAuthenticated: '/dashboard',
+	});
+
 	return (
 		<div className="mx-auto flex h-full w-full max-w-max flex-col items-center justify-center p-10">
-			<h1 className="text-3xl font-bold text-black">Signup to Appdeals</h1>
+			<h1 className="text-3xl font-bold text-black">Signup</h1>
 			<p className="mt-1 text-sm text-neutral-400">Create an account to submit deals and add comments</p>
 
 			<form className="mt-10 flex w-[300px] flex-col" onSubmit={formik.handleSubmit}>
@@ -36,6 +48,7 @@ export default function Signup() {
 					className="mt-1 text-base"
 					onChange={formik.handleChange}
 					value={formik.values.name}
+					autoFocus
 				/>
 				<Label htmlFor="email" className="mt-5 text-base font-semibold">
 					Email *
@@ -89,10 +102,14 @@ export default function Signup() {
 				</div>
 				<button
 					type="submit"
-					className="bg-primary mt-5 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium text-white hover:gap-3"
+					disabled={isSubmitting}
+					className={`bg-primary mt-5 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium text-white ${
+						isSubmitting ? '' : 'hover:gap-3'
+					} disabled:opacity-70`}
 				>
-					Signup
-					<ArrowRight02Icon className="h-5 w-5" stroke="2" />
+					{isSubmitting && <SpinnerCircularFixed size="14" thickness={300} color="#fff" secondaryColor="rgba(255, 255, 255, 0.3)" />}
+					{isSubmitting ? 'Creating account' : 'Create Account'}
+					{!isSubmitting && <ArrowRight02Icon className="h-5 w-5" stroke="2" />}
 				</button>
 				<button
 					type="button"
