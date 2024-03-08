@@ -20,11 +20,16 @@ export default function Login() {
 					Password *
 				</Label>
 				<Input type="password" name="password" placeholder="Enter your password" className="mt-1 text-base" />
+				<div className="mt-1 flex w-full justify-end text-sm font-medium">
+					<Link href="/forgot-password" className="text-fuchsia-500 hover:underline">
+						Forgot Password?
+					</Link>
+				</div>
 				<button className="bg-primary mt-6 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium text-white hover:gap-3">
 					Log In
 					<ArrowRight02Icon className="h-5 w-5" stroke="2" />
 				</button>
-				<button className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white px-4 py-2 font-medium text-black shadow-sm hover:bg-neutral-100">
+				<button className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white px-4 py-2 font-medium text-black shadow-sm hover:bg-neutral-100">
 					<img src="/google_logo.svg" alt="Google Logo" className="h-4 w-4" /> Log In With Google
 				</button>
 			</form>
