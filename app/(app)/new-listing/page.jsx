@@ -53,7 +53,7 @@ export default function NewListing() {
 						type="text"
 						id="youtubeURL"
 						name="youtubeURL"
-						placeholder="Youtube video of your app"
+						placeholder="App demo or promotional video URL"
 						maxLength="150"
 						className="mb-5 mt-1 text-base"
 					/>
