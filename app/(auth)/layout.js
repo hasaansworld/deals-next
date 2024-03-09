@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
 							</Link>
 						</div>
 					</header>
-					<div className="flex h-screen w-full items-center justify-center p-20">{children}</div>
+					<div className="h-screen w-full items-center justify-center p-20">{children}</div>
 				</div>
 			</body>
 		</html>
