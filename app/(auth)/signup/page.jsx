@@ -146,12 +146,12 @@ export default function Signup() {
 					{isSubmitting ? 'Creating account' : 'Create Account'}
 					{!isSubmitting && <ArrowRight02Icon className="h-5 w-5" stroke="2" />}
 				</button>
-				<button
-					type="button"
+				<Link
+					href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/google`}
 					className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white px-4 py-2 font-medium text-black shadow-sm hover:bg-neutral-100"
 				>
 					<img src="/google_logo.svg" alt="Google Logo" className="h-4 w-4" /> Signup With Google
-				</button>
+				</Link>
 			</form>
 			<p className="my-12 font-medium text-neutral-600">
 				Already have an account?{' '}

@@ -103,7 +103,7 @@ export default function Login() {
 				<button
 					type="submit"
 					disabled={isSubmitting}
-					className={`bg-primary mt-6 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium text-white ${
+					className={`mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 font-medium text-white ${
 						isSubmitting ? '' : 'hover:gap-3'
 					}" disabled:opacity-70`}
 				>
@@ -111,12 +111,12 @@ export default function Login() {
 					{isSubmitting ? 'Logging In' : 'Login'}
 					{!isSubmitting && <ArrowRight02Icon className="h-5 w-5" stroke="2" />}
 				</button>
-				<button
-					type="button"
+				<Link
+					href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/google`}
 					className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white px-4 py-2 font-medium text-black shadow-sm hover:bg-neutral-100"
 				>
 					<img src="/google_logo.svg" alt="Google Logo" className="h-4 w-4" /> Login With Google
-				</button>
+				</Link>
 			</form>
 			<p className="my-12 font-medium text-neutral-600">
 				Need an account?{' '}
