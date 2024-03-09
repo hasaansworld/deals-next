@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import Comment from '@/components/comment/comment';
 import Flag03Icon from '@/components/icons/flag';
 import LinkSquare02Icon from '@/components/icons/link_square';
+import { Textarea } from '@/components/ui/textarea';
 
 const scrollToElement = (id, ref) => {
 	const element = document.getElementById(id);
@@ -115,9 +116,7 @@ export default function ProductListing() {
 					<h4 className="mt-10 text-2xl font-bold text-black" id="comments" ref={commentsRef}>
 						Comments
 					</h4>
-					<div className="mt-2 rounded-xl border border-neutral-200 p-4">
-						<textarea name="comment" className="h-auto w-full bg-transparent" placeholder="Add a comment"></textarea>
-					</div>
+					<Textarea name="comment" className="mt-2 w-full text-base" rows="4" placeholder="Add a comment" />
 					<div className="-ml-14 mt-6">
 						<Comment />
 					</div>
