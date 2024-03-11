@@ -23,7 +23,7 @@ const Header = () => {
 					<Link href="/">
 						<div className="flex w-[100px] items-center gap-2">
 							<img src="/logo.svg" alt="Logo" className="h-6 w-6" />
-							<h1 className="text-lg font-bold text-black">Appdeals</h1>
+							<h1 className="text-xl font-semibold text-black">Appdeals</h1>
 						</div>
 					</Link>
 
