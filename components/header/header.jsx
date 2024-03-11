@@ -14,14 +14,14 @@ import Logout03Icon from '@/components/icons/logout';
 import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
 
 const Header = () => {
-	const { user, logout } = useAuth({ middleware: 'guest' });
+	// const { user, logout } = useAuth({ middleware: 'guest' });
 
 	return (
 		<header className="fixed left-0 right-0 top-0 z-10 border-b border-[#777]/10 bg-white/10 py-2 backdrop-blur-2xl backdrop-filter">
 			<nav>
-				<div className="flex items-center justify-between px-6">
+				<div className="flex items-center justify-center gap-32 px-6">
 					<Link href="/">
-						<div className="flex items-center gap-2">
+						<div className="flex w-[100px] items-center gap-2">
 							<img src="/logo.svg" alt="Logo" className="h-6 w-6" />
 							<h1 className="text-lg font-bold text-black">Appdeals</h1>
 						</div>
@@ -29,15 +29,15 @@ const Header = () => {
 
 					<p className="mx-9 w-[400px] rounded-lg border border-[#666]/10 bg-[#f6f6f6]/10 px-3 py-1 font-medium text-[#888]">Search apps</p>
 
-					<div className="mr-14 flex items-center gap-8">
+					<div className="flex w-[100px] items-center">
 						<Link
 							href="/submit"
-							className="flex items-center gap-2 rounded-full bg-fuchsia-100 px-4 py-1 font-medium text-fuchsia-500 hover:bg-fuchsia-500 hover:text-white"
+							className="flex items-center gap-2 rounded-full bg-fuchsia-500 px-4 py-1 font-medium text-white hover:ring-4 hover:ring-fuchsia-200"
 						>
 							<AddSquareIcon className="h-4 w-4" stroke="2.5" />
 							Submit
 						</Link>
-						{user ? (
+						{/* {user ? (
 							<>
 								<Notification03Icon className="h-5 w-5 text-black" stroke="2" />
 								<DropdownMenu>
@@ -46,7 +46,6 @@ const Header = () => {
 											<AvatarImage src={user.profile_picture} alt="Profile Picture" />
 											<AvatarFallback>{user.name.substring(0, 1).toUpperCase()}</AvatarFallback>
 										</Avatar>
-										{/* <img src="profile3.jpg" className="h-8 w-8 cursor-pointer rounded-full border border-[#eee]" /> */}
 									</DropdownMenuTrigger>
 									<DropdownMenuContent className="w-60 p-1">
 										<div className="px-4 py-2">
@@ -94,7 +93,7 @@ const Header = () => {
 									</DropdownMenuItem>
 								</DropdownMenuContent>
 							</DropdownMenu>
-						)}
+						)} */}
 					</div>
 				</div>
 			</nav>

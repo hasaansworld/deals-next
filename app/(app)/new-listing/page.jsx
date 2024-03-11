@@ -96,7 +96,7 @@ export default function NewListing() {
 					/>
 					<button
 						type="submit"
-						className="mt-8 flex w-1/2 items-center justify-center gap-2 self-end rounded-full bg-fuchsia-500 px-4 py-2 font-medium text-white hover:gap-3 disabled:opacity-70"
+						className="mt-8 flex w-1/2 items-center justify-center gap-2 self-end rounded-full bg-fuchsia-500 px-4 py-2 font-medium text-white hover:ring-4 hover:ring-fuchsia-200 disabled:opacity-70"
 					>
 						Submit
 						<ArrowRight02Icon className="h-5 w-5" stroke="2" />
