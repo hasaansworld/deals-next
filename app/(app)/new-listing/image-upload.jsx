@@ -19,7 +19,7 @@ export default function ImageUpload({ formik, name }) {
 					<img src={URL.createObjectURL(formik.values[name])} className="h-full w-full rounded-xl object-cover" alt="Icon" />
 					<button
 						type="button"
-						className="absolute -right-3 -top-3 h-6 w-6 appearance-none rounded-full bg-neutral-600 p-1 text-white"
+						className="absolute -right-3 -top-3 h-6 w-6 appearance-none rounded-full bg-black p-1 text-white"
 						onClick={(e) => {
 							e.stopPropagation();
 							image.current.value = '';

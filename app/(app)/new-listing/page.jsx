@@ -9,10 +9,11 @@ import { useAuth } from '@/hooks/auth';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import NewTwitterIcon from '@/components/icons/new_twitter';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useFormik } from 'formik';
 import Cancel01Icon from '@/components/icons/cancel';
 import ImageUpload from './image-upload';
+import * as Yup from 'yup';
 
 export default function NewListing() {
 	// const { user, logout } = useAuth({ middleware: 'guest' });
@@ -20,13 +21,42 @@ export default function NewListing() {
 	const iconFile = useRef(null);
 
 	const user = { hi: true };
+
+	const ListingSchema = Yup.object().shape({
+		iconFile: Yup.mixed()
+			.required('Required')
+			.test('fileSize', 'Max 10mb', (value) => {
+				if (!value.length) return true;
+				return value[0].size < 10485760;
+			}),
+		appName: Yup.string().min(3, 'Min 3 characters required').max(50, 'Max 50 characters').required('App name is required'),
+		shortDescription: Yup.string().min(20, 'Min 20 characters required').max(250, 'Max 250 characters').required('Short description is required'),
+		youtubeURL: Yup.string().test('valid-url', 'Invalid URL', (value) => !value || value.includes('.')),
+		password: Yup.string()
+			.min(8, 'Minimum 8 characters are required')
+			.matches(/[A-Z]/, 'Use at least one uppercase letter')
+			.matches(/[a-z]/, 'Use at least one lowercase letter')
+			.matches(/\d/, 'Use at least one number')
+			.required('Password is required'),
+		terms: Yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
+	});
+
 	const formik = useFormik({
 		initialValues: {
 			iconFile: '',
+			appName: '',
+			shortDescription: '',
+			youtubeURL: '',
 			image1: '',
 			image2: '',
 			image3: '',
+			introduction: '',
+			priceCurrency: '$',
+			price: 1,
+			oldPrice: 1,
+			endsIn: 30,
 		},
+		validationSchema: ListingSchema,
 		onSubmit: (values) => {
 			console.log(values);
 		},
@@ -61,7 +91,7 @@ export default function NewListing() {
 												/>
 												<button
 													type="button"
-													className="absolute -right-3 -top-3 h-6 w-6 appearance-none rounded-full bg-neutral-600 p-1 text-white"
+													className="absolute -right-3 -top-3 h-6 w-6 appearance-none rounded-full bg-black p-1 text-white"
 													onClick={(e) => {
 														e.stopPropagation();
 														console.log('click');
@@ -95,6 +125,8 @@ export default function NewListing() {
 										placeholder="Enter your app's name"
 										maxLength="50"
 										className="mb-5 mt-1 text-base"
+										value={formik.values.appName}
+										onChange={formik.handleChange}
 										autoFocus
 									/>
 									<Label htmlFor="shortDescription" className="text-base font-semibold">
@@ -106,6 +138,8 @@ export default function NewListing() {
 										name="shortDescription"
 										maxLength="250"
 										placeholder="Briefly describe your app"
+										value={formik.values.shortDescription}
+										onChange={formik.handleChange}
 										className="mt-1 text-base"
 									/>
 								</div>
@@ -121,6 +155,8 @@ export default function NewListing() {
 								placeholder="App demo or promotional video URL"
 								maxLength="150"
 								className="mb-5 mt-1 text-base"
+								value={formik.values.youtubeURL}
+								onChange={formik.handleChange}
 							/>
 							<Label htmlFor="image1" className="mt-6 block text-base font-semibold">
 								Images *
@@ -143,6 +179,8 @@ export default function NewListing() {
 								placeholder="Introduce your app in as much detail as you can"
 								className="mt-1 text-base"
 								rows="15"
+								value={formik.values.introduction}
+								onChange={formik.handleChange}
 							/>
 
 							<div className="mt-6 flex items-center gap-6">
@@ -157,11 +195,13 @@ export default function NewListing() {
 											name="price"
 											placeholder="Enter your price"
 											maxLength="150"
-											min={0}
+											min={1}
 											step={0.01}
+											value={formik.values.price}
+											onChange={formik.handleChange}
 											className="mb-5 mt-1 pl-20 text-center text-base"
 										/>
-										<Select>
+										<Select value={formik.values.priceCurrency} onValueChange={(v) => formik.setFieldValue('priceCurrency', v)}>
 											<SelectTrigger className="absolute left-0 top-0 w-20" left={true}>
 												<SelectValue placeholder="$" />
 											</SelectTrigger>
@@ -186,11 +226,13 @@ export default function NewListing() {
 											name="oldPrice"
 											placeholder="Enter old price"
 											maxLength="150"
-											min={0}
+											min={1}
 											step={0.01}
+											value={formik.values.oldPrice}
+											onChange={formik.handleChange}
 											className="mb-5 mt-1 pl-20 text-center text-base"
 										/>
-										<Select>
+										<Select value={formik.values.priceCurrency} onValueChange={(v) => formik.setFieldValue('priceCurrency', v)}>
 											<SelectTrigger className="absolute left-0 top-0 w-20" left={true}>
 												<SelectValue placeholder="$" />
 											</SelectTrigger>
@@ -206,9 +248,29 @@ export default function NewListing() {
 								</div>
 							</div>
 
+							<div className="mr-6 w-1/2">
+								<Label htmlFor="days" className="block text-base font-semibold">
+									Ends in *
+								</Label>
+								<div className="relative w-full">
+									<Input
+										type="number"
+										id="endsIn"
+										name="endsIn"
+										placeholder="Ends in"
+										min={1}
+										max={30}
+										value={formik.values.endsIn}
+										onChange={formik.handleChange}
+										className="mb-5 mt-1 pr-32 text-center text-base"
+									/>
+									<p className="absolute right-4 top-1/2 -translate-y-1/2"> days</p>
+								</div>
+							</div>
+
 							<button
 								type="submit"
-								className="mt-8 flex w-1/2 items-center justify-center gap-2 self-end rounded-full bg-fuchsia-500 px-4 py-2 text-lg font-medium text-white hover:ring-4 hover:ring-fuchsia-200 disabled:opacity-70"
+								className="mt-8 flex w-1/3 items-center justify-center gap-2 self-end rounded-full bg-fuchsia-500 px-4 py-2 text-lg font-medium text-white hover:ring-4 hover:ring-fuchsia-200 disabled:opacity-70"
 							>
 								Submit
 								<ArrowRight02Icon className="h-6 w-6" stroke="2" />
