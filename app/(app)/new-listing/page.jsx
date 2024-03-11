@@ -75,8 +75,8 @@ export default function NewListing() {
 	});
 
 	return (
-		<div className="h-screen w-full overflow-y-auto pt-32">
-			<div className="mx-auto flex w-[600px] flex-col items-center pb-60">
+		<div className="w-full pb-60 pt-32">
+			<div className="mx-auto flex w-[600px] flex-col items-center">
 				{user ? (
 					<>
 						<div className="w-full">

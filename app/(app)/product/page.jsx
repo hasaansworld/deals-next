@@ -36,7 +36,7 @@ export default function ProductListing() {
 	};
 
 	return (
-		<div className="h-screen w-full overflow-y-auto px-6 pb-60 pt-24" ref={scrollRef} onScroll={handleScroll}>
+		<div className="w-full px-6 pb-60 pt-24" ref={scrollRef} onScroll={handleScroll}>
 			{/* <div className="flex items-start gap-16">
 				<div className="w-1/4"></div> */}
 			<div className="mx-auto max-w-[600px] flex-1">

@@ -16,20 +16,19 @@ export default function RootLayout({ children }) {
 			<body className="bg-white">
 				<div>
 					<Header />
-					<div className="h-screen w-full">
-						<div className="flex h-screen w-full items-start justify-center overflow-y-auto">
-							{/* <div className="h-screen w-[220px] border-r border-[#eee]">
+					<div className="h-screen w-full overflow-y-auto">
+						{/* <div className="h-screen w-[220px] border-r border-[#eee]">
 								<div className="fixed w-[220px]">
 									<Navigation />
 								</div>
 							</div> */}
-							<div className="flex-1">{children}</div>
-							{/* <div className="w-[220px]">
+						<div className="flex-1">{children}</div>
+						<Footer />
+						{/* <div className="w-[220px]">
 								<div className="fixed w-[220px]">
 									<Footer />
 								</div>
 							</div> */}
-						</div>
 					</div>
 				</div>
 			</body>
