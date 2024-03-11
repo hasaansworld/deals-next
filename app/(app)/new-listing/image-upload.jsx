@@ -3,15 +3,15 @@ import Upload04Icon from '@/components/icons/upload';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { useRef } from 'react';
 
-export default function ImageUpload({ formik, name }) {
+export default function ImageUpload({ formik, name, error = false }) {
 	const image = useRef(null);
 	return (
 		<AspectRatio
 			onClick={() => image.current.click()}
 			ratio={4 / 3}
-			className={`flex h-full w-full cursor-pointer items-center justify-center rounded-xl border border-neutral-200  ${
-				formik.values[name] ? '' : 'p-4'
-			} text-neutral-600 ring-4 ring-neutral-100`}
+			className={`flex h-full w-full cursor-pointer items-center justify-center rounded-xl border  ${formik.values[name] ? '' : 'p-4'} ${
+				error ? 'border-rose-500 ring-rose-100' : 'border-neutral-200 ring-neutral-100'
+			} text-neutral-600 ring-4`}
 		>
 			{!formik.values[name] && <Upload04Icon className="h-6 w-6" stroke="2" />}
 			{formik.values[name] && (
