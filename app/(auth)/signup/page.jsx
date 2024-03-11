@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { useFormik } from 'formik';
 import { useAuth } from '@/hooks/auth';
 import { useState } from 'react';
-import { SpinnerCircularFixed } from 'spinners-react';
+import { Oval } from 'react-loader-spinner';
 import * as Yup from 'yup';
 import { useEffect } from 'react';
 
@@ -142,7 +142,7 @@ export default function Signup() {
 						isSubmitting ? '' : 'hover:gap-3'
 					} disabled:opacity-70`}
 				>
-					{isSubmitting && <SpinnerCircularFixed size="14" thickness={300} color="#fff" secondaryColor="rgba(255, 255, 255, 0.3)" />}
+					{isSubmitting && <Oval width="18" height="18" strokeWidth={10} color="#fff" secondaryColor="rgba(255, 255, 255, 0.3)" />}
 					{isSubmitting ? 'Creating account' : 'Create Account'}
 					{!isSubmitting && <ArrowRight02Icon className="h-5 w-5" stroke="2" />}
 				</button>

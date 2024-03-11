@@ -14,7 +14,7 @@ import { useFormik } from 'formik';
 import Cancel01Icon from '@/components/icons/cancel';
 import ImageUpload from './image-upload';
 import * as Yup from 'yup';
-import { SpinnerCircularFixed } from 'spinners-react';
+import { Oval } from 'react-loader-spinner';
 
 export default function NewListing() {
 	// const { user, logout } = useAuth({ middleware: 'guest' });
@@ -64,6 +64,12 @@ export default function NewListing() {
 		validationSchema: ListingSchema,
 		onSubmit: (values) => {
 			setIsSubmitting(true);
+
+			let formData = new FormData();
+			for (const key in values) {
+				formData.append(key, values[key]);
+			}
+
 			console.log(values);
 		},
 	});
@@ -313,7 +319,7 @@ export default function NewListing() {
 									isSubmitting ? '' : 'hover:ring-4 hover:ring-fuchsia-200'
 								} disabled:opacity-70`}
 							>
-								{isSubmitting && <SpinnerCircularFixed size="14" thickness={300} color="#fff" secondaryColor="rgba(255, 255, 255, 0.3)" />}
+								{isSubmitting && <Oval width="18" height="18" strokeWidth={10} color="#fff" secondaryColor="rgba(255, 255, 255, 0.3)" />}
 								{isSubmitting ? 'Submitting' : 'Submit'}
 								{!isSubmitting && <ArrowRight02Icon className="h-5 w-5" stroke="2" />}
 							</button>
