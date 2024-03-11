@@ -32,13 +32,7 @@ export default function NewListing() {
 		appName: Yup.string().min(3, 'Min 3 characters required').max(50, 'Max 50 characters').required('App name is required'),
 		shortDescription: Yup.string().min(20, 'Min 20 characters required').max(250, 'Max 250 characters').required('Short description is required'),
 		youtubeURL: Yup.string().test('valid-url', 'Invalid URL', (value) => !value || value.includes('.')),
-		password: Yup.string()
-			.min(8, 'Minimum 8 characters are required')
-			.matches(/[A-Z]/, 'Use at least one uppercase letter')
-			.matches(/[a-z]/, 'Use at least one lowercase letter')
-			.matches(/\d/, 'Use at least one number')
-			.required('Password is required'),
-		terms: Yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
+		introduction: Yup.string().required('Introduction is required'),
 	});
 
 	const formik = useFormik({
@@ -77,9 +71,13 @@ export default function NewListing() {
 								<div className="flex flex-col items-center gap-1">
 									<div
 										onClick={() => iconFile.current.click()}
-										className={`relative flex h-24 w-24 cursor-pointer items-center justify-center rounded-xl border border-neutral-200 ${
+										className={`relative flex h-24 w-24 cursor-pointer items-center justify-center rounded-xl border ${
 											formik.values.iconFile ? '' : 'p-4'
-										} text-neutral-600 ring-4 ring-neutral-100`}
+										} ${
+											formik.submitCount > 0 && formik.errors.iconFile
+												? 'border-rose-500 ring-rose-100'
+												: 'border-neutral-200 ring-neutral-100'
+										} text-neutral-600 ring-4`}
 									>
 										{!formik.values.iconFile && <Upload04Icon className="h-12 w-12" stroke="1" />}
 										{formik.values.iconFile && (
@@ -113,6 +111,9 @@ export default function NewListing() {
 										/>
 									</div>
 									<p className="mt-2 font-semibold">App Icon *</p>
+									{formik.submitCount > 0 && formik.errors.iconFile && (
+										<p className="m-0 text-sm font-medium text-rose-500">{formik.errors.iconFile}</p>
+									)}
 								</div>
 								<div className="flex-1">
 									<Label htmlFor="appName" className="text-base font-semibold">
@@ -124,12 +125,15 @@ export default function NewListing() {
 										name="appName"
 										placeholder="Enter your app's name"
 										maxLength="50"
-										className="mb-5 mt-1 text-base"
+										className={`mt-1 text-base ${formik.submitCount > 0 && formik.errors.appName ? 'border-rose-500' : ''}`}
 										value={formik.values.appName}
 										onChange={formik.handleChange}
 										autoFocus
 									/>
-									<Label htmlFor="shortDescription" className="text-base font-semibold">
+									{formik.submitCount > 0 && formik.errors.appName && (
+										<p className="m-0 text-sm font-medium text-rose-500">{formik.errors.appName}</p>
+									)}
+									<Label htmlFor="shortDescription" className="mt-5 block text-base font-semibold">
 										Short Description *
 									</Label>
 									<Textarea
@@ -140,8 +144,11 @@ export default function NewListing() {
 										placeholder="Briefly describe your app"
 										value={formik.values.shortDescription}
 										onChange={formik.handleChange}
-										className="mt-1 text-base"
+										className={`mt-1 text-base ${formik.submitCount > 0 && formik.errors.appName ? 'border-rose-500' : ''}`}
 									/>
+									{formik.submitCount > 0 && formik.errors.shortDescription && (
+										<p className="m-0 text-sm font-medium text-rose-500">{formik.errors.shortDescription}</p>
+									)}
 								</div>
 							</div>
 
@@ -202,7 +209,7 @@ export default function NewListing() {
 											className="mb-5 mt-1 pl-20 text-center text-base"
 										/>
 										<Select value={formik.values.priceCurrency} onValueChange={(v) => formik.setFieldValue('priceCurrency', v)}>
-											<SelectTrigger className="absolute left-0 top-0 w-20" left={true}>
+											<SelectTrigger className="absolute left-0 top-0 w-20" left="true">
 												<SelectValue placeholder="$" />
 											</SelectTrigger>
 											<SelectContent>
@@ -233,7 +240,7 @@ export default function NewListing() {
 											className="mb-5 mt-1 pl-20 text-center text-base"
 										/>
 										<Select value={formik.values.priceCurrency} onValueChange={(v) => formik.setFieldValue('priceCurrency', v)}>
-											<SelectTrigger className="absolute left-0 top-0 w-20" left={true}>
+											<SelectTrigger className="absolute left-0 top-0 w-20" left="true">
 												<SelectValue placeholder="$" />
 											</SelectTrigger>
 											<SelectContent>
