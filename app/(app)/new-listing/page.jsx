@@ -1,17 +1,50 @@
+'use client';
 import ArrowRight02Icon from '@/components/icons/arrow_right';
 import Upload04Icon from '@/components/icons/upload';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useAuth } from '@/hooks/auth';
+import { useState } from 'react';
+import Login from './login';
+import Link from 'next/link';
+import NewTwitterIcon from '@/components/icons/new_twitter';
 
 export default function NewListing() {
+	const { step, setStep } = useState('name');
+	const { user, logout } = useAuth({ middleware: 'guest' });
+
 	return (
-		<div className="h-full w-full overflow-y-auto pb-60 pt-32">
-			<div className="mx-auto w-[600px]">
-				<h1 className="text-3xl font-bold text-black">New Listing</h1>
-				<p className="mt-1 text-neutral-400">Please provide the following information about your deal</p>
-				<form className="mt-10 flex flex-col">
+		<div className="h-screen w-full overflow-y-auto pb-60 pt-32">
+			<div className="mx-auto flex h-full w-[600px] flex-col items-center">
+				{user ? (
+					<div>
+						Let go <button onClick={() => logout()}>Logout</button>
+					</div>
+				) : (
+					<div className="flex h-full w-full flex-col items-center justify-center">
+						<h1 className="text-2xl font-bold text-black">New Listing</h1>
+						<p className="mt-1 text-center text-lg text-neutral-600">Please connect one of the following accounts to get started</p>
+						<div className="mt-6 w-80">
+							<div className="flex w-full items-center gap-10">
+								<Link
+									href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/google`}
+									className="mt-6 flex flex-1 items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white px-6 py-4 font-medium text-black shadow-sm hover:bg-neutral-100"
+								>
+									<img src="/google_logo.svg" alt="Google Logo" className="h-7 w-7" />
+								</Link>
+								<Link
+									href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/twitter`}
+									className="mt-6 flex flex-1 items-center justify-center gap-2 rounded-lg border border-neutral-200 bg-white px-6 py-4 font-medium text-black shadow-sm hover:bg-neutral-100"
+								>
+									<NewTwitterIcon className="h-7 w-7 text-black" stroke="2" />
+								</Link>
+							</div>
+						</div>
+					</div>
+				)}
+				{/* <form className="mt-10 flex flex-col">
 					<div className="flex items-start gap-12">
 						<div className="flex flex-col items-center gap-1">
 							<div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-xl border border-neutral-200 p-4 text-neutral-600 ring-4 ring-neutral-100">
@@ -101,7 +134,7 @@ export default function NewListing() {
 						Submit
 						<ArrowRight02Icon className="h-5 w-5" stroke="2" />
 					</button>
-				</form>
+				</form> */}
 			</div>
 		</div>
 	);
