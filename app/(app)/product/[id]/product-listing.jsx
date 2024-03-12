@@ -10,7 +10,6 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const scrollToElement = (id, ref) => {
 	const element = document.getElementById(id);
-	console.log('scroll');
 	ref.current.scrollTo({
 		top: element.offsetTop - 90,
 		behavior: 'smooth',

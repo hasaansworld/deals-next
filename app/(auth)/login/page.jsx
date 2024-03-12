@@ -48,7 +48,6 @@ export default function Login() {
 
 	useEffect(() => {
 		if (errors) {
-			console.log(errors);
 			setIsSubmitting(false);
 		}
 	}, [errors]);

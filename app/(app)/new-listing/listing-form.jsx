@@ -87,10 +87,8 @@ export default function ListingForm({ user }) {
 			let formData = new FormData();
 			for (const key in values) {
 				if (['iconFile', 'image1', 'image2', 'image3'].includes(key) && values[key] && values[key].type !== 'image/gif') {
-					console.log(values[key]);
 					const compressed = await compress(values[key], key === 'iconFile' ? 150 : 1080);
 					formData.append(key, compressed);
-					console.log(values[key]);
 				} else {
 					formData.append(key, values[key]);
 				}
@@ -99,7 +97,6 @@ export default function ListingForm({ user }) {
 			axios
 				.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/create-listing`, formData)
 				.then((res) => {
-					console.log(res.data);
 					setSuccess(true);
 				})
 				.catch((error) => {
@@ -153,7 +150,6 @@ export default function ListingForm({ user }) {
 											className="absolute -right-3 -top-3 h-6 w-6 appearance-none rounded-full bg-black p-1 text-white"
 											onClick={(e) => {
 												e.stopPropagation();
-												console.log('click');
 												iconFile.current.value = '';
 												formik.setFieldValue('iconFile', '');
 											}}

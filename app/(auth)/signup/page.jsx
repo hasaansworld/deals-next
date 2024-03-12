@@ -54,7 +54,6 @@ export default function Signup() {
 
 	useEffect(() => {
 		if (errors) {
-			console.log(errors);
 			setIsSubmitting(false);
 		}
 	}, [errors]);

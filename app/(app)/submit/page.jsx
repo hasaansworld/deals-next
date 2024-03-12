@@ -9,7 +9,6 @@ import VerifyEmailPopover from '@/components/verify-email-popover/verify-email-p
 
 export default function Submit() {
 	const { user } = useAuth({ middleware: 'guest' });
-	console.log(user);
 
 	return (
 		<div className="flex flex-col items-center p-20">

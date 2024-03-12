@@ -5,7 +5,6 @@ import { getAllListings } from '@/lib/server';
 
 export default async function Page() {
 	const allListings = await getAllListings();
-	console.log(allListings);
 
 	return (
 		<>
