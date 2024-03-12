@@ -44,17 +44,17 @@ export default function Listing({ listing }) {
 							e.stopPropagation();
 							window.open(absoluteUrl, '_blank');
 						}}
-						className="flex w-full items-center justify-center gap-5 rounded-full border border-neutral-200 py-2 font-medium text-black hover:border-black hover:bg-black hover:text-white"
+						className="flex w-full items-center justify-center gap-5 rounded-full border border-neutral-200 py-2 font-bold text-black hover:border-black hover:bg-black hover:text-white"
 					>
 						{listing.oldPrice && (
-							<span className="text-neutral-400 line-through">
+							<span className="font-semibold text-neutral-400 line-through">
 								{listing.priceCurrency}
 								{listing.oldPrice}
 							</span>
 						)}{' '}
 						{listing.priceCurrency}
 						{listing.price}
-						{types[listing.type]} {listing.oldPrice && <span className="text-sm text-green-500">{percentOff}% off</span>}
+						{types[listing.type]} {listing.oldPrice && <span className="text-sm font-semibold text-green-500">{percentOff}% off</span>}
 					</div>
 				</div>
 			</div>

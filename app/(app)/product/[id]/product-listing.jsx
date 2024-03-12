@@ -4,7 +4,9 @@ import Comment from '@/components/comment/comment';
 import Flag03Icon from '@/components/icons/flag';
 import LinkSquare02Icon from '@/components/icons/link_square';
 import { Textarea } from '@/components/ui/textarea';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Link from 'next/link';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const scrollToElement = (id, ref) => {
 	const element = document.getElementById(id);
@@ -103,19 +105,19 @@ export default function ProductListing({ listing }) {
 								<Link
 									href={absoluteURL}
 									target="_blank"
-									className="mt-4 flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 px-16 py-2 font-medium text-black shadow hover:border-black hover:bg-black hover:text-white"
+									className="mt-4 flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 px-16 py-2 font-bold text-black shadow hover:border-black hover:bg-black hover:text-white"
 								>
 									{listing.oldPrice && (
-										<span className="text-neutral-400 line-through">
+										<span className="font-semibold text-neutral-400 line-through">
 											{listing.priceCurrency}
 											{listing.oldPrice}
 										</span>
 									)}{' '}
 									{listing.priceCurrency}
 									{listing.price}
-									{types[listing.type]} {listing.oldPrice && <span className="text-sm text-green-500">{percentOff}% off</span>}
+									{types[listing.type]} {listing.oldPrice && <span className="text-sm font-semibold text-green-500">{percentOff}% off</span>}
 								</Link>
-								<p className={`mt-2 text-xs font-medium ${color}`}>{message}</p>
+								<p className={`mt-2 text-sm font-medium ${color}`}>{message}</p>
 							</div>
 
 							<button className="mt-3 flex items-center gap-2 bg-transparent p-2 text-sm text-rose-500">
@@ -124,7 +126,47 @@ export default function ProductListing({ listing }) {
 						</div>
 					</div>
 				</div>
-				<img src="/post-1.jpeg" alt="Product Image" className="mt-10 w-full rounded-xl border border-gray-200" />
+
+				<Carousel className="mt-10 w-full">
+					<CarouselContent>
+						{listing.image1 && (
+							<CarouselItem>
+								<AspectRatio ratio={16 / 9}>
+									<img
+										src={listing.image1}
+										alt="Listing image 1"
+										className="h-full w-full rounded-xl border border-neutral-200 object-cover"
+									/>
+								</AspectRatio>
+							</CarouselItem>
+						)}
+						{listing.image2 && (
+							<CarouselItem>
+								<AspectRatio ratio={16 / 9}>
+									<img
+										src={listing.image2}
+										alt="Listing image 2"
+										className="h-full w-full rounded-xl border border-neutral-200 object-cover"
+									/>
+								</AspectRatio>
+							</CarouselItem>
+						)}
+						{listing.image3 && (
+							<CarouselItem>
+								<AspectRatio ratio={16 / 9}>
+									<img
+										src={listing.image3}
+										alt="Listing image 3"
+										className="h-full w-full rounded-xl border border-neutral-200 object-cover"
+									/>
+								</AspectRatio>
+							</CarouselItem>
+						)}
+					</CarouselContent>
+					<CarouselPrevious />
+					<CarouselNext />
+				</Carousel>
+
 				<h4 className="mt-10 text-2xl font-bold text-black" id="intro" ref={introRef}>
 					Introduction
 				</h4>
