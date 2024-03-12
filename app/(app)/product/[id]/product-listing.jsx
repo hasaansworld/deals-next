@@ -4,6 +4,7 @@ import Comment from '@/components/comment/comment';
 import Flag03Icon from '@/components/icons/flag';
 import LinkSquare02Icon from '@/components/icons/link_square';
 import { Textarea } from '@/components/ui/textarea';
+import Link from 'next/link';
 
 const scrollToElement = (id, ref) => {
 	const element = document.getElementById(id);
@@ -14,7 +15,35 @@ const scrollToElement = (id, ref) => {
 	});
 };
 
-export default function ProductListing() {
+function getTimeLeftUntilDate(targetDateStr) {
+	const targetDate = new Date(targetDateStr);
+	const currentDate = new Date();
+	const differenceMs = targetDate - currentDate;
+
+	const daysLeft = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
+	const hoursLeft = Math.floor((differenceMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	const minutesLeft = Math.floor((differenceMs % (1000 * 60 * 60)) / (1000 * 60));
+
+	if (daysLeft > 0) {
+		return { message: `Ends in ${daysLeft} days`, color: 'text-amber-500' };
+	} else if (hoursLeft > 0) {
+		return { message: `Ends in ${hoursLeft} hours`, color: 'text-amber-500' };
+	} else if (minutesLeft > 0) {
+		return { message: `Ends in ${minutesLeft} minutes`, color: 'text-rose-500' };
+	} else {
+		return { message: 'Ends in < 1 minute', color: 'text-rose-500' };
+	}
+}
+
+function getAbsoluteURL(url) {
+	let absoluteURL = url;
+	if (!url.includes('http://') && !url.includes('https://')) {
+		absoluteURL = `https://${url}`;
+	}
+	return absoluteURL;
+}
+
+export default function ProductListing({ listing }) {
 	const scrollRef = useRef(null);
 	const introRef = useRef(null);
 	const commentsRef = useRef(null);
@@ -35,30 +64,58 @@ export default function ProductListing() {
 		// }
 	};
 
+	const types = {
+		lifetime: ' Lifetime',
+		per_month: '/month',
+		per_week: '/week',
+		per_use: '/use',
+	};
+
+	const absoluteURL = getAbsoluteURL(listing.url);
+	const absoluteWebsiteURL = getAbsoluteURL(listing.websiteURL);
+
+	let percentOff = 0;
+	if (listing.oldPrice) {
+		percentOff = Math.round(((listing.oldPrice - listing.price) / listing.oldPrice) * 100);
+	}
+
+	const { message, color } = getTimeLeftUntilDate(listing.endsOn);
+
 	return (
 		<div className="w-full px-6 pb-60 pt-24" ref={scrollRef} onScroll={handleScroll}>
 			{/* <div className="flex items-start gap-16">
 				<div className="w-1/4"></div> */}
 			<div className="mx-auto max-w-[600px] flex-1">
 				<div className="flex items-start gap-4" id="product">
-					<img src="/loom.png" alt="Loom logo" className="-ml-16 h-12 w-12 rounded-md" />
+					<img src={listing.appIcon} alt={`${listing.appName} logo`} className="-ml-16 h-12 w-12 rounded-md" />
 					<div className="flex-1">
 						<div className="flex items-center gap-3">
-							<h4 className="text text-2xl font-bold text-black">Loom</h4>
-							<LinkSquare02Icon className="h-4 w-4 text-neutral-400" stroke="2.5" />
+							<h4 className="text text-2xl font-bold text-black">{listing.appName}</h4>
+							<Link href={absoluteWebsiteURL} target="_blank">
+								<LinkSquare02Icon className="h-4 w-4 text-neutral-400" stroke="2.5" />
+							</Link>
 						</div>
 
-						<p className="mt-1 leading-tight text-neutral-800">
-							Automation magic that will help you be more productive and get more work done through computers
-						</p>
+						<p className="mt-1 leading-tight text-neutral-800">{listing.shortDescription}</p>
 
 						<div className="flex items-start justify-between">
 							<div className="flex w-1/2 flex-col items-center">
-								<button className="mt-4 flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 px-16 py-2 font-medium text-black shadow hover:border-black hover:bg-black hover:text-white">
-									<span className="text-neutral-400 line-through">$128</span> $59 Lifetime
-									<span className="text-xs text-green-500">10% off</span>
-								</button>
-								<p className="mt-2 text-xs font-medium text-amber-500">Ends in 30 days</p>
+								<Link
+									href={absoluteURL}
+									target="_blank"
+									className="mt-4 flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 px-16 py-2 font-medium text-black shadow hover:border-black hover:bg-black hover:text-white"
+								>
+									{listing.oldPrice && (
+										<span className="text-neutral-400 line-through">
+											{listing.priceCurrency}
+											{listing.oldPrice}
+										</span>
+									)}{' '}
+									{listing.priceCurrency}
+									{listing.price}
+									{types[listing.type]} {listing.oldPrice && <span className="text-sm text-green-500">{percentOff}% off</span>}
+								</Link>
+								<p className={`mt-2 text-xs font-medium ${color}`}>{message}</p>
 							</div>
 
 							<button className="mt-3 flex items-center gap-2 bg-transparent p-2 text-sm text-rose-500">
@@ -71,47 +128,7 @@ export default function ProductListing() {
 				<h4 className="mt-10 text-2xl font-bold text-black" id="intro" ref={introRef}>
 					Introduction
 				</h4>
-				<p className="mt-2 text-neutral-800">
-					Hey everyone!
-					<br />
-					<br />
-					We created vidyo.ai to save marketers, video editors, content creators and teams from the time-consuming task of repurposing video content
-					for different platforms. We hope it streamlines your content creation process too! 🚀
-					<br />
-					<br />
-					We realized that it takes a long time to search for key moments in a video manually, do timestamp calculus, generate subtitles, style and
-					edit videos, and resize —all in one place. It was too expensive and clunky. We thought, what if we can automate this? So we set off to solve
-					this problem, and that’s how vidyo.ai was born.
-					<br />
-					<br />
-					vidyo.ai identifies the best moments of a longform video and creates short clips ready for social media. It offers scene change detection,
-					customizable AI subtitles, B-roll footage, virality predictor, brand kit, AI social media descriptions and post scheduler, and Viddy - our
-					AI content assistant. The tool is trusted by over 1 million creators and businesses worldwide.
-					<br />
-					<br />
-					It’s as easy as 🥧:
-					<br />
-					<br />
-					🎬 Drop your video links into vidyo.ai <br />
-					☕ Go make a cup of coffee <br />
-					⚡ In minutes, vidyo.ai watches your video, identifies the key moments, and creates shareable social clips. <br />
-					<br />
-					<br />
-					We offer an all-in-one tool for video editing, including features like video templates, AI video resizing, full video and clip transcripts,
-					video timestamps, auto video chapters, and metadata for all social platforms, including YouTube Shorts, Instagram, Twitter, LinkedIn, and
-					Facebook Reels.
-					<br />
-					<br />
-					You can also create studio-grade videos in just a few taps from your phone with our latest mobile support feature. And with Viddy, you’ll
-					never run out of content ideas. Viddy looks at your long videos and quickly suggests new content ideas, SEO-friendly blog posts, show notes,
-					tweets, and LinkedIn posts. It&apos;s like having a brainstorming partner!
-					<br />
-					<br />
-					vidyo.ai currently supports English, Spanish, German, and French, with more languages on the horizon to be announced soon.
-					<br />
-					<br />
-					Thanks for checking us out, and happy to answer any questions you have! 💙
-				</p>
+				<p className="mt-2 text-neutral-800">{listing.introduction}</p>
 				{/* <h4 className="mt-10 text-2xl font-bold text-black" id="comments" ref={commentsRef}>
 						Comments
 					</h4>

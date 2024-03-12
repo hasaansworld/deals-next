@@ -8,7 +8,7 @@ export default function ImageUpload({ formik, name, error = false }) {
 	return (
 		<AspectRatio
 			onClick={() => image.current.click()}
-			ratio={2 / 1}
+			ratio={16 / 9}
 			className={`flex h-full w-full cursor-pointer items-center justify-center rounded-xl border  ${formik.values[name] ? '' : 'p-4'} ${
 				error ? 'border-rose-500 ring-rose-100' : 'border-neutral-200 ring-neutral-100'
 			} text-neutral-600 ring-4`}
@@ -36,7 +36,7 @@ export default function ImageUpload({ formik, name, error = false }) {
 				onChange={(e) => formik.setFieldValue(name, e.target.files[0])}
 				className="hidden"
 				multiple={false}
-				accept=".png, .jpg, .jpeg, .svg, .gif"
+				accept=".png, .jpg, .jpeg, .svg, .gif, .webp"
 			/>
 		</AspectRatio>
 	);

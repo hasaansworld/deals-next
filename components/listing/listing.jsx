@@ -1,53 +1,63 @@
-import { inter } from '../../app/fonts';
-import { Bookmark02Icon, Comment01Icon, MoreHorizontalIcon } from '@hugeicons/react-pro';
-import Comment02Icon from '../icons/comment';
-import BubbleChatIcon from '../icons/bubble_chat';
-import FireIcon from '../icons/fire';
-import FavouriteIcon from '../icons/favorite';
-import BubbleChatSmall from '../icons/bubble_chat_small';
+'use client';
 import Link from 'next/link';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { useRouter } from 'next/navigation';
 
-export default function Listing({ index }) {
-	const appIcon = index % 2 == 0 ? '/loom.png' : '/zapier-logomark.svg';
-	const appName = index % 2 == 0 ? 'Loom' : 'Zapier';
-	const appTagline =
-		index % 2 == 0 ? 'Async video collaboration' : 'Automation magic that will help you be more productive and get more work done through computers';
-	const personName = index % 2 == 0 ? 'Hasaan Ahmed' : 'Orman Clark';
-	const postText =
-		index % 2 == 0
-			? "Don't miss out on top seasonal talent to help you reach your year-end goals this holiday season because you were late to the game."
-			: 'Build automated workflows customized for your role and business.';
-	const postImage = index % 2 == 0 ? '/post-1.jpeg' : '/post-2.jpeg';
-	const commentText =
-		'Ever wondered how to turn your lettering into a working font? Join us as we host Francis Chouquet @Fran6 in this free online talk to chat about his work and how he creates his amazing fonts!';
+export default function Listing({ listing }) {
+	const router = useRouter();
+
+	const types = {
+		lifetime: ' Lifetime',
+		per_month: '/month',
+		per_week: '/week',
+		per_use: '/use',
+	};
+
+	let absoluteUrl = listing.url;
+	if (!listing.url.includes('http://') && !listing.url.includes('https://')) {
+		absoluteUrl = `https://${listing.url}`;
+	}
+
+	let percentOff = 0;
+	if (listing.oldPrice) {
+		percentOff = Math.round(((listing.oldPrice - listing.price) / listing.oldPrice) * 100);
+	}
 
 	return (
-		<Link href="/product">
+		<div onClick={() => router.push(`/product/${listing.id}`)}>
 			<div className="flex h-full w-full cursor-pointer flex-col rounded-lg border border-[#eee] bg-white">
-				<AspectRatio ratio={2 / 1}>
-					<img src={postImage} alt="Loom banner" className="h-full w-full rounded-t-lg object-cover" />
+				<AspectRatio ratio={16 / 9}>
+					<img src={listing.image1} alt="Loom banner" className="h-full w-full rounded-t-lg object-cover" />
 				</AspectRatio>
 				<div className="flex items-start gap-4 p-3">
-					<img src={appIcon} alt="Loom logo" className="h-12 w-12 rounded-md" />
+					<img src={listing.appIcon} alt="Loom logo" className="h-12 w-12 rounded-md" />
 					<div>
-						<h4 className="text font-semibold text-black">{appName}</h4>
-						<p className={`line-clamp-3 text-sm leading-tight text-neutral-600`}>{appTagline}</p>
+						<h4 className="text font-semibold text-black">{listing.appName}</h4>
+						<p className={`line-clamp-3 text-sm leading-tight text-neutral-600`}>{listing.shortDescription}</p>
 					</div>
 				</div>
 				<span className="w-full flex-1"></span>
-				{/* <div className="mb-2 mt-3 flex justify-between px-5">
-				<p className="text-xs text-neutral-400">12 interested</p>
-				<p className="text-xs text-neutral-400">6 comments</p>
-			</div> */}
 
 				<div className="relative px-3 pb-3">
-					<button className="flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 py-2 font-medium text-black hover:border-black hover:bg-black hover:text-white">
-						<span className="text-neutral-400 line-through">$128</span> {index % 3 == 2 ? '$12/month' : '$59 Lifetime'}{' '}
-						<span className="text-xs text-green-500">10% off</span>
-					</button>
+					<div
+						onClick={(e) => {
+							e.stopPropagation();
+							window.open(absoluteUrl, '_blank');
+						}}
+						className="flex w-full items-center justify-center gap-5 rounded-full border border-neutral-200 py-2 font-medium text-black hover:border-black hover:bg-black hover:text-white"
+					>
+						{listing.oldPrice && (
+							<span className="text-neutral-400 line-through">
+								{listing.priceCurrency}
+								{listing.oldPrice}
+							</span>
+						)}{' '}
+						{listing.priceCurrency}
+						{listing.price}
+						{types[listing.type]} {listing.oldPrice && <span className="text-sm text-green-500">{percentOff}% off</span>}
+					</div>
 				</div>
 			</div>
-		</Link>
+		</div>
 	);
 }
