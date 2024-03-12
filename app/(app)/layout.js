@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
 									<Navigation />
 								</div>
 							</div> */}
-						<div className="flex-1">{children}</div>
+						<div className="min-h-[80vh] flex-1">{children}</div>
 						<Footer />
 						{/* <div className="w-[220px]">
 								<div className="fixed w-[220px]">

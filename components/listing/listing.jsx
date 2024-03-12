@@ -6,6 +6,7 @@ import FireIcon from '../icons/fire';
 import FavouriteIcon from '../icons/favorite';
 import BubbleChatSmall from '../icons/bubble_chat_small';
 import Link from 'next/link';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 export default function Listing({ index }) {
 	const appIcon = index % 2 == 0 ? '/loom.png' : '/zapier-logomark.svg';
@@ -24,7 +25,9 @@ export default function Listing({ index }) {
 	return (
 		<Link href="/product">
 			<div className="flex h-full w-full cursor-pointer flex-col rounded-lg border border-[#eee] bg-white">
-				<img src={postImage} alt="Loom banner" className="rounded-tl-lg rounded-tr-lg" />
+				<AspectRatio ratio={2 / 1}>
+					<img src={postImage} alt="Loom banner" className="h-full w-full rounded-t-lg object-cover" />
+				</AspectRatio>
 				<div className="flex items-start gap-4 p-3">
 					<img src={appIcon} alt="Loom logo" className="h-12 w-12 rounded-md" />
 					<div>
