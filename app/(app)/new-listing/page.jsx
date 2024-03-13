@@ -4,9 +4,9 @@ import { getUser } from '@/lib/server';
 import ListingForm from './listing-form';
 
 export default async function NewListing() {
-	const user = getUser();
+	const user = await getUser();
 
-	if (user) {
+	if (user && user.id) {
 		return <ListingForm user={user} />;
 	}
 

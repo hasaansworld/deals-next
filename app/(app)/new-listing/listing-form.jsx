@@ -42,7 +42,7 @@ export default function ListingForm({ user }) {
 		appName: Yup.string().min(3, 'Min 3 characters required').max(50, 'Max 50 characters').required('App name is required'),
 		shortDescription: Yup.string().min(20, 'Min 20 characters required').max(250, 'Max 250 characters').required('Short description is required'),
 		youtubeURL: Yup.string().test('valid-url', 'Invalid video URL', (value) => !value || value.includes('youtu.be') || value.includes('youtube.')),
-		introduction: Yup.string().required('Introduction is required'),
+		introduction: Yup.string().min(300, 'Min 300 characters required').required('Introduction is required'),
 		image2: Yup.string(),
 		image3: Yup.string(),
 		image1: Yup.string().when(['youtubeURL', 'image2', 'image3'], {
@@ -218,7 +218,7 @@ export default function ListingForm({ user }) {
 						name="youtubeURL"
 						placeholder="App demo or promotional video URL"
 						maxLength="150"
-						className="mb-5 mt-1 text-base"
+						className="mt-1 text-base"
 						value={formik.values.youtubeURL}
 						onChange={formik.handleChange}
 					/>

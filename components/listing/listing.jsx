@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { useRouter } from 'next/navigation';
+import { list } from 'postcss';
 
 export default function Listing({ listing }) {
 	const router = useRouter();
@@ -23,11 +24,36 @@ export default function Listing({ listing }) {
 		percentOff = Math.round(((listing.oldPrice - listing.price) / listing.oldPrice) * 100);
 	}
 
+	let youtubeId = '';
+	if (listing.youtubeURL && listing.youtubeURL.includes('youtube.')) {
+		youtubeId = listing.youtubeURL.split('v=')[1];
+	} else if (listing.youtubeURL && listing.youtubeURL.includes('youtu.be')) {
+		let parts = listing.youtubeURL.split('/');
+		youtubeId = parts[parts.length - 1];
+	}
+
 	return (
 		<div onClick={() => router.push(`/product/${listing.id}`)}>
 			<div className="flex h-full w-full cursor-pointer flex-col rounded-lg border border-[#eee] bg-white">
 				<AspectRatio ratio={16 / 9}>
-					<img src={listing.image1} alt="Loom banner" className="h-full w-full rounded-t-lg object-cover" />
+					{listing.youtubeURL && (
+						<iframe
+							width="100%"
+							height="100%"
+							src={`https://www.youtube.com/embed/${youtubeId}`}
+							title="YouTube video player"
+							allow="autoplay; encrypted-media;"
+							allowFullScreen
+							className="rounded-t-lg bg-neutral-100"
+						></iframe>
+					)}
+					{!listing.youtubeURL && (
+						<img
+							src={listing.image1 ? listing.image1 : listing.image2 ? listing.image2 : listing.image3}
+							alt="Loom banner"
+							className="h-full w-full rounded-t-lg bg-neutral-100 object-cover"
+						/>
+					)}
 				</AspectRatio>
 				<div className="flex items-start gap-4 p-3">
 					<img src={listing.appIcon} alt="Loom logo" className="h-12 w-12 rounded-md" />

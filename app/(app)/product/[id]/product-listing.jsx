@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Link from 'next/link';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { notFound } from 'next/navigation';
 
 const scrollToElement = (id, ref) => {
 	const element = document.getElementById(id);
@@ -45,6 +46,8 @@ function getAbsoluteURL(url) {
 }
 
 export default function ProductListing({ listing }) {
+	if (!listing) notFound();
+
 	const scrollRef = useRef(null);
 	const introRef = useRef(null);
 	const commentsRef = useRef(null);
@@ -78,6 +81,14 @@ export default function ProductListing({ listing }) {
 	let percentOff = 0;
 	if (listing.oldPrice) {
 		percentOff = Math.round(((listing.oldPrice - listing.price) / listing.oldPrice) * 100);
+	}
+
+	let youtubeId = '';
+	if (listing.youtubeURL && listing.youtubeURL.includes('youtube.')) {
+		youtubeId = listing.youtubeURL.split('v=')[1];
+	} else if (listing.youtubeURL && listing.youtubeURL.includes('youtu.be')) {
+		let parts = listing.youtubeURL.split('/');
+		youtubeId = parts[parts.length - 1];
 	}
 
 	const { message, color } = getTimeLeftUntilDate(listing.endsOn);
@@ -119,22 +130,41 @@ export default function ProductListing({ listing }) {
 								<p className={`mt-2 text-sm font-medium ${color}`}>{message}</p>
 							</div>
 
-							<button className="mt-3 flex items-center gap-2 bg-transparent p-2 text-sm text-rose-500">
+							<Link
+								href="https://tally.so/r/wzqjPR"
+								target="_blank"
+								className="mt-3 flex items-center gap-2 bg-transparent p-2 text-sm text-rose-500"
+							>
 								<Flag03Icon className="h-4 w-4" /> Report
-							</button>
+							</Link>
 						</div>
 					</div>
 				</div>
 
 				<Carousel className="mt-10 w-full">
 					<CarouselContent>
+						{listing.youtubeURL && (
+							<CarouselItem>
+								<AspectRatio ratio={16 / 9}>
+									<iframe
+										width="100%"
+										height="100%"
+										src={`https://www.youtube.com/embed/${youtubeId}`}
+										title="YouTube video player"
+										allow="autoplay; encrypted-media;"
+										allowFullScreen
+										className="rounded-lg bg-neutral-100"
+									></iframe>
+								</AspectRatio>
+							</CarouselItem>
+						)}
 						{listing.image1 && (
 							<CarouselItem>
 								<AspectRatio ratio={16 / 9}>
 									<img
 										src={listing.image1}
 										alt="Listing image 1"
-										className="h-full w-full rounded-xl border border-neutral-200 object-cover"
+										className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
 									/>
 								</AspectRatio>
 							</CarouselItem>
@@ -145,7 +175,7 @@ export default function ProductListing({ listing }) {
 									<img
 										src={listing.image2}
 										alt="Listing image 2"
-										className="h-full w-full rounded-xl border border-neutral-200 object-cover"
+										className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
 									/>
 								</AspectRatio>
 							</CarouselItem>
@@ -156,7 +186,7 @@ export default function ProductListing({ listing }) {
 									<img
 										src={listing.image3}
 										alt="Listing image 3"
-										className="h-full w-full rounded-xl border border-neutral-200 object-cover"
+										className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
 									/>
 								</AspectRatio>
 							</CarouselItem>
