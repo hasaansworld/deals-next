@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Mail01Icon from '../icons/mail';
+import AddSquareIcon from '../icons/add_square';
 
 const Footer = () => {
 	return (
@@ -14,6 +15,10 @@ const Footer = () => {
 				<Link href="mailto:support@appdeals.pro" className="flex items-center gap-2 text-neutral-600">
 					<Mail01Icon className="h-5 w-5" stroke="2" />
 					Contact Us
+				</Link>
+				<Link href="/submit" className="flex items-center gap-2 text-neutral-600">
+					<AddSquareIcon className="h-5 w-5" stroke="2" />
+					Submit
 				</Link>
 				<p className="text-neutral-600">
 					Built by{' '}

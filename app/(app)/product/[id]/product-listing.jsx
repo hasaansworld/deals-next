@@ -97,7 +97,7 @@ export default function ProductListing({ listing, suggestions }) {
 
 	return (
 		<div className="px-10">
-			<div className="w-full px-6 pb-60 pt-24" ref={scrollRef} onScroll={handleScroll}>
+			<div className="w-full px-6 pb-40 pt-24" ref={scrollRef} onScroll={handleScroll}>
 				{/* <div className="flex items-start gap-16">
 				<div className="w-1/4"></div> */}
 				<div className="mx-auto max-w-[600px] flex-1">
@@ -118,7 +118,7 @@ export default function ProductListing({ listing, suggestions }) {
 									<Link
 										href={absoluteURL}
 										target="_blank"
-										className="mt-4 flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 px-16 py-2 font-bold text-black shadow hover:border-black hover:bg-black hover:text-white"
+										className="mt-4 flex w-full items-center justify-center gap-3 rounded-full border border-neutral-400 px-16 py-2 font-bold text-black shadow hover:border-black hover:bg-black hover:text-white"
 									>
 										{listing.oldPrice && (
 											<span className="font-semibold text-neutral-400 line-through">
