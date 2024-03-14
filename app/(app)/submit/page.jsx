@@ -6,6 +6,7 @@ import { useAuth } from '@/hooks/auth';
 import Link from 'next/link';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import VerifyEmailPopover from '@/components/verify-email-popover/verify-email-popover';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 export default function Submit() {
 	const { user } = useAuth({ middleware: 'guest' });
@@ -50,6 +51,50 @@ export default function Submit() {
 					<h3 className="mt-4 font-bold text-black">Drive Business Growth</h3>
 					<p className="text-neural-600 mt-2 px-2 text-center text-sm">Get the capital and feedback you need to reach the next level</p>
 				</div>
+			</div>
+
+			<div className="mt-32 w-3/5">
+				<h2 className="w-full text-center text-2xl font-bold">Frequently Asked Questions</h2>
+				<Accordion type="multiple" collapsible className="mt-6">
+					<AccordionItem value="item-1">
+						<AccordionTrigger className="text-xl font-semibold">Is listing on Appdeals really free?</AccordionTrigger>
+						<AccordionContent className="text-lg">
+							Yes, the first 100 deals can be submitted for free. After 100 deals, a small one time fee of 10 or 15 USD will be charged per
+							listing.
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="item-2">
+						<AccordionTrigger className="text-xl font-semibold">Does Appdeals charge any commision on deals?</AccordionTrigger>
+						<AccordionContent className="text-lg">
+							No, Appdeals only lists your deal and redirects the user to the checkout page on your own website. You handle all the payments while
+							we get nothing.
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="item-3">
+						<AccordionTrigger className="text-xl font-semibold">How long can I list my deal?</AccordionTrigger>
+						<AccordionContent className="text-lg">
+							Your deals can be listed for a maximum of 30 days. After 30 days, your deal will be automatically removed. However, you can resubmit
+							your deal when it expires.
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="item-4">
+						<AccordionTrigger className="text-xl font-semibold">How many deals can I submit?</AccordionTrigger>
+						<AccordionContent className="text-lg">
+							Currently, you can only submit 1 deal per day. We are working to increase this limit.
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="item-5">
+						<AccordionTrigger className="text-xl font-semibold">Can I edit my listings after submission?</AccordionTrigger>
+						<AccordionContent className="text-lg">
+							We&apos;re actively working on allowing you to edit your submissions and manage them using our API. In the meantime you can reachout
+							to us at{' '}
+							<Link href="mailto:support@appdeals.pro" className="text-fuchsia-500">
+								support@appdeals.pro
+							</Link>{' '}
+							to request modifications in your listing.
+						</AccordionContent>
+					</AccordionItem>
+				</Accordion>
 			</div>
 		</div>
 	);

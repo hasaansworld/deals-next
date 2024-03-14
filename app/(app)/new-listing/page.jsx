@@ -6,6 +6,7 @@ import ListingForm from './listing-form';
 export default async function NewListing() {
 	const user = await getUser();
 
+	console.log(user);
 	if (user && user.id) {
 		return <ListingForm user={user} />;
 	}

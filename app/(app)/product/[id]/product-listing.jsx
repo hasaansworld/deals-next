@@ -8,6 +8,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Link from 'next/link';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { notFound } from 'next/navigation';
+import Listing from '@/components/listing/listing';
 
 const scrollToElement = (id, ref) => {
 	const element = document.getElementById(id);
@@ -45,7 +46,7 @@ function getAbsoluteURL(url) {
 	return absoluteURL;
 }
 
-export default function ProductListing({ listing }) {
+export default function ProductListing({ listing, suggestions }) {
 	if (!listing) notFound();
 
 	const scrollRef = useRef(null);
@@ -94,122 +95,124 @@ export default function ProductListing({ listing }) {
 	const { message, color } = getTimeLeftUntilDate(listing.endsOn);
 
 	return (
-		<div className="w-full px-6 pb-60 pt-24" ref={scrollRef} onScroll={handleScroll}>
-			{/* <div className="flex items-start gap-16">
+		<div className="px-10">
+			<div className="w-full px-6 pb-60 pt-24" ref={scrollRef} onScroll={handleScroll}>
+				{/* <div className="flex items-start gap-16">
 				<div className="w-1/4"></div> */}
-			<div className="mx-auto max-w-[600px] flex-1">
-				<div className="flex items-start gap-4" id="product">
-					<img src={listing.appIcon} alt={`${listing.appName} logo`} className="-ml-16 h-12 w-12 rounded-md" />
-					<div className="flex-1">
-						<div className="flex items-center gap-3">
-							<h4 className="text text-2xl font-bold text-black">{listing.appName}</h4>
-							<Link href={absoluteWebsiteURL} target="_blank">
-								<LinkSquare02Icon className="h-4 w-4 text-neutral-400" stroke="2.5" />
-							</Link>
-						</div>
-
-						<p className="mt-1 leading-tight text-neutral-800">{listing.shortDescription}</p>
-
-						<div className="flex items-start justify-between">
-							<div className="flex w-1/2 flex-col items-center">
-								<Link
-									href={absoluteURL}
-									target="_blank"
-									className="mt-4 flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 px-16 py-2 font-bold text-black shadow hover:border-black hover:bg-black hover:text-white"
-								>
-									{listing.oldPrice && (
-										<span className="font-semibold text-neutral-400 line-through">
-											{listing.priceCurrency}
-											{listing.oldPrice}
-										</span>
-									)}{' '}
-									{listing.priceCurrency}
-									{listing.price}
-									{types[listing.type]} {listing.oldPrice && <span className="text-sm font-semibold text-green-500">{percentOff}% off</span>}
+				<div className="mx-auto max-w-[600px] flex-1">
+					<div className="flex items-start gap-4" id="product">
+						<img src={listing.appIcon} alt={`${listing.appName} logo`} className="-ml-16 h-12 w-12 rounded-md" />
+						<div className="flex-1">
+							<div className="flex items-center gap-3">
+								<h4 className="text text-2xl font-bold text-black">{listing.appName}</h4>
+								<Link href={absoluteWebsiteURL} target="_blank">
+									<LinkSquare02Icon className="h-4 w-4 text-neutral-400" stroke="2.5" />
 								</Link>
-								<p className={`mt-2 text-sm font-medium ${color}`}>{message}</p>
 							</div>
 
-							<Link
-								href="https://tally.so/r/wzqjPR"
-								target="_blank"
-								className="mt-3 flex items-center gap-2 bg-transparent p-2 text-sm text-rose-500"
-							>
-								<Flag03Icon className="h-4 w-4" /> Report
-							</Link>
+							<p className="mt-1 leading-tight text-neutral-800">{listing.shortDescription}</p>
+
+							<div className="flex items-start justify-between">
+								<div className="flex w-1/2 flex-col items-center">
+									<Link
+										href={absoluteURL}
+										target="_blank"
+										className="mt-4 flex w-full items-center justify-center gap-3 rounded-full border border-neutral-200 px-16 py-2 font-bold text-black shadow hover:border-black hover:bg-black hover:text-white"
+									>
+										{listing.oldPrice && (
+											<span className="font-semibold text-neutral-400 line-through">
+												{listing.priceCurrency}
+												{listing.oldPrice}
+											</span>
+										)}{' '}
+										{listing.priceCurrency}
+										{listing.price}
+										{types[listing.type]}{' '}
+										{listing.oldPrice && <span className="text-sm font-semibold text-green-500">{percentOff}% off</span>}
+									</Link>
+									<p className={`mt-2 text-sm font-medium ${color}`}>{message}</p>
+								</div>
+
+								<Link
+									href="https://tally.so/r/wzqjPR"
+									target="_blank"
+									className="mt-3 flex items-center gap-2 bg-transparent p-2 text-sm text-rose-500"
+								>
+									<Flag03Icon className="h-4 w-4" /> Report
+								</Link>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<Carousel className="mt-10 w-full">
-					<CarouselContent>
-						{listing.youtubeURL && (
-							<CarouselItem>
-								<AspectRatio ratio={16 / 9}>
-									<iframe
-										width="100%"
-										height="100%"
-										src={`https://www.youtube.com/embed/${youtubeId}`}
-										title="YouTube video player"
-										allow="autoplay; encrypted-media;"
-										allowFullScreen
-										className="rounded-lg bg-neutral-100"
-									></iframe>
-								</AspectRatio>
-							</CarouselItem>
-						)}
-						{listing.image1 && (
-							<CarouselItem>
-								<AspectRatio ratio={16 / 9}>
-									<img
-										src={listing.image1}
-										alt="Listing image 1"
-										className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
-									/>
-								</AspectRatio>
-							</CarouselItem>
-						)}
-						{listing.image2 && (
-							<CarouselItem>
-								<AspectRatio ratio={16 / 9}>
-									<img
-										src={listing.image2}
-										alt="Listing image 2"
-										className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
-									/>
-								</AspectRatio>
-							</CarouselItem>
-						)}
-						{listing.image3 && (
-							<CarouselItem>
-								<AspectRatio ratio={16 / 9}>
-									<img
-										src={listing.image3}
-										alt="Listing image 3"
-										className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
-									/>
-								</AspectRatio>
-							</CarouselItem>
-						)}
-					</CarouselContent>
-					<CarouselPrevious />
-					<CarouselNext />
-				</Carousel>
+					<Carousel className="mt-10 w-full">
+						<CarouselContent>
+							{listing.youtubeURL && (
+								<CarouselItem>
+									<AspectRatio ratio={16 / 9}>
+										<iframe
+											width="100%"
+											height="100%"
+											src={`https://www.youtube.com/embed/${youtubeId}`}
+											title="YouTube video player"
+											allow="autoplay; encrypted-media;"
+											allowFullScreen
+											className="rounded-lg bg-neutral-100"
+										></iframe>
+									</AspectRatio>
+								</CarouselItem>
+							)}
+							{listing.image1 && (
+								<CarouselItem>
+									<AspectRatio ratio={16 / 9}>
+										<img
+											src={listing.image1}
+											alt="Listing image 1"
+											className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
+										/>
+									</AspectRatio>
+								</CarouselItem>
+							)}
+							{listing.image2 && (
+								<CarouselItem>
+									<AspectRatio ratio={16 / 9}>
+										<img
+											src={listing.image2}
+											alt="Listing image 2"
+											className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
+										/>
+									</AspectRatio>
+								</CarouselItem>
+							)}
+							{listing.image3 && (
+								<CarouselItem>
+									<AspectRatio ratio={16 / 9}>
+										<img
+											src={listing.image3}
+											alt="Listing image 3"
+											className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
+										/>
+									</AspectRatio>
+								</CarouselItem>
+							)}
+						</CarouselContent>
+						<CarouselPrevious />
+						<CarouselNext />
+					</Carousel>
 
-				<h4 className="mt-10 text-2xl font-bold text-black" id="intro" ref={introRef}>
-					Introduction
-				</h4>
-				<p className="mt-2 text-neutral-800">{listing.introduction}</p>
-				{/* <h4 className="mt-10 text-2xl font-bold text-black" id="comments" ref={commentsRef}>
+					<h4 className="mt-10 text-2xl font-bold text-black" id="intro" ref={introRef}>
+						Introduction
+					</h4>
+					<p className="mt-2 text-neutral-800">{listing.introduction}</p>
+					{/* <h4 className="mt-10 text-2xl font-bold text-black" id="comments" ref={commentsRef}>
 						Comments
 					</h4>
 					<Textarea name="comment" className="mt-2 w-full text-base" rows="4" placeholder="Add a comment" />
 					<div className="-ml-14 mt-6">
 						<Comment />
 					</div> */}
-			</div>
-			{/* <div className="w-1/4"> */}
-			{/* <div className="fixed flex flex-col gap-2 border-l border-fuchsia-100 py-4">
+				</div>
+				{/* <div className="w-1/4"> */}
+				{/* <div className="fixed flex flex-col gap-2 border-l border-fuchsia-100 py-4">
 						<button
 							onClick={() => {
 								scrollToElement('product', scrollRef);
@@ -243,8 +246,14 @@ export default function ProductListing({ listing }) {
 							Comments <span className="ml-3 text-sm">1</span>
 						</button>
 					</div> */}
-			{/* </div> */}
-			{/* </div> */}
+				{/* </div> */}
+				{/* </div> */}
+			</div>
+
+			<h2 className="w-full text-center text-2xl font-bold">Find More Deals</h2>
+			<div className="mb-16 mt-8 grid grid-cols-5 gap-6">
+				{suggestions.length > 0 && suggestions.map((listing, index) => <Listing listing={listing} key={listing.id} />)}
+			</div>
 		</div>
 	);
 }

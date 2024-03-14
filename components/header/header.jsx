@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/auth';
 import AddSquareIcon from '@/components/icons/add_square';
 import Notification03Icon from '@/components/icons/notification';
@@ -12,9 +12,19 @@ import UserAdd01Icon from '@/components/icons/user_add';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import Logout03Icon from '@/components/icons/logout';
 import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
+import { Input } from '../ui/input';
+import { useState } from 'react';
+import Search01Icon from '../icons/search';
 
 const Header = () => {
 	// const { user, logout } = useAuth({ middleware: 'guest' });
+	const router = useRouter();
+	const [search, setSearch] = useState('');
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (search) router.push(`/?q=${search}`);
+	};
 
 	return (
 		<header className="fixed left-0 right-0 top-0 z-10 border-b border-[#777]/10 bg-white/10 py-2 backdrop-blur-2xl backdrop-filter">
@@ -27,7 +37,18 @@ const Header = () => {
 						</div>
 					</Link>
 
-					<p className="mx-9 w-[400px] rounded-lg border border-[#666]/10 bg-[#f6f6f6]/10 px-3 py-1 font-medium text-[#888]">Search apps</p>
+					<form className="relative w-[400px]" onSubmit={handleSubmit}>
+						<input
+							type="text"
+							className="w-full rounded-lg border border-[#666]/10 bg-[#f6f6f6]/10 py-1 pl-3 pr-14 text-base font-medium text-black placeholder:text-neutral-800/50 focus-visible:border-fuchsia-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400/30 focus-visible:ring-offset-0"
+							placeholder="Search apps"
+							value={search}
+							onChange={(e) => setSearch(e.target.value)}
+						/>
+						<button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-800/30 hover:text-fuchsia-500">
+							<Search01Icon className="h-5 w-5" stroke="2" />
+						</button>
+					</form>
 
 					<div className="flex w-[100px] items-center">
 						<Link
