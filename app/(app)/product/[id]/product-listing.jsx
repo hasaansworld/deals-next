@@ -28,9 +28,9 @@ function getTimeLeftUntilDate(targetDateStr) {
 	const minutesLeft = Math.floor((differenceMs % (1000 * 60 * 60)) / (1000 * 60));
 
 	if (daysLeft > 0) {
-		return { message: `Ends in ${daysLeft} days`, color: 'text-amber-500' };
+		return { message: `Ends in ${daysLeft} days`, color: daysLeft > 7 ? 'text-amber-500' : 'text-rose-500' };
 	} else if (hoursLeft > 0) {
-		return { message: `Ends in ${hoursLeft} hours`, color: 'text-amber-500' };
+		return { message: `Ends in ${hoursLeft} hours`, color: 'text-rose-500' };
 	} else if (minutesLeft > 0) {
 		return { message: `Ends in ${minutesLeft} minutes`, color: 'text-rose-500' };
 	} else {
@@ -167,7 +167,7 @@ export default function ProductListing({ listing, suggestions }) {
 										<img
 											src={listing.image1}
 											alt="Listing image 1"
-											className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
+											className="h-full w-full cursor-pointer rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
 										/>
 									</AspectRatio>
 								</CarouselItem>
@@ -178,7 +178,7 @@ export default function ProductListing({ listing, suggestions }) {
 										<img
 											src={listing.image2}
 											alt="Listing image 2"
-											className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
+											className="h-full w-full cursor-pointer rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
 										/>
 									</AspectRatio>
 								</CarouselItem>
@@ -189,7 +189,7 @@ export default function ProductListing({ listing, suggestions }) {
 										<img
 											src={listing.image3}
 											alt="Listing image 3"
-											className="h-full w-full rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
+											className="h-full w-full cursor-pointer rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
 										/>
 									</AspectRatio>
 								</CarouselItem>

@@ -7,9 +7,15 @@ import Link from 'next/link';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import VerifyEmailPopover from '@/components/verify-email-popover/verify-email-popover';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import useSubmit from '@/hooks/submit';
 
 export default function Submit() {
 	const { user } = useAuth({ middleware: 'guest' });
+	const { data, error, isLoading } = useSubmit();
+	let count = 100;
+	if (!error && data) {
+		count = Math.max(0, count - data);
+	}
 
 	return (
 		<div className="flex flex-col items-center p-20">
@@ -33,7 +39,7 @@ export default function Submit() {
 					<VerifyEmailPopover user={user} />
 				</Popover>
 			)}
-			<p className="mt-2 text-xs font-medium text-neutral-400">98 free spots left</p>
+			<p className="mt-2 text-xs font-medium text-neutral-400">{error || isLoading || !data ? '...' : `${count} free spots left`}</p>
 
 			<div className="mt-12 grid w-3/5 grid-cols-3 gap-6">
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
@@ -55,37 +61,37 @@ export default function Submit() {
 
 			<div className="mt-32 w-3/5">
 				<h2 className="w-full text-center text-2xl font-bold">Frequently Asked Questions</h2>
-				<Accordion type="multiple" collapsible className="mt-6">
+				<Accordion type="multiple" collapsible="true" className="mt-6">
 					<AccordionItem value="item-1">
 						<AccordionTrigger className="text-xl font-semibold">Is listing on Appdeals really free?</AccordionTrigger>
-						<AccordionContent className="text-lg">
+						<AccordionContent className="text-lg text-neutral-600">
 							Yes, the first 100 deals can be submitted for free. After 100 deals, a small one time fee of 10 or 15 USD will be charged per
 							listing.
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-2">
 						<AccordionTrigger className="text-xl font-semibold">Does Appdeals charge any commision on deals?</AccordionTrigger>
-						<AccordionContent className="text-lg">
+						<AccordionContent className="text-lg text-neutral-600">
 							No, Appdeals only lists your deal and redirects the user to the checkout page on your own website. You handle all the payments while
 							we get nothing.
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-3">
 						<AccordionTrigger className="text-xl font-semibold">How long can I list my deal?</AccordionTrigger>
-						<AccordionContent className="text-lg">
+						<AccordionContent className="text-lg text-neutral-600">
 							Your deals can be listed for a maximum of 30 days. After 30 days, your deal will be automatically removed. However, you can resubmit
 							your deal when it expires.
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-4">
 						<AccordionTrigger className="text-xl font-semibold">How many deals can I submit?</AccordionTrigger>
-						<AccordionContent className="text-lg">
+						<AccordionContent className="text-lg text-neutral-600">
 							Currently, you can only submit 1 deal per day. We are working to increase this limit.
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-5">
 						<AccordionTrigger className="text-xl font-semibold">Can I edit my listings after submission?</AccordionTrigger>
-						<AccordionContent className="text-lg">
+						<AccordionContent className="text-lg text-neutral-600">
 							We&apos;re actively working on allowing you to edit your submissions and manage them using our API. In the meantime you can reachout
 							to us at{' '}
 							<Link href="mailto:support@appdeals.pro" className="text-fuchsia-500">
