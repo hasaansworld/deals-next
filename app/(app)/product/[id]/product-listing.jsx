@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { notFound } from 'next/navigation';
 import Listing from '@/components/listing/listing';
+import ListingImage from './listing-image';
 
 const scrollToElement = (id, ref) => {
 	const element = document.getElementById(id);
@@ -147,7 +148,7 @@ export default function ProductListing({ listing, suggestions }) {
 					<Carousel className="mt-10 w-full">
 						<CarouselContent>
 							{listing.youtubeURL && (
-								<CarouselItem>
+								<CarouselItem className={!listing.image1 && !listing.image2 && !listing.image3 ? '' : 'basis-11/12'}>
 									<AspectRatio ratio={16 / 9}>
 										<iframe
 											width="100%"
@@ -162,37 +163,13 @@ export default function ProductListing({ listing, suggestions }) {
 								</CarouselItem>
 							)}
 							{listing.image1 && (
-								<CarouselItem>
-									<AspectRatio ratio={16 / 9}>
-										<img
-											src={listing.image1}
-											alt="Listing image 1"
-											className="h-full w-full cursor-pointer rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
-										/>
-									</AspectRatio>
-								</CarouselItem>
+								<ListingImage src={listing.image1} index={listing.youtubeURL ? 1 : 0} alt={'Listing image 1'} listing={listing} />
 							)}
 							{listing.image2 && (
-								<CarouselItem>
-									<AspectRatio ratio={16 / 9}>
-										<img
-											src={listing.image2}
-											alt="Listing image 2"
-											className="h-full w-full cursor-pointer rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
-										/>
-									</AspectRatio>
-								</CarouselItem>
+								<ListingImage src={listing.image2} index={listing.youtubeURL ? 2 : 1} alt={'Listing image 2'} listing={listing} />
 							)}
 							{listing.image3 && (
-								<CarouselItem>
-									<AspectRatio ratio={16 / 9}>
-										<img
-											src={listing.image3}
-											alt="Listing image 3"
-											className="h-full w-full cursor-pointer rounded-xl border border-neutral-200 bg-neutral-100 object-cover"
-										/>
-									</AspectRatio>
-								</CarouselItem>
+								<ListingImage src={listing.image3} index={listing.youtubeURL ? 3 : 2} alt={'Listing image 3'} listing={listing} />
 							)}
 						</CarouselContent>
 						<CarouselPrevious />

@@ -10,7 +10,7 @@ export default async function Page({ searchParams }) {
 	return (
 		<>
 			<div className="flex w-full flex-col items-center px-10 py-10">
-				<h2 className={`mt-16 flex justify-center text-2xl font-bold text-black`}>
+				<h2 className={`mx-16 mt-16 flex justify-center text-2xl font-bold text-black`}>
 					{search ? `Search for "${search}"` : 'Best Software Deals And Discounts'}
 				</h2>
 				<p className="mb-14 text-gray-500">
