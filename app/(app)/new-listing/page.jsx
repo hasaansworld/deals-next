@@ -3,6 +3,9 @@ import NewTwitterIcon from '@/components/icons/new_twitter';
 import { canSubmit, getUser } from '@/lib/server';
 import ListingForm from './listing-form';
 
+// Opt out of caching for all data requests in the route segment
+export const dynamic = 'force-dynamic';
+
 export default async function NewListing() {
 	const user = await getUser();
 
