@@ -12,7 +12,8 @@ import useSubmit from '@/hooks/submit';
 export default function Submit() {
 	// const { user } = useAuth({ middleware: 'guest' });
 	const { count } = useSubmit();
-	const remaining = typeof count !== 'undefined' ? Math.max(0, 100 - count) : 100;
+	const hasCount = typeof count !== 'undefined';
+	const remaining = hasCount ? Math.max(0, 100 - count) : 100;
 
 	return (
 		<div className="flex flex-col items-center px-4 py-20 md:px-20">
@@ -38,7 +39,7 @@ export default function Submit() {
 					<VerifyEmailPopover user={user} />
 				</Popover>
 			)} */}
-			<p className="mt-2 text-xs font-medium text-neutral-400">{count ? `${remaining} free spots left` : '...'}</p>
+			<p className="mt-2 text-xs font-medium text-neutral-400">{hasCount ? `${remaining} free spots left` : '...'}</p>
 
 			<div className="lg:4/5 mx-8 mt-12 flex flex-col gap-6 md:grid md:grid-cols-3 xl:w-3/5">
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
