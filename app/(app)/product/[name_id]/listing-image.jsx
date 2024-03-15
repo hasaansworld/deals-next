@@ -26,7 +26,7 @@ export default function ListingImage({ src, alt, index, listing }) {
 				{/* <img src={src} alt={alt} className="h-[calc(100vh-4rem)] w-[calc(100vw-4rem)] rounded-xl object-contain" /> */}
 				<ImageCarousel listing={listing} index={index} />
 				<DialogClose className="absolute -right-14 -top-3 h-12 w-12" asChild>
-					<button>
+					<button className="focus:outline-none">
 						<Cancel01Icon className="h-12 w-12 rounded-full bg-black p-3 text-white" stroke="3" />
 					</button>
 				</DialogClose>
