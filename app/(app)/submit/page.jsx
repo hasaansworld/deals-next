@@ -18,9 +18,11 @@ export default function Submit() {
 	}
 
 	return (
-		<div className="flex flex-col items-center p-20">
-			<h1 className="mt-12 text-2xl font-bold text-black">Got Any Deals? Let&apos;s Add Them To Appdeals</h1>
-			<p className="text-center text-lg text-neutral-400">Share your offerings with the Appdeals community to drive sales and accelerate growth.</p>
+		<div className="flex flex-col items-center px-4 py-20 md:px-20">
+			<h1 className="mt-12 text-center text-lg font-bold text-black md:text-2xl">Got Any Deals? Let&apos;s Add Them To Appdeals</h1>
+			<p className="text-center text-sm text-neutral-400 md:text-lg">
+				Share your offerings with the Appdeals community to drive sales and accelerate growth.
+			</p>
 			{(!user || user.email_verified_at) && (
 				<Link
 					href="/new-listing"
@@ -41,7 +43,7 @@ export default function Submit() {
 			)}
 			<p className="mt-2 text-xs font-medium text-neutral-400">{error || isLoading || !data ? '...' : `${count} free spots left`}</p>
 
-			<div className="mt-12 grid w-3/5 grid-cols-3 gap-6">
+			<div className="lg:4/5 mx-8 mt-12 flex flex-col gap-6 md:grid md:grid-cols-3 xl:w-3/5">
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
 					<img src="/graphics/reach_more_people.svg" alt="Reach More People" className="w-full rounded-lg border border-[#eee]" />
 					<h3 className="mt-4 font-bold text-black">Reach More People</h3>
@@ -59,38 +61,40 @@ export default function Submit() {
 				</div>
 			</div>
 
-			<div className="mt-32 w-3/5">
+			<div className="mt-32 w-full md:w-5/6 lg:w-4/5 xl:w-3/5">
 				<h2 className="w-full text-center text-2xl font-bold">Frequently Asked Questions</h2>
 				<Accordion type="multiple" collapsible="true" className="mt-6">
 					<AccordionItem value="item-1">
-						<AccordionTrigger className="text-xl font-semibold">Is listing on Appdeals really free?</AccordionTrigger>
-						<AccordionContent className="text-lg text-neutral-600">
+						<AccordionTrigger className="text-start text-lg font-semibold md:text-xl">Is listing on Appdeals really free?</AccordionTrigger>
+						<AccordionContent className="text-base text-neutral-600 md:text-lg">
 							Yes, the first 100 deals can be submitted for free. After 100 deals, a one time fee of 10 or 15 USD will be charged per listing.
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-2">
-						<AccordionTrigger className="text-xl font-semibold">Does Appdeals charge any commision on deals?</AccordionTrigger>
-						<AccordionContent className="text-lg text-neutral-600">
+						<AccordionTrigger className="text-start text-lg font-semibold md:text-xl">
+							Does Appdeals charge any commision on deals?
+						</AccordionTrigger>
+						<AccordionContent className="text-base text-neutral-600 md:text-lg">
 							No, Appdeals only lists your deal and redirects the user to the checkout page on your own website. You handle all the payments while
 							we get nothing.
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-3">
-						<AccordionTrigger className="text-xl font-semibold">How long can I list my deal?</AccordionTrigger>
-						<AccordionContent className="text-lg text-neutral-600">
+						<AccordionTrigger className="text-start text-lg font-semibold md:text-xl">How long can I list my deal?</AccordionTrigger>
+						<AccordionContent className="text-base text-neutral-600 md:text-lg">
 							Your deals can be listed for a maximum of 30 days. After 30 days, your deal will be automatically removed. However, you can resubmit
 							your deal when it expires.
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-4">
-						<AccordionTrigger className="text-xl font-semibold">How many deals can I submit?</AccordionTrigger>
-						<AccordionContent className="text-lg text-neutral-600">
+						<AccordionTrigger className="text-start text-lg font-semibold md:text-xl">How many deals can I submit?</AccordionTrigger>
+						<AccordionContent className="text-base text-neutral-600 md:text-lg">
 							Currently, you can only submit 1 deal per day. We are working to increase this limit.
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-5">
-						<AccordionTrigger className="text-xl font-semibold">Can I edit my listings after submission?</AccordionTrigger>
-						<AccordionContent className="text-lg text-neutral-600">
+						<AccordionTrigger className="text-start text-lg font-semibold md:text-xl">Can I edit my listings after submission?</AccordionTrigger>
+						<AccordionContent className="text-base text-neutral-600 md:text-lg">
 							We&apos;re actively working on allowing you to edit your submissions and manage them using our API. In the meantime you can reachout
 							to us at{' '}
 							<Link href="mailto:support@appdeals.pro" className="text-fuchsia-500">

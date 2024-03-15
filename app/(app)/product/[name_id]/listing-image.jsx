@@ -22,12 +22,12 @@ export default function ListingImage({ src, alt, index, listing }) {
 					</AspectRatio>
 				</CarouselItem>
 			</DialogTrigger>
-			<DialogContent className="h-[calc(100vh-4rem)] !max-w-[calc(100vw-8rem)] !rounded-xl border-0 bg-black p-0" closeHidden>
+			<DialogContent className="h-[40vh] w-full !rounded-xl border-0 bg-black p-0 md:h-[calc(100vh-4rem)] md:!max-w-[calc(100vw-8rem)]" closeHidden>
 				{/* <img src={src} alt={alt} className="h-[calc(100vh-4rem)] w-[calc(100vw-4rem)] rounded-xl object-contain" /> */}
 				<ImageCarousel listing={listing} index={index} />
-				<DialogClose className="absolute -right-14 -top-3 h-12 w-12" asChild>
+				<DialogClose className="absolute -top-16 right-3 h-8 w-8 md:-right-14 md:-top-3 md:h-12 md:w-12" asChild>
 					<button className="focus:outline-none">
-						<Cancel01Icon className="h-12 w-12 rounded-full bg-black p-3 text-white" stroke="3" />
+						<Cancel01Icon className="h-8 w-8 rounded-full bg-black p-2 text-white md:h-12 md:w-12 md:p-3" stroke="3" />
 					</button>
 				</DialogClose>
 			</DialogContent>
@@ -53,10 +53,10 @@ function ImageCarousel({ listing, index = 0 }) {
 	}, [api, index]);
 
 	return (
-		<Carousel className="mx-auto h-[calc(100vh-4rem)] w-[calc(100vw-8rem)] rounded-xl bg-black" setApi={setApi}>
+		<Carousel className="mx-auto h-[40vh] w-full rounded-xl bg-black md:h-[calc(100vh-4rem)] md:w-[calc(100vw-8rem)]" setApi={setApi}>
 			<CarouselContent>
 				{listing.youtubeURL && (
-					<CarouselItem className="flex h-[calc(100vh-4rem)] items-center justify-center">
+					<CarouselItem className="flex h-[40vh] items-center justify-center md:h-[calc(100vh-4rem)]">
 						<AspectRatio ratio={16 / 9}>
 							<iframe
 								width="100%"
@@ -71,17 +71,17 @@ function ImageCarousel({ listing, index = 0 }) {
 					</CarouselItem>
 				)}
 				{listing.image1 && (
-					<CarouselItem className="h-[calc(100vh-4rem)] w-[calc(100vw-8rem)]">
+					<CarouselItem className="h-[40vh] w-full md:h-[calc(100vh-4rem)] md:w-[calc(100vw-8rem)]">
 						<img src={listing.image1} alt="Listing Image 1" className="h-full w-full rounded-xl object-contain" />
 					</CarouselItem>
 				)}
 				{listing.image2 && (
-					<CarouselItem className="h-[calc(100vh-4rem)] w-[calc(100vw-8rem)]">
+					<CarouselItem className="h-[40vh] w-full md:h-[calc(100vh-4rem)] md:w-[calc(100vw-8rem)]">
 						<img src={listing.image2} alt="Listing Image 2" className="h-full w-full rounded-xl object-contain" />
 					</CarouselItem>
 				)}
 				{listing.image3 && (
-					<CarouselItem className="h-[calc(100vh-4rem)] w-[calc(100vw-8rem)]">
+					<CarouselItem className="h-[40vh] w-full md:h-[calc(100vh-4rem)] md:w-[calc(100vw-8rem)]">
 						<img src={listing.image3} alt="Listing Image 3" className="h-full w-full rounded-xl object-contain" />
 					</CarouselItem>
 				)}

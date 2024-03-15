@@ -27,9 +27,9 @@ const Header = () => {
 	};
 
 	return (
-		<header className="fixed left-0 right-0 top-0 z-10 border-b border-[#777]/10 bg-white/10 py-2 backdrop-blur-2xl backdrop-filter">
+		<header className="fixed left-0 right-0 top-0 z-10 border-b border-[#777]/10 bg-white/50 py-2 backdrop-blur-2xl backdrop-filter">
 			<nav>
-				<div className="flex items-center justify-center gap-32 px-6">
+				<div className="flex items-center justify-between gap-24 px-6 md:justify-center md:gap-32">
 					<Link href="/">
 						<div className="flex w-[100px] items-center gap-2">
 							<img src="/logo.svg" alt="Logo" className="h-6 w-6" />
@@ -37,7 +37,7 @@ const Header = () => {
 						</div>
 					</Link>
 
-					<form className="relative w-[400px]" onSubmit={handleSubmit}>
+					<form className="relative hidden w-[400px] md:block" onSubmit={handleSubmit}>
 						<input
 							type="text"
 							className="w-full rounded-lg border border-[#666]/10 bg-[#f6f6f6]/10 py-1 pl-3 pr-14 text-base font-medium text-black placeholder:text-neutral-800/50 focus-visible:border-fuchsia-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400/30 focus-visible:ring-offset-0"
