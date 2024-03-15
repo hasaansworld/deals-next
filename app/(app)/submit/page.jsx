@@ -16,7 +16,7 @@ export default function Submit() {
 	if (!error && data) {
 		count = Math.max(0, count - data);
 	}
-	console.log('Free listings left:', data);
+	console.log('Free listings left:', data, error, isLoading);
 
 	return (
 		<div className="flex flex-col items-center px-4 py-20 md:px-20">
