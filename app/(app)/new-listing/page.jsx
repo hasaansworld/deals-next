@@ -1,12 +1,18 @@
 import Link from 'next/link';
 import NewTwitterIcon from '@/components/icons/new_twitter';
-import { getUser } from '@/lib/server';
+import { canSubmit, getUser } from '@/lib/server';
 import ListingForm from './listing-form';
 
 export default async function NewListing() {
 	const user = await getUser();
 
 	if (user && user.id) {
+		const { userCanSubmit } = await canSubmit();
+
+		if (!userCanSubmit) {
+			return <div className="flex h-full w-full flex-col items-center justify-center py-40">Can&apos;t Submit, sorry!</div>;
+		}
+
 		return <ListingForm user={user} />;
 	}
 
