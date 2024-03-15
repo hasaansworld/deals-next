@@ -10,7 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import useSubmit from '@/hooks/submit';
 
 export default function Submit() {
-	const { user } = useAuth({ middleware: 'guest' });
+	// const { user } = useAuth({ middleware: 'guest' });
 	const { count } = useSubmit();
 	const remaining = count ? Math.max(0, 100 - count) : 100;
 
@@ -20,14 +20,14 @@ export default function Submit() {
 			<p className="text-center text-sm text-neutral-400 md:text-lg">
 				Share your offerings with the Appdeals community to drive sales and accelerate growth.
 			</p>
-			{(!user || user.email_verified_at) && (
-				<Link
-					href="/new-listing"
-					className="mt-8 flex items-center gap-1 rounded-full bg-fuchsia-500 px-8 py-2 font-medium text-white hover:ring-4 hover:ring-fuchsia-200"
-				>
-					Submit For Free <ArrowRight02Icon className="h-5 w-5" stroke="2" />
-				</Link>
-			)}
+			{/* {(!user || user.email_verified_at) && ( */}
+			<Link
+				href="/new-listing"
+				className="mt-8 flex items-center gap-1 rounded-full bg-fuchsia-500 px-8 py-2 font-medium text-white hover:ring-4 hover:ring-fuchsia-200"
+			>
+				Submit For Free <ArrowRight02Icon className="h-5 w-5" stroke="2" />
+			</Link>
+			{/* )} */}
 			{/* {user && !user.email_verified_at && (
 				<Popover>
 					<PopoverTrigger asChild>
