@@ -58,12 +58,7 @@ const Header = () => {
 							<AddSquareIcon className="h-4 w-4" stroke="2.5" />
 							Submit
 						</Link>
-						{user && (
-							<Avatar className="h-8 w-8 cursor-pointer">
-								<AvatarImage src={user.profile_picture} alt="Profile Picture" />
-								<AvatarFallback>{user.name.substring(0, 1).toUpperCase()}</AvatarFallback>
-							</Avatar>
-						)}
+
 						{/* {user ? (
 							<>
 								<Notification03Icon className="h-5 w-5 text-black" stroke="2" />
