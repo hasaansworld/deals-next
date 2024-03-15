@@ -9,7 +9,7 @@ export const revalidate = 0;
 
 export default async function NewListing() {
 	const user = await getUser();
-	console.log(user);
+	console.log('User: ', user);
 
 	if (user && user.id) {
 		const { userCanSubmit } = await canSubmit();
