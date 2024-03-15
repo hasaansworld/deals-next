@@ -65,8 +65,7 @@ export default function Submit() {
 					<AccordionItem value="item-1">
 						<AccordionTrigger className="text-xl font-semibold">Is listing on Appdeals really free?</AccordionTrigger>
 						<AccordionContent className="text-lg text-neutral-600">
-							Yes, the first 100 deals can be submitted for free. After 100 deals, a small one time fee of 10 or 15 USD will be charged per
-							listing.
+							Yes, the first 100 deals can be submitted for free. After 100 deals, a one time fee of 10 or 15 USD will be charged per listing.
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-2">
