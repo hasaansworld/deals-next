@@ -33,7 +33,7 @@ export default function Listing({ listing }) {
 	}
 
 	return (
-		<div onClick={() => router.push(`/product/${listing.nameId}`)}>
+		<div onClick={() => router.push(`/product/${listing.nameId}`)} className="h-full">
 			<div className="flex h-full w-full cursor-pointer flex-col rounded-lg border border-[#eee] bg-white">
 				<AspectRatio ratio={16 / 9}>
 					{listing.youtubeURL && (
