@@ -4,8 +4,8 @@ import { canSubmit, getUser } from '@/lib/server';
 import ListingForm from './listing-form';
 import TimeQuarterPassIcon from '@/components/icons/time_quarter_pass';
 
-// Opt out of caching for all data requests in the route segment
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function NewListing() {
 	const user = await getUser();
