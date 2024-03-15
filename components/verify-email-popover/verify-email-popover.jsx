@@ -8,7 +8,7 @@ export default function VerifyEmailPopover({ user }) {
 			<Mail01Icon className="h-5 w-5" stroke="2" />
 			<h4 className="font-bold">Verify your email first</h4>
 			<p className="text-center text-sm text-green-600">
-				We've sent a verification link at <b>{user.email}</b>, please use that to continue.
+				We&apos;ve sent a verification link at <b>{user.email}</b>, please use that to continue.
 			</p>
 		</PopoverContent>
 	);

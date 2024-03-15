@@ -58,7 +58,7 @@ export default function Login() {
 		} else {
 			setStatus(null);
 		}
-	});
+	}, [router.reset, errors.length]);
 
 	return (
 		<div className="mx-auto flex h-full w-full max-w-max flex-col items-center justify-center p-10">
