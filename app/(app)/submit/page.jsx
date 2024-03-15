@@ -8,6 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import VerifyEmailPopover from '@/components/verify-email-popover/verify-email-popover';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import useSubmit from '@/hooks/submit';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 export default function Submit() {
 	// const { user } = useAuth({ middleware: 'guest' });
@@ -43,17 +44,23 @@ export default function Submit() {
 
 			<div className="lg:4/5 mx-8 mt-12 flex flex-col gap-6 md:grid md:grid-cols-3 xl:w-3/5">
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
-					<img src="/graphics/reach_more_people.svg" alt="Reach More People" className="w-full rounded-lg border border-[#eee]" />
+					<AspectRatio ratio={4 / 3} className="h-auto w-full">
+						<img src="/graphics/reach_more_people.svg" alt="Reach More People" className="w-full rounded-lg border border-[#eee]" />
+					</AspectRatio>
 					<h3 className="mt-4 font-bold text-black">Reach More People</h3>
 					<p className="text-neural-600 mt-2 px-2 text-center text-sm">Let more people know about your deals to increase sales</p>
 				</div>
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
-					<img src="/graphics/zero_commission.svg" alt="Zero Commission" className="w-full rounded-lg border border-[#eee]" />
+					<AspectRatio ratio={4 / 3} className="h-auto w-full">
+						<img src="/graphics/zero_commission.svg" alt="Zero Commission" className="w-full rounded-lg border border-[#eee]" />
+					</AspectRatio>
 					<h3 className="mt-4 font-bold text-black">Zero Commission</h3>
 					<p className="text-neural-600 mt-2 px-2 text-center text-sm">All payments happen on your own website so we get nothing</p>
 				</div>
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
-					<img src="/graphics/scale_your_business.svg" alt="Scale Your Business" className="w-full rounded-lg border border-[#eee]" />
+					<AspectRatio ratio={4 / 3} className="h-auto w-full">
+						<img src="/graphics/scale_your_business.svg" alt="Scale Your Business" className="w-full rounded-lg border border-[#eee]" />
+					</AspectRatio>
 					<h3 className="mt-4 font-bold text-black">Drive Business Growth</h3>
 					<p className="text-neural-600 mt-2 px-2 text-center text-sm">Get the capital and feedback you need to reach the next level</p>
 				</div>
