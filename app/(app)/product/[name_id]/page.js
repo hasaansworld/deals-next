@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
 
 export default async function Product({ params }) {
 	const { data: details } = await getListingDetails(params.name_id);
-	const { data: random } = await getRandomListings();
+	const { data: random } = await getRandomListings(params.name_id);
 
 	return <ProductListing listing={details} suggestions={random} />;
 }
