@@ -108,8 +108,8 @@ export default function ListingForm({ user }) {
 
 	if (success) {
 		return (
-			<div className="w-full pt-32">
-				<div className="mx-auto flex w-[600px] flex-col items-center pb-60">
+			<div className="w-full px-4 pt-32 md:px-0">
+				<div className="flex w-full flex-col items-center pb-60 md:mx-auto md:w-[600px]">
 					<div className="flex w-full flex-col items-center py-40">
 						<CheckmarkCircle03Icon className="h-12 w-12 text-green-500" />
 						<h1 className="mt-8 text-center text-2xl font-bold text-black">Deal Submitted</h1>
@@ -123,19 +123,19 @@ export default function ListingForm({ user }) {
 	}
 
 	return (
-		<div className="w-full pb-60 pt-32">
-			<div className="mx-auto w-[600px]">
+		<div className="w-full px-4 pb-60 pt-32 md:px-0">
+			<div className="w-full md:mx-auto md:w-[600px]">
 				<div className="w-full">
 					<h1 className="text-2xl font-bold text-black">New Listing</h1>
 					<p className="mt-1 text-neutral-400">Please provide the following information about your deal</p>
 				</div>
 
 				<form className="mt-14 flex w-full flex-col" onSubmit={formik.handleSubmit}>
-					<div className="flex items-start gap-12">
+					<div className="flex items-start gap-6 md:gap-12">
 						<div className="flex flex-col items-center gap-1">
 							<div
 								onClick={() => iconFile.current.click()}
-								className={`relative flex h-24 w-24 cursor-pointer items-center justify-center rounded-xl border ${
+								className={`relative flex h-16 w-16 cursor-pointer items-center justify-center rounded-xl border md:h-24 md:w-24 ${
 									formik.values.iconFile ? '' : 'p-4'
 								} ${
 									formik.submitCount > 0 && formik.errors.iconFile ? 'border-rose-500 ring-rose-100' : 'border-neutral-200 ring-neutral-100'
@@ -226,7 +226,7 @@ export default function ListingForm({ user }) {
 						Images *
 					</Label>
 					<p className={`text-sm ${formik.submitCount > 0 && formik.errors.image1 ? 'text-rose-500' : 'text-neutral-400'}`}>At least 1 required </p>
-					<div className="mt-2 grid grid-cols-3 gap-6">
+					<div className="mt-2 grid grid-cols-2 gap-6 md:grid-cols-3">
 						<ImageUpload formik={formik} name="image1" error={formik.submitCount > 0 && formik.errors.image1} />
 						<ImageUpload formik={formik} name="image2" />
 						<ImageUpload formik={formik} name="image3" />

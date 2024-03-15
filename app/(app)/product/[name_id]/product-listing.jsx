@@ -114,7 +114,7 @@ export default function ProductListing({ listing, suggestions }) {
 							<p className="mt-1 leading-tight text-neutral-800">{listing.shortDescription}</p>
 
 							<div className="-ml-16 flex items-start justify-between gap-2 md:ml-0">
-								<div className="flex flex-1 flex-col items-center md:w-1/2">
+								<div className="flex flex-col items-center max-sm:flex-1 md:w-1/2">
 									<Link
 										href={absoluteURL}
 										target="_blank"

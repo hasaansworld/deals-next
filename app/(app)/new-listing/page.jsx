@@ -2,6 +2,7 @@ import Link from 'next/link';
 import NewTwitterIcon from '@/components/icons/new_twitter';
 import { canSubmit, getUser } from '@/lib/server';
 import ListingForm from './listing-form';
+import TimeQuarterPassIcon from '@/components/icons/time_quarter_pass';
 
 // Opt out of caching for all data requests in the route segment
 export const dynamic = 'force-dynamic';
@@ -13,7 +14,16 @@ export default async function NewListing() {
 		const { userCanSubmit } = await canSubmit();
 
 		if (!userCanSubmit) {
-			return <div className="flex h-full w-full flex-col items-center justify-center py-40">Can&apos;t Submit, sorry!</div>;
+			return (
+				<div className="flex h-[90vh] w-full flex-col items-center justify-center px-4 py-40">
+					<TimeQuarterPassIcon className="h-10 w-10 text-rose-600" stroke="2" />
+					<h2 className="mt-8 text-2xl font-bold">Daily Submission Limit Reached</h2>
+					<p className="mx-4 mt-2 w-full text-center text-lg text-neutral-600 md:mx-0 md:w-[400px]">
+						Currently, you can only submit one deal per day but we&apos;re working hard to increase this limit. Please check back tomorrow to add
+						another deal.
+					</p>
+				</div>
+			);
 		}
 
 		return <ListingForm user={user} />;
