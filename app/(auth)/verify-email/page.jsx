@@ -1,4 +1,4 @@
-import getUser from '@/lib/server';
+import { getUser } from '@/lib/server';
 
 export default async function VerifyEmail() {
 	const user = await getUser();
