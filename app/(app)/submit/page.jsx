@@ -11,11 +11,8 @@ import useSubmit from '@/hooks/submit';
 
 export default function Submit() {
 	const { user } = useAuth({ middleware: 'guest' });
-	const { data, error, isLoading } = useSubmit();
-	let count = 100;
-	if (!error && data) {
-		count = Math.max(0, count - data);
-	}
+	const { count } = useSubmit();
+	const remaining = count ? Math.max(0, 100 - count) : 100;
 
 	return (
 		<div className="flex flex-col items-center px-4 py-20 md:px-20">
@@ -31,7 +28,7 @@ export default function Submit() {
 					Submit For Free <ArrowRight02Icon className="h-5 w-5" stroke="2" />
 				</Link>
 			)}
-			{user && !user.email_verified_at && (
+			{/* {user && !user.email_verified_at && (
 				<Popover>
 					<PopoverTrigger asChild>
 						<div className="mt-8 flex cursor-pointer items-center gap-1 rounded-full bg-fuchsia-500 px-8 py-2 font-medium text-white hover:ring-4 hover:ring-fuchsia-200">
@@ -40,8 +37,8 @@ export default function Submit() {
 					</PopoverTrigger>
 					<VerifyEmailPopover user={user} />
 				</Popover>
-			)}
-			<p className="mt-2 text-xs font-medium text-neutral-400">{error || isLoading || !data ? '...' : `${count} free spots left`}</p>
+			)} */}
+			<p className="mt-2 text-xs font-medium text-neutral-400">{!data ? '...' : `${remaining} free spots left`}</p>
 
 			<div className="lg:4/5 mx-8 mt-12 flex flex-col gap-6 md:grid md:grid-cols-3 xl:w-3/5">
 				<div className="flex w-full flex-col items-center rounded-xl border border-neutral-200 p-4">
