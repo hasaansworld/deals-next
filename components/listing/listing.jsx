@@ -9,6 +9,7 @@ export default function Listing({ listing }) {
 
 	const types = {
 		lifetime: ' Lifetime',
+		per_year: '/year',
 		per_month: '/month',
 		per_week: '/week',
 		per_use: '/use',

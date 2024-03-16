@@ -72,6 +72,7 @@ export default function ProductListing({ listing, suggestions }) {
 
 	const types = {
 		lifetime: ' Lifetime',
+		per_year: '/year',
 		per_month: '/month',
 		per_week: '/week',
 		per_use: '/use',
