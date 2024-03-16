@@ -188,7 +188,7 @@ export default function ProductListing({ listing, suggestions }) {
 					<h4 className="mt-10 text-2xl font-bold text-black" id="intro" ref={introRef}>
 						Introduction
 					</h4>
-					<p className="mt-2 text-neutral-800">{listing.introduction}</p>
+					<p className="mt-2 whitespace-pre text-neutral-800">{listing.introduction}</p>
 					{/* <h4 className="mt-10 text-2xl font-bold text-black" id="comments" ref={commentsRef}>
 						Comments
 					</h4>
