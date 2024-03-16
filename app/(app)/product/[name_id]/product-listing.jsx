@@ -101,7 +101,7 @@ export default function ProductListing({ listing, suggestions }) {
 			<div className="w-full pb-40 pt-24 md:px-6" ref={scrollRef} onScroll={handleScroll}>
 				{/* <div className="flex items-start gap-16">
 				<div className="w-1/4"></div> */}
-				<div className="mx-auto max-w-[600px] flex-1">
+				<div className="mx-auto max-w-[600px] flex-1 lg:max-w-[700px]">
 					<div className="flex items-start gap-4" id="product">
 						<img src={listing.appIcon} alt={`${listing.appName} logo`} className="h-12 w-12 rounded-md md:-ml-16" />
 						<div className="flex-1">
@@ -115,11 +115,11 @@ export default function ProductListing({ listing, suggestions }) {
 							<p className="mt-1 leading-tight text-neutral-800">{listing.shortDescription}</p>
 
 							<div className="-ml-16 flex items-start justify-between gap-2 md:ml-0">
-								<div className="flex flex-col items-center max-sm:flex-1 md:w-1/2">
+								<div className="flex flex-col items-center max-sm:flex-1 md:w-1/2 lg:w-3/5">
 									<Link
 										href={absoluteURL}
 										target="_blank"
-										className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-neutral-400 px-3 py-2 font-bold text-black shadow hover:border-black hover:bg-black hover:text-white md:gap-3 md:px-16"
+										className="mt-4 flex w-full items-center justify-center gap-2 rounded-full border border-neutral-400 px-3 py-2 text-lg font-bold text-black shadow hover:border-black hover:bg-black hover:text-white md:gap-3 md:px-16"
 									>
 										{listing.oldPrice && (
 											<span className="font-semibold text-neutral-400 line-through">

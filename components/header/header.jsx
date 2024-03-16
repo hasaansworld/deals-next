@@ -31,7 +31,7 @@ const Header = () => {
 			<nav>
 				<div className="flex items-center justify-between gap-24 px-6 md:justify-center md:gap-32">
 					<Link href="/">
-						<div className="flex w-[100px] items-center gap-2">
+						<div className="flex items-center gap-2">
 							<img src="/logo.svg" alt="Logo" className="h-6 w-6" />
 							<h1 className="text-xl font-semibold text-black">Appdeals</h1>
 						</div>
@@ -50,7 +50,7 @@ const Header = () => {
 						</button>
 					</form>
 
-					<div className="flex w-[100px] items-center">
+					<div className="flex items-center">
 						<Link
 							href="/submit"
 							className="flex items-center gap-2 rounded-full bg-fuchsia-500 px-4 py-1 font-medium text-white hover:ring-4 hover:ring-fuchsia-200"
