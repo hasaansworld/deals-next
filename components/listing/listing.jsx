@@ -35,7 +35,7 @@ export default function Listing({ listing }) {
 
 	return (
 		<div onClick={() => router.push(`/product/${listing.nameId}`)} className="h-full">
-			<div className="flex h-full w-full cursor-pointer flex-col rounded-xl border border-neutral-200 bg-white">
+			<div className="flex h-full w-full cursor-pointer flex-col rounded-xl border border-neutral-300 bg-white">
 				<AspectRatio ratio={16 / 9}>
 					{listing.youtubeURL && (
 						<iframe
@@ -52,26 +52,26 @@ export default function Listing({ listing }) {
 						<img
 							src={listing.image1 ? listing.image1 : listing.image2 ? listing.image2 : listing.image3}
 							alt="Loom banner"
-							className="h-full w-full rounded-t-lg bg-neutral-100 object-cover"
+							className="h-full w-full rounded-t-xl bg-neutral-100 object-cover"
 						/>
 					)}
 				</AspectRatio>
 				<div className="flex items-start gap-4 p-3">
 					<img src={listing.appIcon} alt="Loom logo" className="h-12 w-12 rounded-md" />
 					<div>
-						<h4 className="text font-semibold text-black">{listing.appName}</h4>
-						<p className={`line-clamp-3 text-sm leading-tight text-neutral-600`}>{listing.shortDescription}</p>
+						<h4 className="text text-lg font-semibold text-black">{listing.appName}</h4>
+						<p className={`text line-clamp-3 leading-tight text-neutral-600`}>{listing.shortDescription}</p>
 					</div>
 				</div>
 				<span className="w-full flex-1"></span>
 
-				<div className="relative rounded-b-xl border-t border-neutral-200">
+				<div className="relative rounded-b-xl border-t border-neutral-300">
 					<div
 						onClick={(e) => {
 							e.stopPropagation();
 							window.open(absoluteUrl, '_blank');
 						}}
-						className="flex w-full items-center justify-center gap-5 rounded-b-xl py-3 font-bold text-black hover:border-black hover:bg-black hover:text-white"
+						className="flex w-full items-center justify-center gap-5 rounded-b-xl py-3 text-lg font-bold text-black hover:border-black hover:bg-black hover:text-white"
 					>
 						{listing.oldPrice && (
 							<span className="font-semibold text-neutral-400 line-through">

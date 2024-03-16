@@ -30,7 +30,7 @@ export default async function NewListing() {
 	}
 
 	return (
-		<div className="flex h-full w-full flex-col items-center justify-center py-40">
+		<div className="flex h-full w-full flex-col items-center justify-center px-4 py-40">
 			<h1 className="text-2xl font-bold text-black">New Listing</h1>
 			<p className="mt-1 text-center text-lg text-neutral-600">Please connect one of the following accounts to get started</p>
 			<div className="mt-6 w-80">

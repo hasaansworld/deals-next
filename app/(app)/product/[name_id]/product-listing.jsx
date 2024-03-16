@@ -112,7 +112,7 @@ export default function ProductListing({ listing, suggestions }) {
 								</Link>
 							</div>
 
-							<p className="mt-1 leading-tight text-neutral-800">{listing.shortDescription}</p>
+							<p className="mt-1 text-lg leading-tight text-neutral-800">{listing.shortDescription}</p>
 
 							<div className="-ml-16 flex items-start justify-between gap-2 md:ml-0">
 								<div className="flex flex-col items-center max-sm:flex-1 md:w-1/2 lg:w-3/5">
@@ -189,7 +189,7 @@ export default function ProductListing({ listing, suggestions }) {
 					<h4 className="mt-10 text-2xl font-bold text-black" id="intro" ref={introRef}>
 						Introduction
 					</h4>
-					<p className="mt-2 whitespace-pre-wrap text-neutral-800">{listing.introduction}</p>
+					<p className="mt-2 whitespace-pre-wrap text-lg text-neutral-800">{listing.introduction}</p>
 					{/* <h4 className="mt-10 text-2xl font-bold text-black" id="comments" ref={commentsRef}>
 						Comments
 					</h4>
