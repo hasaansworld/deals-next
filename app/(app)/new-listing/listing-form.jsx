@@ -348,6 +348,7 @@ export default function ListingForm({ user }) {
 								<SelectContent>
 									<SelectGroup>
 										<SelectItem value="lifetime">Lifetime</SelectItem>
+										<SelectItem value="per_year">Per year</SelectItem>
 										<SelectItem value="per_month">Per month</SelectItem>
 										<SelectItem value="per_week">Per week</SelectItem>
 										<SelectItem value="per_use">Per use</SelectItem>
