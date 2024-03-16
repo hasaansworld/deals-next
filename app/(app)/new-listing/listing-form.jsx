@@ -241,7 +241,7 @@ export default function ListingForm({ user }) {
 						name="introduction"
 						maxLength="3000"
 						placeholder="Introduce your app in as much detail as you can"
-						className={`mt-1 whitespace-pre text-base ${formik.submitCount > 0 && formik.errors.introduction ? 'border-rose-500' : ''}`}
+						className={`mt-1 whitespace-pre-wrap text-base ${formik.submitCount > 0 && formik.errors.introduction ? 'border-rose-500' : ''}`}
 						rows="15"
 						value={formik.values.introduction}
 						onChange={formik.handleChange}
