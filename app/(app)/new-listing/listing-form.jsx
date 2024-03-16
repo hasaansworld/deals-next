@@ -239,7 +239,7 @@ export default function ListingForm({ user }) {
 						type="text"
 						id="introduction"
 						name="introduction"
-						maxLength="2000"
+						maxLength="3000"
 						placeholder="Introduce your app in as much detail as you can"
 						className={`mt-1 text-base ${formik.submitCount > 0 && formik.errors.introduction ? 'border-rose-500' : ''}`}
 						rows="15"
