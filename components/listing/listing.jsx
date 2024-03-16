@@ -35,7 +35,7 @@ export default function Listing({ listing }) {
 
 	return (
 		<div onClick={() => router.push(`/product/${listing.nameId}`)} className="h-full">
-			<div className="flex h-full w-full cursor-pointer flex-col rounded-lg border border-[#eee] bg-white">
+			<div className="flex h-full w-full cursor-pointer flex-col rounded-xl border border-neutral-200 bg-white">
 				<AspectRatio ratio={16 / 9}>
 					{listing.youtubeURL && (
 						<iframe
@@ -65,13 +65,13 @@ export default function Listing({ listing }) {
 				</div>
 				<span className="w-full flex-1"></span>
 
-				<div className="relative px-3 pb-3">
+				<div className="relative rounded-b-xl border-t border-neutral-200">
 					<div
 						onClick={(e) => {
 							e.stopPropagation();
 							window.open(absoluteUrl, '_blank');
 						}}
-						className="flex w-full items-center justify-center gap-5 rounded-full border border-neutral-200 py-2 font-bold text-black hover:border-black hover:bg-black hover:text-white"
+						className="flex w-full items-center justify-center gap-5 rounded-b-xl py-3 font-bold text-black hover:border-black hover:bg-black hover:text-white"
 					>
 						{listing.oldPrice && (
 							<span className="font-semibold text-neutral-400 line-through">
