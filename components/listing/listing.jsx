@@ -60,7 +60,7 @@ export default function Listing({ listing }) {
 					<img src={listing.appIcon} alt="Loom logo" className="h-12 w-12 rounded-md" />
 					<div>
 						<h4 className="text text-lg font-semibold text-black">{listing.appName}</h4>
-						<p className={`text line-clamp-3 leading-tight text-neutral-600`}>{listing.shortDescription}</p>
+						<p className={`text line-clamp-3 leading-tight text-neutral-500`}>{listing.shortDescription}</p>
 					</div>
 				</div>
 				<span className="w-full flex-1"></span>
