@@ -238,7 +238,7 @@ export default function ProductListing({ listing, suggestions }) {
 			</div>
 
 			<h2 className="w-full text-center text-2xl font-bold">Find More Deals</h2>
-			<div className="mb-16 mt-8 flex flex-col gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+			<div className="mb-16 mt-8 flex flex-col gap-6 md:grid md:auto-rows-max md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
 				{suggestions.length > 0 &&
 					suggestions.map((listing, index) => (
 						<div className={`h-full ${index === 4 ? 'xl:hidden 2xl:block' : index === 5 ? 'xl:hidden 2xl:hidden' : ''}`} key={listing.id}>

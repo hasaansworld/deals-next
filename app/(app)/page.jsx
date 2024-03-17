@@ -19,7 +19,7 @@ export default async function Page({ searchParams }) {
 						: 'Get high quality software for lower prices.'}
 				</p>
 
-				<div className="flex flex-col gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+				<div className="flex flex-col gap-6 md:grid md:auto-rows-max md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
 					{allListings.data.length > 0 && allListings.data.map((listing, index) => <Listing listing={listing} key={listing.id} />)}
 				</div>
 			</div>
