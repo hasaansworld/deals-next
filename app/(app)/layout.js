@@ -16,7 +16,7 @@ export const metadata = {
 		images: [{ url: 'https://appdeals.pro/graphics/og_image.png', width: 1200, height: 630 }],
 	},
 	twitter: {
-		card: 'Unbeatable deals on high quality software curated by humans.',
+		card: 'summary_large_image',
 		title: 'Appdeals',
 		description:
 			'Unbeatable deals on high quality software curated by humans. Boost your workflows and increase your productivity with our selection of top tier apps and software tools.',
