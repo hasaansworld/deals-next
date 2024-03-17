@@ -34,7 +34,7 @@ export default function Listing({ listing }) {
 	}
 
 	return (
-		<div onClick={() => router.push(`/product/${listing.nameId}`)} className="h-full overflow-visible">
+		<div onClick={() => router.push(`/product/${listing.nameId}`)} className="h-full select-none">
 			<div className="flex h-full w-full cursor-pointer flex-col rounded-xl border border-neutral-200 bg-white">
 				<AspectRatio ratio={16 / 9}>
 					{listing.youtubeURL && (
