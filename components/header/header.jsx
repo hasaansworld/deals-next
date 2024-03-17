@@ -50,7 +50,7 @@ const Header = () => {
 						</button>
 					</form>
 
-					<div className="flex items-center">
+					<div className="flex items-center gap-4">
 						<Link
 							href="/submit"
 							className="flex items-center gap-2 rounded-full bg-fuchsia-500 px-4 py-1 font-medium text-white hover:ring-4 hover:ring-fuchsia-200"
@@ -58,6 +58,32 @@ const Header = () => {
 							<AddSquareIcon className="h-4 w-4" stroke="2.5" />
 							Submit
 						</Link>
+						{user && (
+							<DropdownMenu>
+								<DropdownMenuTrigger asChild>
+									<Avatar className="h-8 w-8 cursor-pointer">
+										<AvatarImage src={user.profile_picture} alt="Profile Picture" />
+										<AvatarFallback>{user.name.substring(0, 1).toUpperCase()}</AvatarFallback>
+									</Avatar>
+								</DropdownMenuTrigger>
+								<DropdownMenuContent className="w-60 p-1">
+									<div className="px-4 py-2">
+										<DropdownMenuLabel className="font-medium">{user.name}</DropdownMenuLabel>
+										<DropdownMenuLabel className="text-sm text-neutral-400">{user.email}</DropdownMenuLabel>
+									</div>
+									<DropdownMenuSeparator />
+									<DropdownMenuItem asChild>
+										<button
+											className="flex w-full items-center gap-3 px-4 py-2 text-rose-500 hover:bg-neutral-100 focus:text-rose-600"
+											onClick={() => logout()}
+										>
+											<Logout03Icon className="h-4 w-4" stroke="2" />
+											<p className="text-sm font-medium">Logout</p>
+										</button>
+									</DropdownMenuItem>
+								</DropdownMenuContent>
+							</DropdownMenu>
+						)}
 
 						{/* {user ? (
 							<>
