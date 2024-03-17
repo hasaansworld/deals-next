@@ -3,7 +3,7 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 export default function ProductLoading() {
 	return (
 		<div className="w-full px-6 pb-60 pt-24">
-			<div className="mx-auto max-w-[600px] flex-1 animate-pulse lg:max-w-[800px]">
+			<div className="mx-auto max-w-[600px] flex-1 animate-pulse lg:max-w-[700px]">
 				<div className="flex items-start gap-4" id="product">
 					<div className="-ml-16 h-12 w-12 rounded-md bg-neutral-100" />
 					<div className="flex-1">
