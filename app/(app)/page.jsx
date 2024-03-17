@@ -6,6 +6,7 @@ import { getAllListings } from '@/lib/server';
 export default async function Page({ searchParams }) {
 	const search = searchParams?.q;
 	const allListings = await getAllListings(search);
+	console.log(allListings);
 
 	return (
 		<>
