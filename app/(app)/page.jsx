@@ -13,7 +13,7 @@ export default async function Page({ searchParams }) {
 				<h2 className={`mx-6 mt-16 flex justify-center text-center text-xl font-bold text-black md:mx-16 md:text-2xl`}>
 					{search ? `Search for "${search}"` : 'Best Software Deals And Discounts'}
 				</h2>
-				<p className="mx-4 mb-14 text-gray-500">
+				<p className="mx-4 mb-14 text-gray-400 md:text-lg">
 					{search
 						? `${allListings.data.length} ${allListings.data.length === 1 ? 'deal' : 'deals'} found matching your query`
 						: 'Get high quality software for lower prices.'}

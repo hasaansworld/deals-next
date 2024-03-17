@@ -55,9 +55,11 @@ export default function ListingForm({ user }) {
 		endsIn: Yup.number().required('Ends in is required'),
 		url: Yup.string()
 			.required('URL is required')
+			.max(250, 'Max 250 characters')
 			.test('valid-url', 'Invalid URL', (value) => value.includes('.')),
 		websiteURL: Yup.string()
 			.required('Website URL is required')
+			.max(250, 'Max 250 characters')
 			.test('valid-url', 'Invalid website URL', (value) => value.includes('.')),
 	});
 

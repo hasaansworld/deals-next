@@ -29,7 +29,7 @@ const Header = () => {
 	return (
 		<header className="fixed left-0 right-0 top-0 z-10 border-b border-[#777]/10 bg-white/50 py-2 backdrop-blur-2xl backdrop-filter">
 			<nav>
-				<div className="flex items-center justify-between gap-24 px-6 md:justify-center md:gap-32">
+				<div className="flex items-center justify-between gap-16 px-4 md:justify-center md:gap-24 md:gap-32 md:px-6">
 					<Link href="/">
 						<div className="flex items-center gap-2">
 							<img src="/logo.svg" alt="Logo" className="h-6 w-6" />
