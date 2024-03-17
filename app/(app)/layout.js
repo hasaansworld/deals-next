@@ -6,6 +6,7 @@ import Footer from '@/components/footer/footer';
 import Navigation from '@/components/navigation/navigation';
 
 export const metadata = {
+	metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN),
 	title: 'Appdeals',
 	description:
 		'Unbeatable deals on high quality software curated by humans. Boost your workflows and increase your productivity with our selection of top tier apps and software tools.',
@@ -13,7 +14,7 @@ export const metadata = {
 		title: 'Appdeals - Best Software Deals And Discounts',
 		description:
 			'Unbeatable deals on high quality software curated by humans. Boost your workflows and increase your productivity with our selection of top tier apps and software tools.',
-		images: [{ url: 'https://appdeals.pro/graphics/og_image.png', width: 1200, height: 630, alt: 'AppDeals - Best Software Deals And Discounts' }],
+		images: [{ url: '/graphics/og_image.png', width: 1200, height: 630, alt: 'AppDeals - Best Software Deals And Discounts' }],
 	},
 	twitter: {
 		card: 'summary_large_image',
@@ -21,7 +22,7 @@ export const metadata = {
 		creator: '@appdeals_pro',
 		description:
 			'Unbeatable deals on high quality software curated by humans. Boost your workflows and increase your productivity with our selection of top tier apps and software tools.',
-		images: [{ url: 'https://appdeals.pro/graphics/og_image.png', width: 1200, height: 630, alt: 'AppDeals - Best Software Deals And Discounts' }],
+		images: [{ url: '/graphics/og_image.png', width: 1200, height: 630, alt: 'AppDeals - Best Software Deals And Discounts' }],
 	},
 };
 
