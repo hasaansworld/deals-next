@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
 		image = data.image1 ? data.image1 : data.image2 ? data.image2 : data.image3;
 	}
 
-	const title = `${data.appName} on Appdeals - ${listing.priceCurrency}${listing.price}${types[listing.type]}`;
+	const title = `${data.appName} on Appdeals - ${data.priceCurrency}${data.price}${types[data.type]}`;
 
 	return {
 		metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN),
