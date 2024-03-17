@@ -72,17 +72,17 @@ function ImageCarousel({ listing, index = 0 }) {
 				)}
 				{listing.image1 && (
 					<CarouselItem className="h-[40vh] w-full md:h-[calc(100vh-4rem)] md:w-[calc(100vw-8rem)]">
-						<img src={listing.image1} alt="Listing Image 1" className="h-full w-full rounded-xl object-contain" />
+						<img src={listing.image1} alt="Listing Image 1" className="h-full w-full rounded-xl bg-white object-contain" />
 					</CarouselItem>
 				)}
 				{listing.image2 && (
 					<CarouselItem className="h-[40vh] w-full md:h-[calc(100vh-4rem)] md:w-[calc(100vw-8rem)]">
-						<img src={listing.image2} alt="Listing Image 2" className="h-full w-full rounded-xl object-contain" />
+						<img src={listing.image2} alt="Listing Image 2" className="h-full w-full rounded-xl bg-white object-contain" />
 					</CarouselItem>
 				)}
 				{listing.image3 && (
 					<CarouselItem className="h-[40vh] w-full md:h-[calc(100vh-4rem)] md:w-[calc(100vw-8rem)]">
-						<img src={listing.image3} alt="Listing Image 3" className="h-full w-full rounded-xl object-contain" />
+						<img src={listing.image3} alt="Listing Image 3" className="h-full w-full rounded-xl bg-white object-contain" />
 					</CarouselItem>
 				)}
 			</CarouselContent>
