@@ -14,6 +14,8 @@ import { Oval } from 'react-loader-spinner';
 import CheckmarkCircle03Icon from '@/components/icons/checkmark_circle';
 import axios from '@/lib/axios';
 import Compressor from 'compressorjs';
+import RefreshIcon from '@/components/icons/refresh';
+import { useRouter } from 'next/navigation';
 
 function compress(file, maxWidth) {
 	return new Promise((resolve, reject) => {
@@ -26,17 +28,19 @@ function compress(file, maxWidth) {
 	});
 }
 
-export default function ListingForm({ user }) {
+export default function ListingForm({ user, edit = false, listing = null }) {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitError, setSubmitError] = useState('');
 	const [success, setSuccess] = useState(false);
+
 	const iconFile = useRef(null);
+	const router = useRouter();
 
 	const ListingSchema = Yup.object().shape({
 		iconFile: Yup.mixed()
 			.required('Required')
 			.test('fileSize', 'Max 10mb', (value) => {
-				if (!value.length) return true;
+				if (!value.length || typeof value === 'string') return true;
 				return value[0].size < 10485760;
 			}),
 		appName: Yup.string().min(3, 'Min 3 characters required').max(50, 'Max 50 characters').required('App name is required'),
@@ -65,46 +69,81 @@ export default function ListingForm({ user }) {
 
 	const formik = useFormik({
 		initialValues: {
-			iconFile: '',
-			appName: '',
-			shortDescription: '',
-			youtubeURL: '',
-			image1: '',
-			image2: '',
-			image3: '',
-			introduction: '',
-			priceCurrency: '$',
-			price: 1,
-			oldPrice: '',
+			iconFile: edit ? listing.appIcon : '',
+			appName: edit ? listing.appName : '',
+			shortDescription: edit ? listing.shortDescription : '',
+			youtubeURL: edit ? listing.youtubeURL || '' : '',
+			image1: edit ? listing.image1 || '' : '',
+			image2: edit ? listing.image2 || '' : '',
+			image3: edit ? listing.image3 || '' : '',
+			introduction: edit ? listing.introduction : '',
+			priceCurrency: edit ? listing.priceCurrency : '$',
+			price: edit ? listing.price : 1,
+			oldPrice: edit ? listing.oldPrice || '' : '',
 			endsIn: 30,
-			type: 'lifetime',
-			url: '',
-			websiteURL: '',
+			type: edit ? listing.type : 'lifetime',
+			url: edit ? listing.url : '',
+			websiteURL: edit ? listing.websiteURL : '',
 		},
 		validationSchema: ListingSchema,
 		onSubmit: async (values) => {
 			setIsSubmitting(true);
 			setSubmitError('');
 
+			const editKeys = {
+				iconFile: 'icon_file',
+				appName: 'app_name',
+				shortDescription: 'short_description',
+				youtubeURL: 'youtube_url',
+				image1: 'image_1',
+				image2: 'image_2',
+				image3: 'image_3',
+				introduction: 'introduction',
+				priceCurrency: 'price_currency',
+				price: 'price',
+				oldPrice: 'old_price',
+				endsIn: 'ends_in',
+				type: 'type',
+				url: 'url',
+				websiteURL: 'website_url',
+			};
+
 			let formData = new FormData();
 			for (const key in values) {
-				if (['iconFile', 'image1', 'image2', 'image3'].includes(key) && values[key] && values[key].type !== 'image/gif') {
+				if (
+					['iconFile', 'image1', 'image2', 'image3'].includes(key) &&
+					typeof values[key] !== 'string' &&
+					values[key] &&
+					values[key].type !== 'image/gif'
+				) {
 					const compressed = await compress(values[key], key === 'iconFile' ? 150 : 1080);
-					formData.append(key, compressed);
+					formData.append(edit ? editKeys[key] : key, compressed);
 				} else {
-					formData.append(key, values[key]);
+					formData.append(edit ? editKeys[key] : key, values[key]);
 				}
 			}
 
-			axios
-				.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/create-listing`, formData)
-				.then((res) => {
-					setSuccess(true);
-				})
-				.catch((error) => {
-					setSubmitError(error.response.data.message);
-					setIsSubmitting(false);
-				});
+			if (edit) {
+				axios
+					.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/listing/${listing.nameId}/update`, formData)
+					.then((res) => {
+						router.push(`/product/${listing.nameId}`);
+					})
+					.catch((error) => {
+						setSubmitError(error.response.data.message.substring(0, 100));
+						setIsSubmitting(false);
+					});
+			} else {
+				axios
+					.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/create-listing`, formData)
+					.then((res) => {
+						setSuccess(true);
+					})
+					.catch((error) => {
+						setSubmitError(error.response.data.message.substring(0, 100));
+						setIsSubmitting(false);
+					});
+			}
 		},
 	});
 
@@ -146,7 +185,15 @@ export default function ListingForm({ user }) {
 								{!formik.values.iconFile && <Upload04Icon className="h-12 w-12" stroke="1" />}
 								{formik.values.iconFile && (
 									<>
-										<img src={URL.createObjectURL(formik.values.iconFile)} className="h-full w-full rounded-xl object-cover" alt="Icon" />
+										<img
+											src={
+												typeof formik.values.iconFile === 'string'
+													? formik.values.iconFile
+													: URL.createObjectURL(formik.values.iconFile)
+											}
+											className="h-full w-full rounded-xl object-cover"
+											alt="Icon"
+										/>
 										<button
 											type="button"
 											className="absolute -right-3 -top-3 h-6 w-6 appearance-none rounded-full bg-black p-1 text-white"
@@ -159,6 +206,19 @@ export default function ListingForm({ user }) {
 											<Cancel01Icon className="h-4 w-4" stroke="3" />
 										</button>
 									</>
+								)}
+								{((edit && !formik.values.iconFile) || (edit && typeof formik.values.iconFile !== 'string')) && (
+									<button
+										type="button"
+										className="absolute -left-3 -top-3 h-7 w-7 appearance-none rounded-full bg-black p-1.5 text-white"
+										onClick={(e) => {
+											e.stopPropagation();
+											iconFile.current.value = '';
+											formik.setFieldValue('iconFile', listing.appIcon);
+										}}
+									>
+										<RefreshIcon className="h-4 w-4" stroke="3" />
+									</button>
 								)}
 								<input
 									type="file"
@@ -229,9 +289,15 @@ export default function ListingForm({ user }) {
 					</Label>
 					<p className={`text-sm ${formik.submitCount > 0 && formik.errors.image1 ? 'text-rose-500' : 'text-neutral-400'}`}>At least 1 required </p>
 					<div className="mt-2 grid grid-cols-2 gap-6 md:grid-cols-3">
-						<ImageUpload formik={formik} name="image1" error={formik.submitCount > 0 && formik.errors.image1} />
-						<ImageUpload formik={formik} name="image2" />
-						<ImageUpload formik={formik} name="image3" />
+						<ImageUpload
+							formik={formik}
+							name="image1"
+							error={formik.submitCount > 0 && formik.errors.image1}
+							edit={edit}
+							url={listing?.image1 || ''}
+						/>
+						<ImageUpload formik={formik} name="image2" edit={edit} url={listing?.image2 || ''} />
+						<ImageUpload formik={formik} name="image3" edit={edit} url={listing?.image3 || ''} />
 					</div>
 
 					<Label htmlFor="introduction" className="mt-6 block text-base font-semibold">
@@ -319,45 +385,62 @@ export default function ListingForm({ user }) {
 					</div>
 
 					<div className="mt-6 flex gap-6">
-						<div className="flex-1">
-							<Label htmlFor="days" className="block text-base font-semibold">
-								Ends in *
-							</Label>
-							<div className="relative w-full">
-								<Input
-									type="number"
-									id="endsIn"
-									name="endsIn"
-									placeholder="Ends in"
-									min={1}
-									max={30}
-									value={formik.values.endsIn}
-									onChange={formik.handleChange}
-									className={`mt-1 pr-32 text-center text-base ${formik.submitCount > 0 && formik.errors.endsIn ? 'border-rose-500' : ''}`}
-								/>
-								<p className="absolute right-4 top-1/2 -translate-y-1/2"> days</p>
+						{!edit && (
+							<div className="flex-1">
+								<Label htmlFor="days" className="block text-base font-semibold">
+									Ends in *
+								</Label>
+								<div className="relative w-full">
+									<Input
+										type="number"
+										id="endsIn"
+										name="endsIn"
+										placeholder="Ends in"
+										min={1}
+										max={30}
+										value={formik.values.endsIn}
+										onChange={formik.handleChange}
+										className={`mt-1 pr-32 text-center text-base ${
+											formik.submitCount > 0 && formik.errors.endsIn ? 'border-rose-500' : ''
+										}`}
+									/>
+									<p className="absolute right-4 top-1/2 -translate-y-1/2"> days</p>
+								</div>
+								{formik.submitCount > 0 && formik.errors.endsIn && (
+									<p className="m-0 text-sm font-medium text-rose-500">{formik.errors.endsIn}</p>
+								)}
 							</div>
-							{formik.submitCount > 0 && formik.errors.endsIn && <p className="m-0 text-sm font-medium text-rose-500">{formik.errors.endsIn}</p>}
-						</div>
+						)}
 						<div className="flex-1">
 							<Label htmlFor="type" className="block text-base font-semibold">
 								Deal type
 							</Label>
 							<Select value={formik.values.type} onValueChange={(v) => formik.setFieldValue('type', v)}>
-								<SelectTrigger className="mt-1 w-full">
+								<SelectTrigger className="mt-1 w-full text-base">
 									<SelectValue placeholder="Lifetime" />
 								</SelectTrigger>
 								<SelectContent>
-									<SelectGroup>
-										<SelectItem value="lifetime">Lifetime</SelectItem>
-										<SelectItem value="per_year">Per year</SelectItem>
-										<SelectItem value="per_month">Per month</SelectItem>
-										<SelectItem value="per_week">Per week</SelectItem>
-										<SelectItem value="per_use">Per use</SelectItem>
+									<SelectGroup className="text-base">
+										<SelectItem value="lifetime" className="text-base">
+											Lifetime
+										</SelectItem>
+										<SelectItem value="per_year" className="text-base">
+											Per year
+										</SelectItem>
+										<SelectItem value="per_month" className="text-base">
+											Per month
+										</SelectItem>
+										<SelectItem value="per_week" className="text-base">
+											Per week
+										</SelectItem>
+										<SelectItem value="per_use" className="text-base">
+											Per use
+										</SelectItem>
 									</SelectGroup>
 								</SelectContent>
 							</Select>
 						</div>
+						{edit && <div className="flex-1"></div>}
 					</div>
 
 					<Label htmlFor="url" className="mt-6 block text-base font-semibold">
