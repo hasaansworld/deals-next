@@ -36,7 +36,7 @@ export default function ImageUpload({ formik, name, error = false, edit = false,
 					</button>
 				</>
 			)}
-			{((edit && url && !formik.values[name]) || (edit && typeof formik.values[name] !== 'string')) && (
+			{((edit && url && !formik.values[name]) || (edit && url && typeof formik.values[name] !== 'string')) && (
 				<button
 					type="button"
 					className="absolute -left-3 -top-3 h-7 w-7 appearance-none rounded-full bg-black p-1.5 text-white"
