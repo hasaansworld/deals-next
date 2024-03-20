@@ -91,7 +91,7 @@ export default function ListingForm({ user, edit = false, listing = null }) {
 			setSubmitError('');
 
 			const editKeys = {
-				iconFile: 'icon_file',
+				iconFile: 'icon_url',
 				appName: 'app_name',
 				shortDescription: 'short_description',
 				youtubeURL: 'youtube_url',
