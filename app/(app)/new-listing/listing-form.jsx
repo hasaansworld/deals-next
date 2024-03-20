@@ -102,7 +102,7 @@ export default function ListingForm({ user }) {
 					setSuccess(true);
 				})
 				.catch((error) => {
-					setSubmitError(error.toString());
+					setSubmitError(error.response.data.message);
 					setIsSubmitting(false);
 				});
 		},

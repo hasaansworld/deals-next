@@ -15,6 +15,7 @@ import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu';
 import { Input } from '../ui/input';
 import { useState } from 'react';
 import Search01Icon from '../icons/search';
+import CheckListIcon from '../icons/checklist';
 
 const Header = () => {
 	const { user, logout } = useAuth({ middleware: 'guest' });
@@ -73,12 +74,21 @@ const Header = () => {
 									</div>
 									<DropdownMenuSeparator />
 									<DropdownMenuItem asChild>
+										<Link
+											href="/manage-listings"
+											className="mb-2 flex w-full items-center gap-3 px-4 py-2 text-neutral-600 hover:bg-neutral-100 focus:text-black"
+										>
+											<CheckListIcon className="h-6 w-6" stroke="2" />
+											<p className="text-base font-medium">My Deals</p>
+										</Link>
+									</DropdownMenuItem>
+									<DropdownMenuItem asChild>
 										<button
 											className="flex w-full items-center gap-3 px-4 py-2 text-rose-500 hover:bg-neutral-100 focus:text-rose-600"
 											onClick={() => logout()}
 										>
-											<Logout03Icon className="h-4 w-4" stroke="2" />
-											<p className="text-sm font-medium">Logout</p>
+											<Logout03Icon className="h-6 w-6" stroke="2" />
+											<p className="text-base font-medium">Logout</p>
 										</button>
 									</DropdownMenuItem>
 								</DropdownMenuContent>
