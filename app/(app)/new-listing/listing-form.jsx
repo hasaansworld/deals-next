@@ -16,6 +16,7 @@ import axios from '@/lib/axios';
 import Compressor from 'compressorjs';
 import RefreshIcon from '@/components/icons/refresh';
 import { useRouter } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 function compress(file, maxWidth) {
 	return new Promise((resolve, reject) => {
@@ -128,9 +129,14 @@ export default function ListingForm({ user, edit = false, listing = null }) {
 					.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/listing/${listing.nameId}/update`, formData)
 					.then((res) => {
 						router.push(`/product/${listing.nameId}`);
+						router.refresh();
 					})
 					.catch((error) => {
-						setSubmitError(error.response.data.message.substring(0, 100));
+						if (error.response && error.response.data && error.response.data.message) {
+							setSubmitError(error.response.data.message.substring(0, 100));
+						} else {
+							setSubmitError(error.toString());
+						}
 						setIsSubmitting(false);
 					});
 			} else {
