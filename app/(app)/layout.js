@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import Navigation from '@/components/navigation/navigation';
+import Script from 'next/script';
 
 export const metadata = {
 	metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN),
@@ -29,6 +30,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={onest.className}>
+			<head>
+				{/*<!-- Google tag (gtag.js) -->*/}
+				<Script async src="https://www.googletagmanager.com/gtag/js?id=G-XDQLP3CGH1" />
+				<Script id="google-analytics">
+					{`
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+				`}
+				</Script>
+			</head>
 			<body className="overflow-hidden bg-white">
 				<Header />
 				<div className="h-screen w-full overflow-y-auto">
