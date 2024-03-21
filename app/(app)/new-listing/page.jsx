@@ -3,6 +3,7 @@ import NewTwitterIcon from '@/components/icons/new_twitter';
 import { canSubmit, getUser } from '@/lib/server';
 import ListingForm from './listing-form';
 import TimeQuarterPassIcon from '@/components/icons/time_quarter_pass';
+import GoogleIcon from '@/components/icons/google';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -39,7 +40,7 @@ export default async function NewListing() {
 						href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/google`}
 						className="mt-6 flex flex-1 items-center justify-center gap-2 rounded-full border border-neutral-200 bg-white px-6 py-4 font-medium text-black shadow-sm hover:bg-neutral-100"
 					>
-						<img src="/google_logo.svg" alt="Google Logo" className="h-7 w-7" />
+						<GoogleIcon className="h-7 w-7" />
 					</Link>
 					<Link
 						href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/twitter`}
