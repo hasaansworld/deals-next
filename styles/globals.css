@@ -37,3 +37,25 @@ ul {
 	padding: 0;
 	list-style: none;
 }
+
+.shimmer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 70%;
+	height: 100%;
+	pointer-events: none;
+
+	background: linear-gradient(100deg, rgba(245, 208, 254, 0) 20%, rgba(245, 208, 254, 0.2) 50%, rgba(245, 208, 254, 0) 80%);
+
+	animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+	from {
+		transform: translateX(-200%);
+	}
+	to {
+		transform: translateX(200%);
+	}
+}

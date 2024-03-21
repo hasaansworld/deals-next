@@ -25,16 +25,19 @@ export default async function Page({ searchParams }) {
 					{allListings.data.length > 0 && allListings.data.map((listing, index) => <Listing listing={listing} key={listing.id} />)}
 				</div>
 
-				<div className="mx-auto mt-16 flex w-full flex-col items-center rounded-xl bg-neutral-100 px-4 py-6 md:w-[600px] md:px-8">
-					<h2 className="w-full text-center text-xl font-bold">👋 Hello! Are you a maker? Add your deal on Appdeals!</h2>
-					<p className="text-center text-lg">
-						Appdeals just launched and we&apos;re looking to add amazing deals from apps like yours. List your deals for free and let&apos;s grow
-						togther.
-					</p>
-					<Link href={'/submit'} className="mx-auto mt-2 flex items-center gap-2 text-xl font-semibold text-fuchsia-500 hover:text-fuchsia-400">
-						List My Deal On Appdeals
-						<ArrowRight02Icon className="h-6 w-6" stroke="2.5" />
-					</Link>
+				<div className="mx-auto w-full overflow-hidden md:w-[680px]">
+					<div className="relative mt-16 flex w-full flex-col items-center rounded-xl bg-neutral-100 px-4 py-8 md:px-8">
+						<h2 className="w-full text-center text-2xl font-bold">👋 Hello! Are you a maker? Add your deal on Appdeals!</h2>
+						<p className="mt-2 text-center text-lg">
+							Appdeals just launched and we&apos;re looking to add amazing deals from apps like yours. List your deals for free and let&apos;s
+							grow togther.
+						</p>
+						<Link href={'/submit'} className="mx-auto mt-2 flex items-center gap-2 text-xl font-semibold text-fuchsia-500 hover:text-fuchsia-400">
+							List My Deal On Appdeals
+							<ArrowRight02Icon className="h-6 w-6" stroke="2.5" />
+						</Link>
+						<div className="shimmer"></div>
+					</div>
 				</div>
 			</div>
 		</>
