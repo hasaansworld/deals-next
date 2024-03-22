@@ -4,6 +4,13 @@ import ProductListing from './product-listing';
 export async function generateMetadata({ params }) {
 	const { data } = await getListingDetails(params.name_id);
 
+	if (!data) {
+		return {
+			title: 'Appdeals - 404',
+			description: 'Could not find what you are looking for.',
+		};
+	}
+
 	const types = {
 		lifetime: ' Lifetime',
 		per_year: '/year',
